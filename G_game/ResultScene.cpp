@@ -7,7 +7,7 @@ ResultScene::ResultScene()
 	: SceneBase()
 {
 	// ƒŠƒUƒ‹ƒg‰æ‘œ‚Ì“Ç‚İ‚İ(‰¼)
-	mImage = LoadGraph("data/assets/Result.png");
+	mImage = LoadGraph("assets/scene/Result.png");
 }
 
 ResultScene::~ResultScene()
