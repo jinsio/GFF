@@ -1,0 +1,2 @@
+Dxlib_hをslnと同じ階層に入れる
+VisualStudio2022を使う
