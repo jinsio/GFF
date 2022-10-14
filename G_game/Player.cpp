@@ -10,7 +10,7 @@ Player::Player():
 	//プレイヤーの初期位置の代入
 	mPlayer =VGet(FirstPosX,FirstPosY,0);
 	//プレイヤー画像の読み込み
-	pImage = LoadGraph("data/assets/Player.png");
+	pImage = LoadGraph("assets/player/Player.png");
 }
 
 Player::~Player()

@@ -8,7 +8,7 @@ PlayScene::PlayScene()
     : SceneBase()
 {
     // ƒvƒŒƒC‰æ‘œ‚Ì“Ç‚İ‚İ(‰¼)
-    mImage = LoadGraph("data/assets/Play.png");
+    mImage = LoadGraph("assets/scene/Play.png");
 }
 
 PlayScene::~PlayScene()
