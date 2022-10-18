@@ -2,7 +2,7 @@
 #include "PlayScene.h"
 #include "ResultScene.h"
 #include "Player.h"
-
+#include "Map.h"
 
 PlayScene::PlayScene()
     : SceneBase()
@@ -34,6 +34,8 @@ void PlayScene::Draw()
     DrawGraph(0, 0, mImage, true);
 	////プレイヤーを描画
 	//Player* player = new Player();
+	Map* map = new Map();
+	map->MapDraw();
 	//player->PlayerDraw();
 	////プレイヤーを移動
 	//player->PlayerMove();
