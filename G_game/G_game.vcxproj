@@ -148,7 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseMonster.cpp" />
+
+    <ClCompile Include="Collision.cpp" />
+
     <ClCompile Include="Bat.cpp" />
+
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MonsterManager.cpp" />
@@ -164,7 +168,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseMonster.h" />
+
+    <ClInclude Include="Collision.h" />
+
     <ClInclude Include="Bat.h" />
+
     <ClInclude Include="Map.h" />
     <ClInclude Include="monsterInfo.h" />
     <ClInclude Include="MonsterManager.h" />

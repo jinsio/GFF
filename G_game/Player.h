@@ -7,11 +7,11 @@
 const int FirstPosX= 0;
 const int FirstPosY = 100;
 
-const int CharaIdleAllNum = 2;
-const int CharaIdleXNum = 2;
-const int CharaIdleYNum = 1;
-const int CharaIdleXSize = 64;
-const int CharaIdleYSize = 64;
+const int IdleAllNum = 2;
+const int IdleXNum = 2;
+const int IdleYNum = 1;
+const int XSize = 64;
+const int YSize = 64;
 
 
 //プレイヤークラス
@@ -31,9 +31,8 @@ public:
 	void Move();
 	void IdleAnimation();
 
-	
 private:
-	int mIdle[CharaIdleAllNum];
+	int mIdle[IdleAllNum];
 	int pImage;
 	int mIdleAnimation;
 	bool direction;
