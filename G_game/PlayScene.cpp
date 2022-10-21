@@ -4,11 +4,14 @@
 #include "Player.h"
 #include "Map.h"
 
+
 PlayScene::PlayScene()
     : SceneBase()
 {
     // プレイ画像の読み込み(仮)
     mImage = LoadGraph("assets/scene/Play.png");
+	map = new Map;
+	player = new Player;
 }
 
 PlayScene::~PlayScene()
@@ -30,14 +33,9 @@ SceneBase* PlayScene::Update(float _deltaTime)
 
 void PlayScene::Draw()
 {
-    // プレイの描画
-    DrawGraph(0, 0, mImage, true);
-	////プレイヤーを描画
-	//Player* player = new Player();
-	Map* map = new Map();
 	map->MapDraw();
-	//player->PlayerDraw();
-	////プレイヤーを移動
-	//player->PlayerMove();
+	map->MapMove();
+	player->Move();
+	player->Draw();
 }
 

@@ -11,6 +11,7 @@ public:
     Map();
     ~Map();
     void MapDraw();
+    void MapMove();
 protected:
     struct sMapLayer
     {
@@ -19,6 +20,7 @@ protected:
     sMapLayer sMap[CELL_NUM_X][CELL_NUM_Y]={0};
     int chipgraphicHandle[(480/ 32) * (384 / 32)];
     int tileImgX;
+    int tileImgY;
     int characterPack;
     int rawNum = 0;															//横方向のタイルナンバー
     int columnNum = 0;														//縦方向のタイルナンバー

@@ -4,12 +4,15 @@
 #include "DxLib.h"
 
 //プレイヤーの初期位置
-const int FirstPosX= 325;
+const int FirstPosX= 0;
 const int FirstPosY = 100;
 
-const int LeftPosX = 162;
-const int MiddlePosX = 325;
-const int RightPosX = 487;
+const int CharaIdleAllNum = 2;
+const int CharaIdleXNum = 2;
+const int CharaIdleYNum = 1;
+const int CharaIdleXSize = 64;
+const int CharaIdleYSize = 64;
+
 
 //プレイヤークラス
 class Player
@@ -19,19 +22,22 @@ public:
 	Player();
 	//デストラクタ
 	~Player();
-	
-
 
 	/// <summary>
 	/// プレイヤーの描画
 	/// </summary>
-	void PlayerDraw();
-
-	void PlayerMove();
+	
+	void Draw();
+	void Move();
+	void IdleAnimation();
 
 	
 private:
-	
+	int mIdle[CharaIdleAllNum];
 	int pImage;
+	int mIdleAnimation;
+	bool direction;
+	float deltaTime;
 	VECTOR mPlayer;
+	
 };
