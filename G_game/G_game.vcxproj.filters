@@ -18,6 +18,9 @@
     <Filter Include="ソース ファイル\Map">
       <UniqueIdentifier>{686791fc-1569-4f4b-987c-51a4412d9941}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Base">
+      <UniqueIdentifier>{6919d780-6e1e-442f-9352-06b0a5f2d957}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,6 +44,9 @@
     <ClCompile Include="Map.cpp">
       <Filter>ソース ファイル\Map</Filter>
     </ClCompile>
+    <ClCompile Include="BaseMonster.cpp">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneBase.h">
@@ -60,6 +66,12 @@
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>ソース ファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="monsterInfo.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMonster.h">
+      <Filter>ソース ファイル\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
