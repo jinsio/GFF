@@ -15,7 +15,7 @@ Player::Player():
 	mPlayer.x = FirstPosX;
 	mPlayer.y = FirstPosY;
 	//ÉvÉåÉCÉÑÅ[âÊëúÇÃì«Ç›çûÇ›
-	LoadDivGraph("assets/player/idle.png", CharaIdleAllNum, CharaIdleXNum, CharaIdleYNum, CharaIdleXSize, CharaIdleYSize,mIdle);
+	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize,mIdle);
 }
 
 Player::~Player()
@@ -40,7 +40,7 @@ void Player::Move()
 void Player::IdleAnimation()
 {
 
-	mIdleAnimation %= CharaIdleAllNum;
+	mIdleAnimation %= IdleAllNum;
 
 	if (direction) {
 		DrawGraph(mPlayer.x, mPlayer.y,mIdle[mIdleAnimation], TRUE);
