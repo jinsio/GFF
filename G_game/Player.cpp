@@ -11,15 +11,20 @@ Player::Player():
 	deltaTime(),
 	direction(FALSE)
 {
-	//プレイヤーの初期位置の代入
-	mPlayer.x = FirstPosX;
-	mPlayer.y = FirstPosY;
-	//プレイヤー画像の読み込み
-	LoadDivGraph("assets/player/idle.png", CharaIdleAllNum, CharaIdleXNum, CharaIdleYNum, CharaIdleXSize, CharaIdleYSize,mIdle);
+	
 }
 
 Player::~Player()
 {
+}
+
+void Player::Init()
+{
+	//プレイヤーの初期位置の代入
+	mPlayer.x = FirstPosX;
+	mPlayer.y = FirstPosY;
+	//プレイヤー画像の読み込み
+	LoadDivGraph("assets/player/idle.png", CharaIdleAllNum, CharaIdleXNum, CharaIdleYNum, CharaIdleXSize, CharaIdleYSize, mIdle);
 }
 
 void Player::Draw()
@@ -39,7 +44,8 @@ void Player::Move()
 
 void Player::IdleAnimation()
 {
-
+	nowcount = GetNowCount();
+	deltaTime = (nowcount - prevCount) / 1000.0f;
 	mIdleAnimation %= CharaIdleAllNum;
 
 	if (direction) {
@@ -49,6 +55,5 @@ void Player::IdleAnimation()
 	if (!direction){
 		DrawTurnGraph(mPlayer.x, mPlayer.y,mIdle[mIdleAnimation], TRUE);
 	}
-
-	
+	prevCount = nowcount;
 }

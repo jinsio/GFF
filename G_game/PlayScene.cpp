@@ -12,6 +12,7 @@ PlayScene::PlayScene()
     mImage = LoadGraph("assets/scene/Play.png");
 	map = new Map;
 	player = new Player;
+	player->Init();
 }
 
 PlayScene::~PlayScene()

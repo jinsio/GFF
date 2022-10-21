@@ -26,7 +26,7 @@ public:
 	/// <summary>
 	/// ƒvƒŒƒCƒ„[‚Ì•`‰æ
 	/// </summary>
-	
+	void Init();
 	void Draw();
 	void Move();
 	void IdleAnimation();
@@ -37,6 +37,7 @@ private:
 	int pImage;
 	int mIdleAnimation;
 	bool direction;
+	int nowcount, prevCount;
 	float deltaTime;
 	VECTOR mPlayer;
 	
