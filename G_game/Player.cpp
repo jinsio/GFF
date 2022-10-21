@@ -1,4 +1,4 @@
-// ƒCƒ“ƒNƒ‹[ƒh
+// ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰
 #include "Dxlib.h"
 #include "PlayScene.h"
 #include "Player.h"
@@ -11,15 +11,25 @@ Player::Player():
 	deltaTime(),
 	direction(FALSE)
 {
-	//ƒvƒŒƒCƒ„[‚Ì‰ŠúˆÊ’u‚Ì‘ã“ü
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åˆæœŸä½ç½®ã®ä»£å…¥
 	mPlayer.x = FirstPosX;
 	mPlayer.y = FirstPosY;
-	//ƒvƒŒƒCƒ„[‰æ‘œ‚Ì“Ç‚İ‚İ
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç”»åƒã®èª­ã¿è¾¼ã¿
 	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize,mIdle);
+	
 }
 
 Player::~Player()
 {
+}
+
+void Player::Init()
+{
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åˆæœŸä½ç½®ã®ä»£å…¥
+	mPlayer.x = FirstPosX;
+	mPlayer.y = FirstPosY;
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ç”»åƒã®èª­ã¿è¾¼ã¿
+	LoadDivGraph("assets/player/idle.png", CharaIdleAllNum, CharaIdleXNum, CharaIdleYNum, CharaIdleXSize, CharaIdleYSize, mIdle);
 }
 
 void Player::Draw()
@@ -40,7 +50,13 @@ void Player::Move()
 void Player::IdleAnimation()
 {
 
+
 	mIdleAnimation %= IdleAllNum;
+
+	nowcount = GetNowCount();
+	deltaTime = (nowcount - prevCount) / 1000.0f;
+	mIdleAnimation %= CharaIdleAllNum;
+
 
 	if (direction) {
 		DrawGraph(mPlayer.x, mPlayer.y,mIdle[mIdleAnimation], TRUE);
@@ -49,6 +65,5 @@ void Player::IdleAnimation()
 	if (!direction){
 		DrawTurnGraph(mPlayer.x, mPlayer.y,mIdle[mIdleAnimation], TRUE);
 	}
-
-	
+	prevCount = nowcount;
 }

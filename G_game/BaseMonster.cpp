@@ -6,12 +6,6 @@
 //------------------------------------------------------------------------------------------------//
 BaseMonster::BaseMonster()
 {
-    pos.x = 0;
-    pos.y = 0;
-    scale.x = 64;
-    scale.y = 64;
-    halfScale.x = scale.x / 2;
-    halfScale.y = scale.y / 2;
     displayImage = -1;
     hp = 0;
     isAlive = true;

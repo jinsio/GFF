@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+
     <Filter Include="ソース ファイル">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -28,59 +29,109 @@
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneBase.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
+
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="PlayScene.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
+      <Filter>Scenes</Filter>
+
     </ClCompile>
     <ClCompile Include="ResultScene.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
+      <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>ソース ファイル\Object</Filter>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>ソース ファイル\Map</Filter>
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="BaseMonster.cpp">
-      <Filter>ソース ファイル\Base</Filter>
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterManager.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc.cpp">
+      <Filter>Monsters</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>ソース ファイル\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SceneBase.h">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClInclude>
+    <ClInclude Include="TimeManager.h" />
     <ClInclude Include="PlayScene.h">
-      <Filter>ソース ファイル\Scene</Filter>
+      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="ResultScene.h">
-      <Filter>ソース ファイル\Scene</Filter>
+      <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>ソース ファイル\Object</Filter>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>ソース ファイル\Map</Filter>
+      <Filter>Map</Filter>
     </ClInclude>
-    <ClInclude Include="monsterInfo.h">
-      <Filter>ソース ファイル</Filter>
+    <ClInclude Include="Player.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="BaseMonster.h">
-      <Filter>ソース ファイル\Base</Filter>
+      <Filter>Monsters</Filter>
     </ClInclude>
+    <ClInclude Include="monsterInfo.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+
     <ClInclude Include="Collision.h">
       <Filter>ソース ファイル\Collision</Filter>
     </ClInclude>
+
+    <ClInclude Include="MonsterManager.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{5ec85630-4ad9-4c69-8585-efabdc85b601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{9afb9d16-aeb2-40ed-b8c1-5b07d23d2cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{b15c513a-1d49-4d87-97ac-3a09b37bf951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monsters">
+      <UniqueIdentifier>{31c769c8-6224-47a9-a9e6-68803a2a0c4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
