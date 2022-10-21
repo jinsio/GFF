@@ -24,6 +24,21 @@
     <ClCompile Include="BaseMonster.cpp">
       <Filter>Monsters</Filter>
     </ClCompile>
+    <ClCompile Include="MonsterManager.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimeManager.h" />
@@ -49,6 +64,21 @@
       <Filter>Monsters</Filter>
     </ClInclude>
     <ClInclude Include="monsterInfo.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterManager.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc.h">
       <Filter>Monsters</Filter>
     </ClInclude>
   </ItemGroup>

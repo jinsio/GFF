@@ -7,25 +7,19 @@ public:
     BaseMonster();
     virtual ~BaseMonster();
 
-    struct vec2
-    {
-        float x;
-        float y;
-    };
-
     virtual void Update(float deltaTime) = 0;
     virtual void Draw();
 
 protected:
 
     //! 位置
-    vec2 pos;
+    vec2 pos = { 0 };
 
     //! 大きさ
-    vec2 scale;
+    vec2 scale = { 0 };
 
     //! 大きさ（半分）
-    vec2 halfScale;
+    vec2 halfScale = { 0 };
 
     //! 速度
     float speed;
