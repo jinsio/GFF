@@ -1,5 +1,5 @@
 #include "Orc.h"
-#include "monsterInfo.h"s
+#include "monsterInfo.h"
 
 Orc::Orc()
 {

@@ -1,137 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="ソース ファイル\Scene">
-      <UniqueIdentifier>{d0b21726-941d-4ecf-9581-8b7d6055a558}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Map">
-      <UniqueIdentifier>{686791fc-1569-4f4b-987c-51a4412d9941}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Object">
-      <UniqueIdentifier>{c4717cee-5550-4575-a943-6e53ae6dd450}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Base">
-      <UniqueIdentifier>{6919d780-6e1e-442f-9352-06b0a5f2d957}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Collision">
-      <UniqueIdentifier>{d48dad52-2cd1-40ae-8429-4514b2dc93b5}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>Scenes</Filter>
-
-    </ClCompile>
-    <ClCompile Include="ResultScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneBase.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseMonster.cpp">
-      <Filter>Monsters</Filter>
-    </ClCompile>
     <ClCompile Include="MonsterManager.cpp">
-      <Filter>Monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="Slime.cpp">
-      <Filter>Monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="Bat.cpp">
-      <Filter>Monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="Skeleton.cpp">
-      <Filter>Monsters</Filter>
+      <Filter>ソースファイル\Monsters</Filter>
     </ClCompile>
     <ClCompile Include="Orc.cpp">
-      <Filter>Monsters</Filter>
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseMonster.cpp">
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>ソースファイル\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>ソースファイル</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
-      <Filter>ソース ファイル\Collision</Filter>
+      <Filter>ソースファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TimeManager.h" />
-    <ClInclude Include="PlayScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="ResultScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneBase.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseMonster.h">
-      <Filter>Monsters</Filter>
-    </ClInclude>
     <ClInclude Include="monsterInfo.h">
-      <Filter>Monsters</Filter>
+      <Filter>ソースファイル\Monsters</Filter>
     </ClInclude>
-
-    <ClInclude Include="Collision.h">
-      <Filter>ソース ファイル\Collision</Filter>
-    </ClInclude>
-
     <ClInclude Include="MonsterManager.h">
-      <Filter>Monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="Slime.h">
-      <Filter>Monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="Bat.h">
-      <Filter>Monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="Skeleton.h">
-      <Filter>Monsters</Filter>
+      <Filter>ソースファイル\Monsters</Filter>
     </ClInclude>
     <ClInclude Include="Orc.h">
-      <Filter>Monsters</Filter>
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.h">
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMonster.h">
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>ソースファイル\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultScene.h">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ソースファイル\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>ソースファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Scenes">
-      <UniqueIdentifier>{5ec85630-4ad9-4c69-8585-efabdc85b601}</UniqueIdentifier>
+    <Filter Include="ソースファイル">
+      <UniqueIdentifier>{94b858ba-e9dd-47c1-9ec2-4dc170bf736f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Map">
-      <UniqueIdentifier>{9afb9d16-aeb2-40ed-b8c1-5b07d23d2cae}</UniqueIdentifier>
+    <Filter Include="ソースファイル\Monsters">
+      <UniqueIdentifier>{8ac6366e-b61f-4f45-a8b4-265fba459582}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Objects">
-      <UniqueIdentifier>{b15c513a-1d49-4d87-97ac-3a09b37bf951}</UniqueIdentifier>
+    <Filter Include="ソースファイル\Scenes">
+      <UniqueIdentifier>{3d364e8b-8cdb-4f01-90b0-1df6bfc2e0d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Monsters">
-      <UniqueIdentifier>{31c769c8-6224-47a9-a9e6-68803a2a0c4b}</UniqueIdentifier>
+    <Filter Include="ソースファイル\Objects">
+      <UniqueIdentifier>{093f7e0e-0246-4bdb-b7e0-49c65bd2250e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
