@@ -3,9 +3,18 @@
 // インクルード
 #include "SceneBase.h"
 
+class Map;
+class Player;
+
+const int pi = 3.14;
+
 /* プレイシーン */
 class PlayScene :public SceneBase
 {
+private:
+	Map* map;
+	Player* player;
+
 public:
 	// コンストラクタ
 	PlayScene();

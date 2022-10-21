@@ -5,24 +5,50 @@
 
 Player::Player():
 	mPlayer(),
-	pImage()
+	pImage(0),
+	mIdle{},
+	mIdleAnimation(),
+	deltaTime(),
+	direction(FALSE)
 {
 	//プレイヤーの初期位置の代入
-	mPlayer =VGet(FirstPosX,FirstPosY,0);
+	mPlayer.x = FirstPosX;
+	mPlayer.y = FirstPosY;
 	//プレイヤー画像の読み込み
-	pImage = LoadGraph("assets/player/Player.png");
+	LoadDivGraph("assets/player/idle.png", CharaIdleAllNum, CharaIdleXNum, CharaIdleYNum, CharaIdleXSize, CharaIdleYSize,mIdle);
 }
 
 Player::~Player()
 {
 }
 
-void Player::PlayerDraw()
+void Player::Draw()
 {
-	DrawGraph(mPlayer.x, mPlayer.y, pImage, TRUE);
+	IdleAnimation();
 }
 
-void Player::PlayerMove()
+void Player::Move()
+{
+	if (CheckHitKey(KEY_INPUT_RIGHT)){
+		direction = TRUE;
+	}
+	if (CheckHitKey(KEY_INPUT_LEFT)) {
+		direction = FALSE;
+	}
+}
+
+void Player::IdleAnimation()
 {
 
+	mIdleAnimation %= CharaIdleAllNum;
+
+	if (direction) {
+		DrawGraph(mPlayer.x, mPlayer.y,mIdle[mIdleAnimation], TRUE);
+	}
+
+	if (!direction){
+		DrawTurnGraph(mPlayer.x, mPlayer.y,mIdle[mIdleAnimation], TRUE);
+	}
+
+	
 }

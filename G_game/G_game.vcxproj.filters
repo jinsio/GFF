@@ -12,11 +12,11 @@
     <Filter Include="ソース ファイル\Scene">
       <UniqueIdentifier>{d0b21726-941d-4ecf-9581-8b7d6055a558}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\player">
-      <UniqueIdentifier>{c4717cee-5550-4575-a943-6e53ae6dd450}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Map">
       <UniqueIdentifier>{686791fc-1569-4f4b-987c-51a4412d9941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object">
+      <UniqueIdentifier>{c4717cee-5550-4575-a943-6e53ae6dd450}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,7 +36,7 @@
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>ソース ファイル\player</Filter>
+      <Filter>ソース ファイル\Object</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>ソース ファイル\Map</Filter>
@@ -56,7 +56,7 @@
       <Filter>ソース ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>ソース ファイル\player</Filter>
+      <Filter>ソース ファイル\Object</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>ソース ファイル\Map</Filter>
