@@ -1,30 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="BaseMonster.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="ResultScene.cpp" />
-    <ClCompile Include="SceneBase.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseMonster.cpp">
+      <Filter>Monsters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseMonster.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="monsterInfo.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="ResultScene.h" />
-    <ClInclude Include="SceneBase.h" />
-    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="PlayScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMonster.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="monsterInfo.h">
+      <Filter>Monsters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="NewFilter1">
-      <UniqueIdentifier>{7419e991-8d5a-4412-9996-99a41073ab4e}</UniqueIdentifier>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{5ec85630-4ad9-4c69-8585-efabdc85b601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{9afb9d16-aeb2-40ed-b8c1-5b07d23d2cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{b15c513a-1d49-4d87-97ac-3a09b37bf951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monsters">
+      <UniqueIdentifier>{31c769c8-6224-47a9-a9e6-68803a2a0c4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
