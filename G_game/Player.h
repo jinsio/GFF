@@ -31,6 +31,8 @@ public:
 	void Move();
 	void IdleAnimation();
 
+	VECTOR& GetPosition() { return mPlayer; }
+
 private:
 	int mIdle[IdleAllNum];
 	int pImage;
