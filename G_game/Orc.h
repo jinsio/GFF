@@ -7,5 +7,8 @@ public:
     Orc();
     ~Orc();
 
+    void Update(float deltaTime) override;
+    void Draw() override;
+
 private:
 };

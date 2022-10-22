@@ -34,5 +34,6 @@ private:
     //! MonsterManager‚ÌŽÀ‘Ì
     static MonsterManager* instance;
 
+    //! Monster‚ÌPool
     std::vector<BaseMonster*> monsterPool;
 };

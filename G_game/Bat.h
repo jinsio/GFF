@@ -7,5 +7,8 @@ public:
     Bat();
     ~Bat();
 
+    void Update(float deltaTime) override;
+    void Draw() override;
+
 private:
 };
