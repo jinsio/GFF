@@ -7,5 +7,8 @@ public:
     Slime();
     ~Slime();
 
+    void Update(float deltaTime) override;
+    void Draw() override;
+
 private:
 };

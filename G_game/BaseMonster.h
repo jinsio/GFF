@@ -11,7 +11,6 @@ public:
     virtual void Draw();
 
 protected:
-
     //! 位置
     vec2 pos = { 0 };
 
@@ -23,6 +22,9 @@ protected:
 
     //! 速度
     float speed;
+    
+    //! 重力
+    float gravity;
 
     //! 表示用
     int displayImage;

@@ -7,5 +7,8 @@ public:
     Skeleton();
     ~Skeleton();
 
+    void Update(float deltaTime) override;
+    void Draw() override;
+
 private:
 };

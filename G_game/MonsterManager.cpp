@@ -1,18 +1,31 @@
 #include "MonsterManager.h"
 #include "BaseMonster.h"
+#include "Slime.h"
+#include "Bat.h"
+#include "Skeleton.h"
+#include "Orc.h"
 
 MonsterManager* MonsterManager::instance = nullptr;
 
+//------------------------------------------------------------------------------------------------//
+// @brief MonsterManagerのコンストラクタ
+//------------------------------------------------------------------------------------------------//
 MonsterManager::MonsterManager()
 {
     instance = this;
 }
 
+//------------------------------------------------------------------------------------------------//
+// @brief MonsterManagerのデストラクタ
+//------------------------------------------------------------------------------------------------//
 MonsterManager::~MonsterManager()
 {
     RemoveAll();
 }
 
+//------------------------------------------------------------------------------------------------//
+// @brief MonsterManagerのインスタンスの生成
+//------------------------------------------------------------------------------------------------//
 void MonsterManager::CreateInstance()
 {
     if (!instance)
@@ -21,6 +34,9 @@ void MonsterManager::CreateInstance()
     }
 }
 
+//------------------------------------------------------------------------------------------------//
+// @brief MonsterManagerのインスタンスの削除
+//------------------------------------------------------------------------------------------------//
 void MonsterManager::DeleteInstance()
 {
     if (instance)
@@ -30,6 +46,9 @@ void MonsterManager::DeleteInstance()
     }
 }
 
+//------------------------------------------------------------------------------------------------//
+// @brief MonsterManagerの更新処理
+//------------------------------------------------------------------------------------------------//
 void MonsterManager::Update(float deltaTime)
 {
     for (auto pool : monsterPool)
@@ -38,6 +57,9 @@ void MonsterManager::Update(float deltaTime)
     }
 }
 
+//------------------------------------------------------------------------------------------------//
+// @brief MonsterManagerの描画処理
+//------------------------------------------------------------------------------------------------//
 void MonsterManager::Draw()
 {
     for (auto pool : monsterPool)
@@ -46,33 +68,42 @@ void MonsterManager::Draw()
     }
 }
 
+//------------------------------------------------------------------------------------------------//
+// @brief Monsterの追加
+//------------------------------------------------------------------------------------------------//
 void MonsterManager::AddMonster(MonsterType type)
 {
-    BaseMonster* a;
     auto pool = instance->monsterPool;
     switch (type)
     {
     case MonsterManager::MonsterType::slime:
-        pool.push_back(a);
+        pool.push_back(new Slime());
         break;
     case MonsterManager::MonsterType::bat:
-        pool.push_back(a);
+        pool.push_back(new Bat());
         break;
     case MonsterManager::MonsterType::skeleton:
-        pool.push_back(a);
+        pool.push_back(new Skeleton());
         break;
     case MonsterManager::MonsterType::orc:
-        pool.push_back(a);
+        pool.push_back(new Orc());
         break;
     default:
         break;
     }
 }
 
+//------------------------------------------------------------------------------------------------//
+// @brief 特定のMonsterの削除
+//------------------------------------------------------------------------------------------------//
 void MonsterManager::RemoveMonster()
 {
 }
 
+
+//------------------------------------------------------------------------------------------------//
+// @brief 全てのMonsterの削除
+//------------------------------------------------------------------------------------------------//
 void MonsterManager::RemoveAll()
 {
     while (!instance->monsterPool.empty())

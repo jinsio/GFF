@@ -5,12 +5,14 @@
 // @brief BaseMonsterのコンストラクタ
 //------------------------------------------------------------------------------------------------//
 BaseMonster::BaseMonster()
+    : speed(0)
+    , gravity(0)
+    , displayImage(-1)
+    , hp(0)
+    , isAlive(true)
+    , isAlly(false)
+    , isDirRight(true)
 {
-    displayImage = -1;
-    hp = 0;
-    isAlive = true;
-    isAlly = false;
-    isDirRight = true;
 }
 
 //------------------------------------------------------------------------------------------------//
@@ -23,28 +25,28 @@ BaseMonster::~BaseMonster()
         DeleteGraph(displayImage);
         displayImage = -1;
     }
-    for (i = 0; i < moveAnimNum; i++)
+    for (auto handle : moveAnim)
     {
-        if (moveAnim[i] != -1)
+        if (handle != -1)
         {
-            DeleteGraph(moveAnim[i]);
-            moveAnim[i] = -1;
+            DeleteGraph(handle);
+            handle = -1;
         }
     }
-    for (i = 0; i < attackAnimNum; i++)
+    for (auto handle : attackAnim)
     {
-        if (attackAnim[i] != -1)
+        if (handle != -1)
         {
-            DeleteGraph(attackAnim[i]);
-            attackAnim[i] = -1;
+            DeleteGraph(handle);
+            handle = -1;
         }
     }
-    for (i = 0; i < damageAnimNum; i++)
+    for (auto handle : damageAnim)
     {
-        if (damageAnim[i] != -1)
+        if (handle != -1)
         {
-            DeleteGraph(damageAnim[i]);
-            damageAnim[i] = -1;
+            DeleteGraph(handle);
+            handle = -1;
         }
     }
 }
