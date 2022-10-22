@@ -37,9 +37,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>ソースファイル\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
@@ -83,9 +80,6 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>ソースファイル\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>ソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>ソースファイル</Filter>

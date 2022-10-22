@@ -41,23 +41,19 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	// 現在のシーンを生成
 	SceneBase* nowScene = new TitleScene();
-
+	
 	//
 	PlayScene* playScene = new PlayScene();
-
-	//
-	Player* player = new Player();
-
-	//
 
 	// Escキーが押されるか、ウィンドウが閉じられるまでループ
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
+		
 		// シーンの更新処理
 		// Updateの戻り値で次のシーンのポインタが返ってくる
 		// tmpSceneに返ってきたシーンのポインタを代入
 		SceneBase* tmpScene = nowScene->Update(deltaTime);
-
+		
 		// nowScene(現在)とtmpSceneが異なっていたら
 		if (nowScene != tmpScene)
 		{
@@ -66,6 +62,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 			// nowSceneにtmpSceneを代入
 			nowScene = tmpScene;
 		}
+
 		// 画面を初期化する
 		ClearDrawScreen();
 
@@ -89,8 +86,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	// シーンの削除
 	delete nowScene;
 	
-	//// DXライブラリの後始末
-	//DxLib_End();
+	// DXライブラリの後始末
+	DxLib_End();
 
 	// ソフトの終了
 	return 0;

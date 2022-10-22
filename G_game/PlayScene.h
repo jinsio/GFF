@@ -6,7 +6,7 @@
 class Map;
 class Player;
 
-const int pi = 3.14;
+const double  pi = 3.14;
 
 /* プレイシーン */
 class PlayScene :public SceneBase
@@ -14,6 +14,10 @@ class PlayScene :public SceneBase
 private:
 	Map* map;
 	Player* player;
+
+	float nowTime;
+	float deltaTime;
+	float prevTime;
 
 public:
 	// コンストラクタ
