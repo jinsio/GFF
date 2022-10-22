@@ -4,6 +4,7 @@
 #include "SceneBase.h"
 
 class Map;
+class Collision;
 class Player;
 
 const int pi = 3.14;
@@ -13,6 +14,7 @@ class PlayScene :public SceneBase
 {
 private:
 	Map* map;
+	Collision* collision;
 	Player* player;
 
 public:

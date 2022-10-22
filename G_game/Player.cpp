@@ -29,7 +29,7 @@ void Player::Init()
 	mPlayer.x = FirstPosX;
 	mPlayer.y = FirstPosY;
 	//プレイヤー画像の読み込み
-	LoadDivGraph("assets/player/idle.png", CharaIdleAllNum, CharaIdleXNum, CharaIdleYNum, CharaIdleXSize, CharaIdleYSize, mIdle);
+	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
 }
 
 void Player::Draw()
@@ -55,7 +55,7 @@ void Player::IdleAnimation()
 
 	nowcount = GetNowCount();
 	deltaTime = (nowcount - prevCount) / 1000.0f;
-	mIdleAnimation %= CharaIdleAllNum;
+	mIdleAnimation %= IdleAllNum;
 
 
 	if (direction) {

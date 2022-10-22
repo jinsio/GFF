@@ -3,6 +3,7 @@
 #include "ResultScene.h"
 #include "Player.h"
 #include "Map.h"
+#include"Collision.h"
 
 
 PlayScene::PlayScene()
@@ -11,6 +12,7 @@ PlayScene::PlayScene()
     // ƒvƒŒƒC‰æ‘œ‚Ì“Ç‚Ýž‚Ý(‰¼)
     mImage = LoadGraph("assets/scene/Play.png");
 	map = new Map;
+	collision = new Collision;
 	player = new Player;
 	player->Init();
 }
@@ -36,6 +38,7 @@ void PlayScene::Draw()
 {
 	map->MapDraw();
 	map->MapMove();
+	collision->ColBox(player->GetPosition());
 	player->Move();
 	player->Draw();
 }

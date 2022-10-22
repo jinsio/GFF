@@ -13,9 +13,6 @@
     <ClCompile Include="Skeleton.cpp">
       <Filter>ソースファイル\Monsters</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
     <ClCompile Include="PlayScene.cpp">
       <Filter>ソースファイル\Scenes</Filter>
     </ClCompile>
@@ -40,10 +37,13 @@
     <ClCompile Include="TimeManager.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
+      <Filter>ソースファイル\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>ソースファイル\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -87,11 +87,11 @@
     <ClInclude Include="TimeManager.h">
       <Filter>ソースファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>ソースファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Collision.h">
-      <Filter>ソースファイル</Filter>
+      <Filter>ソースファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>ソースファイル\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +106,9 @@
     </Filter>
     <Filter Include="ソースファイル\Objects">
       <UniqueIdentifier>{093f7e0e-0246-4bdb-b7e0-49c65bd2250e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Map">
+      <UniqueIdentifier>{723f6fe4-e00a-43c9-b771-e1e3bba75fd0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
