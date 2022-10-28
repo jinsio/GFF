@@ -58,6 +58,7 @@ Map::~Map()
 
 void Map::MapDraw()
 {
+	MapMove();
 	for (int i = 0; i < CELL_NUM_X; i++)
 	{
 		for (int j = 0; j < CELL_NUM_Y; j++)
