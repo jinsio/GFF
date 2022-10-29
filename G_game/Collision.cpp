@@ -33,7 +33,7 @@ Collision::Collision()
 
             if (Marker != ','&& Marker != '\n')                               //区切り化改行でなければ
             {
-                strcat_s(buffer, (const char*)Marker);    //bufferに連結して、const char関数で書き換える
+                strcat_s(buffer, (const char*)&Marker);    //bufferに連結して、const char関数で書き換える
             }
             else
             {
@@ -43,7 +43,7 @@ Collision::Collision()
                 break;                                                        //区切りか改行なのでループで抜ける
             }
         }
-        Marker = ',' ? columnNum++ : rawNum++, columnNum = 0;                 //区切りは列を増やし、改行は行を増やして列を0にする
+        Marker = ',' ? columnNum++ :Marker='\n'? rawNum++, columnNum = 0:0;                 //区切りは列を増やし、改行は行を増やして列を0にする
     }
     fclose(fp);                                                       //ファイルを閉じる
 }
@@ -67,9 +67,9 @@ bool Collision::ColBox(VECTOR& objPos)
     int objRY = (objPos.y + YSize / 2)/ BOX_HEIGHT;
 
 
-    for (int iy = objLY ; iy < objRY; iy++)
+    for (int iy = objLY ; iy < objRY+1; iy++)
     {
-        for (int jx = objLX; jx < objRX; jx++)
+        for (int jx = objLX; jx < objRX+1; jx++)
         {
             //当たり判定BOXの頂点座標//
             colBox.left.x = jx * BOX_WIDTH;
@@ -90,12 +90,14 @@ bool Collision::ColBox(VECTOR& objPos)
 
             if (sCol[jx][iy].BoxHandle = colBoxHandle[1])                //ブロックに当たったら
             {
+                DrawCircle(colBox.left.x, colBox.left.y, 5, GetColor(255, 255, 255));
                 abs((int)pb.x) < abs((int)pb.y) ? objPos.x += pb.x : objPos.y += pb.y;  //押し戻す
-                DxLib_End();
+                //DxLib_End();
                 return true;                                            //ブロックに当たっているという意味のtrueを返す
             }
             else                                                         //ブロックに当たっていなかったら
             {
+
                 return false;                                           //ブロックに当たっていないという意味のfalseを返す
             }
         }

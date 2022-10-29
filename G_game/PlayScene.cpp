@@ -38,5 +38,6 @@ void PlayScene::Draw()
 {
 	map->MapDraw();
 	player->AllDraw();
+	
 }
 
