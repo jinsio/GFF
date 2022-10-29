@@ -7,6 +7,11 @@
 const int FirstPosX= 100;
 const int FirstPosY = 100;
 
+//重力
+
+const int Gravity = 5;
+
+//プレイヤーのサイズ
 const int XSize = 64;
 const int YSize = 64;
 
