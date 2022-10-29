@@ -1,8 +1,8 @@
 #pragma once
 #include "DxLib.h"
 
-const int CELL_WIDTH = 36;
-const int CELL_HEIGHT = 36;
+const int CELL_WIDTH = 32;
+const int CELL_HEIGHT = 32;
 const int CELL_NUM_X = 120;
 const int CELL_NUM_Y = 34;
 class Map
