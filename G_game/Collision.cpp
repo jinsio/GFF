@@ -16,6 +16,7 @@ Collision::Collision()
     , eofFlag(false)
     , fp(NULL)
 {
+    LoadDivGraph("img/collision_check.png", 2, 2, 1, BOX_WIDTH, BOX_HEIGHT, colBoxHandle);//当たり判定チェック用画像
     fopen_s(&fp, "assets/map/MaouMapCollision.csv", "r");          //fopen_s関数でcsvファイルを読み取り形式で開く
     if (fp == NULL)                                                            //fpが空の時は
     {
@@ -78,8 +79,8 @@ bool Collision::ColBox(VECTOR& objPos)
 
             //衝突した際の押し戻し処理//
             int pbX1 = colBox.left.x - (objPos.x - XSize);
-            int pbX2 = colBox.right.x -(objPos.y - YSize);
-            int pbY1 = colBox.left.y - (objPos.x + XSize);
+            int pbX2 = colBox.right.x -(objPos.x + XSize);
+            int pbY1 = colBox.left.y - (objPos.y - YSize);
             int pbY2 = colBox.right.y -(objPos.y + YSize);
 
             pb.x = (abs(pbX1) < abs(pbX2)) ? pbX1 : pbX2;

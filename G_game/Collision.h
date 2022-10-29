@@ -2,8 +2,8 @@
 #include"DxLib.h"
 
 //.....’è”éŒ¾.....//
-const int BOX_WIDTH = 36;                  //“–‚½‚è”»’è‚Ì•
-const int BOX_HEIGHT = 36;                 //“–‚½‚è”»’è‚Ì‚‚³
+const int BOX_WIDTH = 32;                  //“–‚½‚è”»’è‚Ì•
+const int BOX_HEIGHT = 32;                 //“–‚½‚è”»’è‚Ì‚‚³
 const int BOX_NUM_X = 120;                 //“–‚½‚è”»’è‚Ì‰¡‚Ì”
 const int BOX_NUM_Y = 34;                  //“–‚½‚è”»’è‚Ìc‚Ì”
 
