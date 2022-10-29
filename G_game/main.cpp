@@ -89,8 +89,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	// シーンの削除
 	delete nowScene;
 	
-	//// DXライブラリの後始末
-	//DxLib_End();
+	// DXライブラリの後始末
+	DxLib_End();
 
 	// ソフトの終了
 	return 0;

@@ -1,14 +1,14 @@
 #include "Collision.h"
-#include"Player.h"
+#include "Player.h"
 #include <math.h>
 
-Player* player = new Player();
+
 
 //-------------------------------------------------//
-// @briaf   ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+// @briaf   ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 //-------------------------------------------------//
 Collision::Collision()
-//.....•Ï”‰Šú‰».....//
+//.....å¤‰æ•°åˆæœŸåŒ–.....//
     :Marker(0)
     , rawNum(0)
     , columnNum(0)
@@ -16,84 +16,87 @@ Collision::Collision()
     , eofFlag(false)
     , fp(NULL)
 {
-    LoadDivGraph("img/collision_check.png", 2, 2, 1, BOX_WIDTH, BOX_HEIGHT, colBoxHandle);//“–‚½‚è”»’èƒ`ƒFƒbƒN—p‰æ‘œ
-    fopen_s(&fp, "assets/map/MaouMapCollision.csv", "r");          //fopen_sŠÖ”‚Åcsvƒtƒ@ƒCƒ‹‚ğ“Ç‚İæ‚èŒ`®‚ÅŠJ‚­
-    if (fp == NULL)                                                            //fp‚ª‹ó‚Ì‚Í
+    LoadDivGraph("img/collision_check.png", 2, 2, 1, BOX_WIDTH, BOX_HEIGHT, colBoxHandle);//å½“ãŸã‚Šåˆ¤å®šãƒã‚§ãƒƒã‚¯ç”¨ç”»åƒ
+    fopen_s(&fp, "assets/map/MaouMapCollision.csv", "r");          //fopen_sé–¢æ•°ã§csvãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿å–ã‚Šå½¢å¼ã§é–‹ã
+    if (fp == NULL)                                                            //fpãŒç©ºã®æ™‚ã¯
     {
-        DebugBreak();                                                         //ƒfƒoƒbƒO’†~
+        DebugBreak();                                                         //ãƒ‡ãƒãƒƒã‚°ä¸­æ­¢
     }
-    memset(buffer, 0, sizeof(buffer));                        //memsetŠÖ”‚Åƒƒ‚ƒŠ‚Ébuffer‚ğƒZƒbƒgAsizeof‰‰Zq‚Å—v‘f”‚ğŒˆ‚ß‚é
+    memset(buffer, 0, sizeof(buffer));                        //memseté–¢æ•°ã§ãƒ¡ãƒ¢ãƒªã«bufferã‚’ã‚»ãƒƒãƒˆã€sizeofæ¼”ç®—å­ã§è¦ç´ æ•°ã‚’æ±ºã‚ã‚‹
 
     while (eofFlag)
     {
         while (eofFlag)
         {
-            Marker = fgetc(fp);                                        //fp‚©‚ç•¶š‚ğ“Ç‚ñ‚ÅMarker‚ÉŠi”[
-            if (Marker == EOF)eofFlag = true;                                 //EOF‚ğŒŸo‚µ‚½‚çƒtƒ‰ƒO‚ğ—§‚Ä‚é
+            Marker = fgetc(fp);                                        //fpã‹ã‚‰æ–‡å­—ã‚’èª­ã‚“ã§Markerã«æ ¼ç´
+            if (Marker == EOF)eofFlag = true;                                 //EOFã‚’æ¤œå‡ºã—ãŸã‚‰ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‹
 
-            if (Marker != ','&& Marker != '\n')                               //‹æØ‚è‰»‰üs‚Å‚È‚¯‚ê‚Î
+            if (Marker != ','&& Marker != '\n')                               //åŒºåˆ‡ã‚ŠåŒ–æ”¹è¡Œã§ãªã‘ã‚Œã°
             {
-                strcat_s(buffer, (const char*)Marker);    //buffer‚É˜AŒ‹‚µ‚ÄAconst charŠÖ”‚Å‘‚«Š·‚¦‚é
+                strcat_s(buffer, (const char*)Marker);    //bufferã«é€£çµã—ã¦ã€const charé–¢æ•°ã§æ›¸ãæ›ãˆã‚‹
             }
             else
             {
-                num = atoi(buffer);                                    //buffer‚ğintŒ^‚É’¼‚µ‚Änum‚É‘ã“ü
-                sCol[columnNum][rawNum].BoxHandle = colBoxHandle[num];        //num”Ô†‚Ìƒnƒ“ƒhƒ‹‚ğæ“¾
-                memset(buffer, 0, sizeof(buffer));            //memsetŠÖ”‚Åƒƒ‚ƒŠ‚Ébuffer‚ğƒZƒbƒgAsizeof‰‰Zq‚Å—v‘f”‚ğŒˆ‚ß‚é
-                break;                                                        //‹æØ‚è‚©‰üs‚È‚Ì‚Åƒ‹[ƒv‚Å”²‚¯‚é
+                num = atoi(buffer);                                    //bufferã‚’intå‹ã«ç›´ã—ã¦numã«ä»£å…¥
+                sCol[columnNum][rawNum].BoxHandle = colBoxHandle[num];        //numç•ªå·ã®ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—
+                memset(buffer, 0, sizeof(buffer));            //memseté–¢æ•°ã§ãƒ¡ãƒ¢ãƒªã«bufferã‚’ã‚»ãƒƒãƒˆã€sizeofæ¼”ç®—å­ã§è¦ç´ æ•°ã‚’æ±ºã‚ã‚‹
+                break;                                                        //åŒºåˆ‡ã‚Šã‹æ”¹è¡Œãªã®ã§ãƒ«ãƒ¼ãƒ—ã§æŠœã‘ã‚‹
             }
         }
-        Marker = ',' ? columnNum++ : rawNum++, columnNum = 0;                 //‹æØ‚è‚Í—ñ‚ğ‘‚â‚µA‰üs‚Ís‚ğ‘‚â‚µ‚Ä—ñ‚ğ0‚É‚·‚é
+        Marker = ',' ? columnNum++ : rawNum++, columnNum = 0;                 //åŒºåˆ‡ã‚Šã¯åˆ—ã‚’å¢—ã‚„ã—ã€æ”¹è¡Œã¯è¡Œã‚’å¢—ã‚„ã—ã¦åˆ—ã‚’0ã«ã™ã‚‹
     }
-    fclose(fp);                                                       //ƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
+    fclose(fp);                                                       //ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã‚‹
 }
 
 //-------------------------------------------------//
-// @briaf   ƒfƒXƒgƒ‰ƒNƒ^[
+// @briaf   ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 //-------------------------------------------------//
 Collision::~Collision()
 {
 }
 
 //-------------------------------------------------//
-// @briaf   “–‚½‚è”»’è
+// @briaf   å½“ãŸã‚Šåˆ¤å®š
 //-------------------------------------------------//
 bool Collision::ColBox(VECTOR& objPos)
 {
-    //ƒIƒuƒWƒFƒNƒgBOX‚Ì’¸“_À•W//
-    int objLX = (objPos.x - XSize)/BOX_WIDTH;
-    int objLY = (objPos.y - YSize) / BOX_HEIGHT;
-    int objRX = (objPos.x + XSize) / BOX_WIDTH;
-    int objRY = (objPos.y + YSize) / BOX_HEIGHT;
+    //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆBOXã®é ‚ç‚¹åº§æ¨™//
+    int objLX = (objPos.x - XSize / 2)/ BOX_WIDTH;
+    int objLY = (objPos.y - YSize / 2)/ BOX_HEIGHT;
+    int objRX = (objPos.x + XSize / 2)/ BOX_WIDTH;
+    int objRY = (objPos.y + YSize / 2)/ BOX_HEIGHT;
 
 
     for (int iy = objLY ; iy < objRY; iy++)
     {
         for (int jx = objLX; jx < objRX; jx++)
         {
-            //“–‚½‚è”»’èBOX‚Ì’¸“_À•W//
+            //å½“ãŸã‚Šåˆ¤å®šBOXã®é ‚ç‚¹åº§æ¨™//
             colBox.left.x = jx * BOX_WIDTH;
             colBox.left.y = iy * BOX_HEIGHT;
             colBox.right.x = colBox.left.x + BOX_WIDTH;
             colBox.right.y = colBox.left.y + BOX_HEIGHT;
 
-            //Õ“Ë‚µ‚½Û‚Ì‰Ÿ‚µ–ß‚µˆ—//
-            int pbX1 = colBox.left.x - (objPos.x - XSize);
-            int pbX2 = colBox.right.x -(objPos.x + XSize);
-            int pbY1 = colBox.left.y - (objPos.y - YSize);
-            int pbY2 = colBox.right.y -(objPos.y + YSize);
+            //è¡çªã—ãŸéš›ã®æŠ¼ã—æˆ»ã—å‡¦ç†//
+
+            int pbX1 = colBox.left.x - (objPos.x - XSize/2);
+            int pbX2 = colBox.right.x -(objPos.x + XSize/2);
+            int pbY1 = colBox.left.y - (objPos.y - YSize/2);
+            int pbY2 = colBox.right.y -(objPos.y + YSize/2);
 
             pb.x = (abs(pbX1) < abs(pbX2)) ? pbX1 : pbX2;
             pb.y = (abs(pbY1) < abs(pbY2)) ? pbY1 : pbY2;
 
-            if (sCol[jx][iy].BoxHandle = colBoxHandle[1])                //ƒuƒƒbƒN‚É“–‚½‚Á‚½‚ç
+
+            if (sCol[jx][iy].BoxHandle = colBoxHandle[1])                //ãƒ–ãƒ­ãƒƒã‚¯ã«å½“ãŸã£ãŸã‚‰
             {
-                abs((int)pb.x) < abs((int)pb.y) ? objPos.x += pb.x : objPos.y += pb.y;  //‰Ÿ‚µ–ß‚·
-                return true;                                            //ƒuƒƒbƒN‚É“–‚½‚Á‚Ä‚¢‚é‚Æ‚¢‚¤ˆÓ–¡‚Ìtrue‚ğ•Ô‚·
+                abs((int)pb.x) < abs((int)pb.y) ? objPos.x += pb.x : objPos.y += pb.y;  //æŠ¼ã—æˆ»ã™
+                DxLib_End();
+                return true;                                            //ãƒ–ãƒ­ãƒƒã‚¯ã«å½“ãŸã£ã¦ã„ã‚‹ã¨ã„ã†æ„å‘³ã®trueã‚’è¿”ã™
             }
-            else                                                         //ƒuƒƒbƒN‚É“–‚½‚Á‚Ä‚¢‚È‚©‚Á‚½‚ç
+            else                                                         //ãƒ–ãƒ­ãƒƒã‚¯ã«å½“ãŸã£ã¦ã„ãªã‹ã£ãŸã‚‰
             {
-                return false;                                           //ƒuƒƒbƒN‚É“–‚½‚Á‚Ä‚¢‚È‚¢‚Æ‚¢‚¤ˆÓ–¡‚Ìfalse‚ğ•Ô‚·
+                return false;                                           //ãƒ–ãƒ­ãƒƒã‚¯ã«å½“ãŸã£ã¦ã„ãªã„ã¨ã„ã†æ„å‘³ã®falseã‚’è¿”ã™
             }
         }
     }

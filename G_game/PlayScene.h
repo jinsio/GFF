@@ -7,7 +7,6 @@ class Map;
 class Collision;
 class Player;
 
-const int pi = 3.14;
 
 /* プレイシーン */
 class PlayScene :public SceneBase
