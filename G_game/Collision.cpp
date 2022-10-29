@@ -1,8 +1,8 @@
 #include "Collision.h"
-#include"Player.h"
+#include "Player.h"
 #include <math.h>
 
-Player* player = new Player();
+
 
 //-------------------------------------------------//
 // @briaf   コンストラクター
@@ -60,10 +60,10 @@ Collision::~Collision()
 bool Collision::ColBox(VECTOR& objPos)
 {
     //オブジェクトBOXの頂点座標//
-    int objLX = (objPos.x - XSize)/BOX_WIDTH;
-    int objLY = (objPos.y - YSize) / BOX_HEIGHT;
-    int objRX = (objPos.x + XSize) / BOX_WIDTH;
-    int objRY = (objPos.y + YSize) / BOX_HEIGHT;
+    int objLX = (objPos.x - XSize / 2)/ BOX_WIDTH;
+    int objLY = (objPos.y - YSize / 2)/ BOX_HEIGHT;
+    int objRX = (objPos.x + XSize / 2)/ BOX_WIDTH;
+    int objRY = (objPos.y + YSize / 2)/ BOX_HEIGHT;
 
 
     for (int iy = objLY ; iy < objRY; iy++)
@@ -77,17 +77,19 @@ bool Collision::ColBox(VECTOR& objPos)
             colBox.right.y = colBox.left.y + BOX_HEIGHT;
 
             //衝突した際の押し戻し処理//
-            int pbX1 = colBox.left.x - (objPos.x - XSize);
-            int pbX2 = colBox.right.x -(objPos.y - YSize);
-            int pbY1 = colBox.left.y - (objPos.x + XSize);
-            int pbY2 = colBox.right.y -(objPos.y + YSize);
+            int pbX1 = colBox.left.x - (objPos.x - XSize/2);
+            int pbX2 = colBox.right.x -(objPos.x + XSize/2);
+            int pbY1 = colBox.left.y - (objPos.y - YSize/2);
+            int pbY2 = colBox.right.y -(objPos.y + YSize/2);
 
             pb.x = (abs(pbX1) < abs(pbX2)) ? pbX1 : pbX2;
             pb.y = (abs(pbY1) < abs(pbY2)) ? pbY1 : pbY2;
 
+
             if (sCol[jx][iy].BoxHandle = colBoxHandle[1])                //ブロックに当たったら
             {
                 abs((int)pb.x) < abs((int)pb.y) ? objPos.x += pb.x : objPos.y += pb.y;  //押し戻す
+                DxLib_End();
                 return true;                                            //ブロックに当たっているという意味のtrueを返す
             }
             else                                                         //ブロックに当たっていなかったら

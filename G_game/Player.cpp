@@ -52,6 +52,7 @@ void Player::AllDraw()
 
 void Player::Move()
 {
+	mPlayer.y += Gravity;
 	if (CheckHitKey(KEY_INPUT_RIGHT)){
 		IsRightDir = FALSE;
 		
