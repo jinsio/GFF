@@ -52,13 +52,25 @@ void Player::AllDraw()
 
 void Player::Move()
 {
-	mPlayer.y += Gravity;
+	//mPlayer.y += Gravity;
 	if (CheckHitKey(KEY_INPUT_RIGHT)){
 		IsRightDir = FALSE;
 		
 	}
 	if (CheckHitKey(KEY_INPUT_LEFT)) {
 		IsRightDir = TRUE;
+	}
+	if (CheckHitKey(KEY_INPUT_UP)) {
+		mPlayer.y -= 1;
+	}
+	if (CheckHitKey(KEY_INPUT_DOWN)) {
+		mPlayer.y += 1;
+	}
+	if (CheckHitKey(KEY_INPUT_LEFT)) {
+		mPlayer.x -= 1;
+	}
+	if (CheckHitKey(KEY_INPUT_RIGHT)) {
+		mPlayer.x += 1;
 	}
 }
 

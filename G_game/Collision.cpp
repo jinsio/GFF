@@ -16,7 +16,7 @@ Collision::Collision()
     , eofFlag(false)
     , fp(NULL)
 {
-    LoadDivGraph("img/collision_check.png", 2, 2, 1, BOX_WIDTH, BOX_HEIGHT, colBoxHandle);//当たり判定チェック用画像
+    LoadDivGraph("assets/map/collision_check.png", 2, 2, 1, BOX_WIDTH, BOX_HEIGHT, colBoxHandle);//当たり判定チェック用画像
     fopen_s(&fp, "assets/map/MaouMapCollision.csv", "r");          //fopen_s関数でcsvファイルを読み取り形式で開く
     if (fp == NULL)                                                            //fpが空の時は
     {
@@ -24,14 +24,14 @@ Collision::Collision()
     }
     memset(buffer, 0, sizeof(buffer));                        //memset関数でメモリにbufferをセット、sizeof演算子で要素数を決める
 
-    while (eofFlag)
+    while (!eofFlag)
     {
-        while (eofFlag)
+        while (!eofFlag)
         {
             Marker = fgetc(fp);                                        //fpから文字を読んでMarkerに格納
             if (Marker == EOF)eofFlag = true;                                 //EOFを検出したらフラグを立てる
 
-            if (Marker != ','&& Marker != '\n')                               //区切り化改行でなければ
+            if (Marker != ',' && Marker != '\n')                               //区切り化改行でなければ
             {
                 strcat_s(buffer, (const char*)&Marker);    //bufferに連結して、const char関数で書き換える
             }
@@ -43,7 +43,14 @@ Collision::Collision()
                 break;                                                        //区切りか改行なのでループで抜ける
             }
         }
-        Marker = ',' ? columnNum++ :Marker='\n'? rawNum++, columnNum = 0:0;                 //区切りは列を増やし、改行は行を増やして列を0にする
+        if (Marker == ',') 
+        {
+            columnNum++;
+        }
+        if (Marker == '\n')
+        {
+            rawNum++; columnNum = 0;                 //区切りは列を増やし、改行は行を増やして列を0にする
+        }
     }
     fclose(fp);                                                       //ファイルを閉じる
 }
@@ -61,45 +68,55 @@ Collision::~Collision()
 bool Collision::ColBox(VECTOR& objPos)
 {
     //オブジェクトBOXの頂点座標//
-    int objLX = (objPos.x - XSize / 2)/ BOX_WIDTH;
-    int objLY = (objPos.y - YSize / 2)/ BOX_HEIGHT;
-    int objRX = (objPos.x + XSize / 2)/ BOX_WIDTH;
-    int objRY = (objPos.y + YSize / 2)/ BOX_HEIGHT;
+    int objLX = (objPos.x - XSize / 4);
+    int objLY = (objPos.y - YSize / 4);
+    int objRX = (objPos.x + XSize / 4);
+    int objRY = (objPos.y + YSize / 4);
+    DrawCircle(objLX, objLY, 5, GetColor(255, 255, 0));
+    DrawCircle(objRX, objRY, 5, GetColor(255, 255, 0));
 
-
-    for (int iy = objLY ; iy < objRY+1; iy++)
+    //現在のタイル位置//
+    int tileLX = objLX / BOX_WIDTH;
+    int tileLY = objLY / BOX_HEIGHT;
+    int tileRX = objRX / BOX_WIDTH;
+    int tileRY = objRY / BOX_HEIGHT;
+    
+    for (int iy = tileLY ; iy < tileRY+1; iy++)
     {
-        for (int jx = objLX; jx < objRX+1; jx++)
+        for (int jx = tileLX; jx < tileRX+1; jx++)
         {
             //当たり判定BOXの頂点座標//
-            colBox.left.x = jx * BOX_WIDTH;
-            colBox.left.y = iy * BOX_HEIGHT;
-            colBox.right.x = colBox.left.x + BOX_WIDTH;
-            colBox.right.y = colBox.left.y + BOX_HEIGHT;
+            int boxLX = jx * BOX_WIDTH;
+            int boxLY = iy * BOX_HEIGHT;
+            int boxRX = boxLX + BOX_WIDTH;
+            int boxRY = boxLY + BOX_HEIGHT;
+            
+            //押し出し処理//
+            int bx1 = boxLX - objRX;
+            int bx2 = boxRX - objLX;
+            int by1 = boxLY - objRY;
+            int by2 = boxRY - objLY;
 
-            //衝突した際の押し戻し処理//
+            int bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;         //
+            int by = (abs(by1) < abs(by2)) ? by1 : by2;
 
-            int pbX1 = colBox.left.x - (objPos.x - XSize/2);
-            int pbX2 = colBox.right.x -(objPos.x + XSize/2);
-            int pbY1 = colBox.left.y - (objPos.y - YSize/2);
-            int pbY2 = colBox.right.y -(objPos.y + YSize/2);
-
-            pb.x = (abs(pbX1) < abs(pbX2)) ? pbX1 : pbX2;
-            pb.y = (abs(pbY1) < abs(pbY2)) ? pbY1 : pbY2;
-
-
-            if (sCol[jx][iy].BoxHandle = colBoxHandle[1])                //ブロックに当たったら
+            if (sCol[jx][iy].BoxHandle == colBoxHandle[1])
             {
-                DrawCircle(colBox.left.x, colBox.left.y, 5, GetColor(255, 255, 255));
-                abs((int)pb.x) < abs((int)pb.y) ? objPos.x += pb.x : objPos.y += pb.y;  //押し戻す
-                //DxLib_End();
-                return true;                                            //ブロックに当たっているという意味のtrueを返す
+                
+                if (abs(bx) < abs(by))
+                {
+                    objPos.x += bx;
+                }
+                else
+                {
+                    objPos.y += by;
+                }
+                return true;
             }
-            else                                                         //ブロックに当たっていなかったら
-            {
-
-                return false;                                           //ブロックに当たっていないという意味のfalseを返す
-            }
+            DrawFormatString(0, 0, GetColor(255, 0, 255), "%d",sCol[jx][iy].BoxHandle);
+            DrawBox(boxLX, boxLY,boxRX,boxRY , GetColor(255, 255, 255),FALSE);
         }
     }
+            return false;
 }
+
