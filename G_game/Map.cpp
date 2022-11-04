@@ -2,7 +2,7 @@
 
 Map::Map()
 	:tileImgX()
-	, tileImgY(-505)
+	, tileImgY(0)
 {
 	LoadDivGraph("assets/map/full_tilemap.png",  (480 / 32)* (384 / 32), 480 / 32, 384 / 32, 32, 32, chipgraphicHandle);
 	FILE* filePointer;
@@ -70,16 +70,5 @@ void Map::MapDraw()
 
 void Map::MapMove()
 {
-	if (CheckHitKey(KEY_INPUT_UP)) {
-		tileImgY -= 1;
-	}
-	if (CheckHitKey(KEY_INPUT_DOWN)) {
-		tileImgY += 1;
-	}
-	if (CheckHitKey(KEY_INPUT_LEFT)) {
-		tileImgX += 1;
-	}
-	if (CheckHitKey(KEY_INPUT_RIGHT)) {
-		tileImgX -= 1;
-	}
+
 }
