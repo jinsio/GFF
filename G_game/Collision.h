@@ -7,14 +7,30 @@ const int BOX_HEIGHT = 32;                 //当たり判定の高さ
 const int BOX_NUM_X = 120;                 //当たり判定の横の数
 const int BOX_NUM_Y = 34;                  //当たり判定の縦の数
 
+
 class Collision
 {
+
+
 //.....関数宣言.....//
 public:
-    Collision();                            //コンストラクター
-    ~Collision();                           //デストラクター
+    /// <summary>
+    /// コンストラクタ―
+    /// </summary>
+    Collision();
 
+    /// <summary>
+    /// デストラクタ―
+    /// </summary>
+    ~Collision();
+
+    /// <summary>
+    /// 当たり判定更新処理
+    /// </summary>
+    /// <param name="objpos"></param>
     bool ColBox(VECTOR& objpos);
+
+ 
 
 private:
     struct sColLayer
@@ -35,7 +51,8 @@ private:
     {
         VECTOR left;
         VECTOR right;
-    }colBox;
+    };
+    bool isStand;
     VECTOR pb;
 };
 

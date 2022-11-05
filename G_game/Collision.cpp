@@ -15,7 +15,10 @@ Collision::Collision()
     , num(0)
     , eofFlag(false)
     , fp(NULL)
+    ,isStand(false)
 {
+
+
     LoadDivGraph("assets/map/collision_check.png", 2, 2, 1, BOX_WIDTH, BOX_HEIGHT, colBoxHandle);//当たり判定チェック用画像
     fopen_s(&fp, "assets/map/MaouMapCollision.csv", "r");          //fopen_s関数でcsvファイルを読み取り形式で開く
     if (fp == NULL)                                                            //fpが空の時は
@@ -68,12 +71,10 @@ Collision::~Collision()
 bool Collision::ColBox(VECTOR& objPos)
 {
     //オブジェクトBOXの頂点座標//
-    int objLX = (objPos.x - XSize / 4);
-    int objLY = (objPos.y - YSize / 4);
-    int objRX = (objPos.x + XSize / 4);
-    int objRY = (objPos.y + YSize / 4);
-    DrawCircle(objLX, objLY, 5, GetColor(255, 255, 0));
-    DrawCircle(objRX, objRY, 5, GetColor(255, 255, 0));
+    int objLX = ((int)objPos.x - XSize / 4);
+    int objLY = ((int)objPos.y - YSize / 4);
+    int objRX = ((int)objPos.x + XSize / 4);
+    int objRY = ((int)objPos.y + YSize / 4);
 
     //現在のタイル位置//
     int tileLX = objLX / BOX_WIDTH;
@@ -97,26 +98,33 @@ bool Collision::ColBox(VECTOR& objPos)
             int by1 = boxLY - objRY;
             int by2 = boxRY - objLY;
 
-            int bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;         //
+            int bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;
             int by = (abs(by1) < abs(by2)) ? by1 : by2;
 
             if (sCol[jx][iy].BoxHandle == colBoxHandle[1])
             {
-                
                 if (abs(bx) < abs(by))
                 {
                     objPos.x += bx;
                 }
                 else
                 {
+
                     objPos.y += by;
+                    if (by <= 0)
+                    {
+                        return true;
+                    }
+
                 }
-                return true;
+                
             }
-            DrawFormatString(0, 0, GetColor(255, 0, 255), "%d",sCol[jx][iy].BoxHandle);
-            DrawBox(boxLX, boxLY,boxRX,boxRY , GetColor(255, 255, 255),FALSE);
         }
     }
-            return false;
+
+
+        return false;
+
+
 }
 

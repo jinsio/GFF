@@ -7,9 +7,10 @@
 const int FirstPosX= 100;
 const int FirstPosY = 100;
 
-//重力
-
-const int Gravity = 5;
+//ジャンプ関連
+const float jumpPower = 15.0f;     // ジャンプ初速度
+const float gravity = 1.0f;    // 重力
+const float maxFallSpeed = 2.0f;   // 最大落下速度
 
 //プレイヤーのサイズ
 const int XSize = 64;
@@ -23,9 +24,12 @@ const int RunAllNum = 8;
 const int RunXNum = 8;
 const int RunYNum = 1;
 
+class Collision;
+
 //プレイヤークラス
 class Player
 {
+
 public:
 	//コンストラクタ
 	Player();
@@ -35,10 +39,9 @@ public:
 	/// <summary>
 	/// プレイヤーの描画
 	/// </summary>
-	void Init();
 	void SetdeltaTime();
 	float GetdeltaTime() {return deltaTime; }
-	void Move();
+	void Move(bool isStand);
 
 	void IdleAnimation();
 	void IdleDraw();
@@ -49,10 +52,15 @@ public:
 	void AllDraw();
 	VECTOR& GetPosition() { return mPlayer; }
 
+
 private:
 	bool IsRightDir;
 	VECTOR mPlayer;
 	
+	float playerVY;
+	bool jumpFlag;
+	int jumpButtonCount;
+
 	float nowCount, prevCount;
 	float deltaTime;
 

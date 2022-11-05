@@ -12,7 +12,6 @@ PlayScene::PlayScene()
 	map = new Map;
 	collision = new Collision;
 	player = new Player;
-	player->Init();
 }
 
 PlayScene::~PlayScene()
@@ -22,7 +21,10 @@ PlayScene::~PlayScene()
 SceneBase* PlayScene::Update(float _deltaTime)
 {
 	player->SetdeltaTime();
+	collision->ColBox(player->GetPosition());
 
+	player->Move(collision->ColBox(player->GetPosition()));
+	
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -38,6 +40,6 @@ void PlayScene::Draw()
 {
 	map->MapDraw();
 	player->AllDraw();
-	collision->ColBox(player->GetPosition());
+	
 }
 

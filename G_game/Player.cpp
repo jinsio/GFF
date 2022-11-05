@@ -2,6 +2,7 @@
 #include "Dxlib.h"
 #include "PlayScene.h"
 #include "Player.h"
+#include "Collision.h"
 
 Player::Player():
 	mPlayer(),
@@ -14,27 +15,26 @@ Player::Player():
 	deltaTime(0.0f),
 	nowCount(0.0f),
 	prevCount(0.0f),
-	IsRightDir(TRUE)
+	IsRightDir(TRUE),
+	playerVY(0.0f),
+	jumpFlag(false),
+	jumpButtonCount(0)
 {
+
+
 	//プレイヤーの初期位置の代入
 	mPlayer.x = FirstPosX;
 	mPlayer.y = FirstPosY;
 
+	//プレイヤー画像の読み込み
+	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
+	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
 }
 
 Player::~Player()
 {
 }
 
-void Player::Init()
-{
-	//プレイヤーの初期位置の代入
-	mPlayer.x = FirstPosX;
-	mPlayer.y = FirstPosY;
-	//プレイヤー画像の読み込み
-	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
-	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
-}
 
 void Player::SetdeltaTime()
 {	
@@ -45,33 +45,44 @@ void Player::SetdeltaTime()
 
 void Player::AllDraw()
 {
-	Move();
+	
 	//IdleDraw();
 	RunDraw();
 }
 
-void Player::Move()
+void Player::Move(bool isStand)
 {
-	//mPlayer.y += Gravity;
-	if (CheckHitKey(KEY_INPUT_RIGHT)){
-		IsRightDir = FALSE;
-		
-	}
-	if (CheckHitKey(KEY_INPUT_LEFT)) {
-		IsRightDir = TRUE;
-	}
-	if (CheckHitKey(KEY_INPUT_UP)) {
-		mPlayer.y -= 1;
-	}
-	if (CheckHitKey(KEY_INPUT_DOWN)) {
-		mPlayer.y += 1;
-	}
-	if (CheckHitKey(KEY_INPUT_LEFT)) {
-		mPlayer.x -= 1;
-	}
+
 	if (CheckHitKey(KEY_INPUT_RIGHT)) {
+		IsRightDir = FALSE;
 		mPlayer.x += 1;
 	}
+	else if (CheckHitKey(KEY_INPUT_LEFT)) {
+		IsRightDir = TRUE;
+		mPlayer.x -= 1;
+	}
+	else if (CheckHitKey(KEY_INPUT_UP)) {
+		mPlayer.y -= 5;
+	}
+
+	
+
+	jumpFlag = isStand;
+	if (CheckHitKey(KEY_INPUT_J) && jumpFlag)
+	{
+
+		playerVY = -jumpPower;
+	}
+	if (!jumpFlag)
+	{
+		playerVY += gravity;
+		if (playerVY > maxFallSpeed)
+		{
+			playerVY = maxFallSpeed;
+		}
+	}
+	mPlayer.y += playerVY;
+
 }
 
 void Player::IdleAnimation()
