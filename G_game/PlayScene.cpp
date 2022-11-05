@@ -37,7 +37,7 @@ SceneBase* PlayScene::Update(float _deltaTime)
 void PlayScene::Draw()
 {
 	map->MapDraw();
-	player->AllDraw();
+	player->CharaAnimation();
 	collision->ColBox(player->GetPosition());
 }
 
