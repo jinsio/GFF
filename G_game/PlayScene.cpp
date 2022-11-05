@@ -21,8 +21,8 @@ PlayScene::~PlayScene()
 
 SceneBase* PlayScene::Update(float _deltaTime)
 {
-	player->SetdeltaTime();
-
+	player->Update(_deltaTime);
+	
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -37,7 +37,7 @@ SceneBase* PlayScene::Update(float _deltaTime)
 void PlayScene::Draw()
 {
 	map->MapDraw();
-	player->CharaAnimation();
+	player->Draw();
 	collision->ColBox(player->GetPosition());
 }
 
