@@ -3,8 +3,11 @@
 #include "PlayScene.h"
 #include "Player.h"
 
+
 Player::Player():
 	mPlayer(),
+	mHandle{0},
+	mAnimation(),
 	mIdle{},
 	mIdleAnimation(0),
 	mIdleAnimCoolTime(1.0f),
@@ -37,6 +40,13 @@ void Player::Init()
 	//プレイヤー画像の読み込み
 	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
 	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
+	LoadDivGraph("assets/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
+}
+
+void Player::Update(float _deltaTime)
+{
+	Move();
+	AnimationUpdate(_deltaTime);
 }
 
 void Player::SetdeltaTime()
@@ -46,12 +56,16 @@ void Player::SetdeltaTime()
 	prevCount = nowCount;
 }
 
-void Player::CharaAnimation()
+void Player::AnimationUpdate(float _deltaTime)
 {
-	Move();
-	//IdleDraw();
-	RunDraw();
+	IdleAnimation(_deltaTime);
+	RunAnimation(_deltaTime);
+	ThrowAnimation(_deltaTime);
+	AnimationControl();
 }
+
+
+
 
 void Player::Move()
 {
@@ -79,41 +93,69 @@ void Player::Move()
 	}
 }
 
-void Player::IdleAnimation()
+
+
+void Player::IdleAnimation(float _deltaTime)
 {
 
-	mIdleAnimCoolTime -= GetdeltaTime();
+	mIdleAnimCoolTime -= _deltaTime;
 	if (mIdleAnimCoolTime < 0.0f) {
 		mIdleAnimation++;
 		if (mIdleAnimation >= IdleAllNum) {
 			mIdleAnimation = 0;
 		}
-		mIdleAnimCoolTime = 1.0f;
+		mIdleAnimCoolTime = 1000.0f;
 		mIdleAnimation %= IdleAllNum;
 	}	
 }
 
-void Player::IdleDraw()
-{
-	IdleAnimation();
-	DrawRotaGraph((int)mPlayer.x, (int)mPlayer.y, 1, 0, mIdle[mIdleAnimation], TRUE, IsRightDir);
-}
 
-void Player::RunAnimation()
+void Player::RunAnimation(float _deltaTime)
 {
-	mRunAnimCoolTime -= GetdeltaTime();
+	mRunAnimCoolTime -= _deltaTime;
 	if (mRunAnimCoolTime <= 0.0f) {
 		mRunAnimation++;
 		if (mRunAnimation >= RunAllNum) {
 			mRunAnimation = 0;
 		}
-		mRunAnimCoolTime = 0.3f;
+		mRunAnimCoolTime = 300.0f;
 		mRunAnimation %= RunAllNum;
 	}
 }
 
-void Player::RunDraw()
+
+
+void Player::ThrowAnimation(float _deltaTime)
 {
-	RunAnimation();
-	DrawRotaGraph((int)mPlayer.x, (int)mPlayer.y, 1, 0, mRun[mRunAnimation], TRUE, IsRightDir);
+	mThrowAnimCoolTime -= _deltaTime;
+	if (mThrowAnimCoolTime <= 0.0f) {
+		mThrowAnimation++;
+		if (mThrowAnimation >= ThrowAllNum) {
+			mThrowAnimation = 0;
+		}
+		mThrowAnimCoolTime = 0.3f;
+		mThrowAnimation %= ThrowAllNum;
+	}
+}
+
+//void Player::ThrowDraw()
+//{
+//	DrawRotaGraph((int)mPlayer.x, (int)mPlayer.y, 1, 0, mThrow[mThrowAnimation], TRUE, IsRightDir);
+//}
+
+
+void Player::AnimationControl()
+{
+	if (CheckHitKey(KEY_INPUT_RIGHT)|| (CheckHitKey(KEY_INPUT_LEFT))) {
+		mHandle = mRun[mRunAnimation];
+	}
+
+	else {
+		mHandle = mIdle[mIdleAnimation];
+	}
+}
+
+void Player::Draw()
+{
+	DrawRotaGraph((int)mPlayer.x, (int)mPlayer.y, 1, 0, mHandle, TRUE, IsRightDir);
 }

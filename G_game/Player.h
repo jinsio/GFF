@@ -2,6 +2,7 @@
 
 // インクルード
 #include "DxLib.h"
+#include <vector>
 
 //プレイヤーの初期位置
 const int FirstPosX= 100;
@@ -25,8 +26,8 @@ const int RunXNum = 8;
 const int RunYNum = 1;
 
 //投げるアニメーション
-const int ThrowAllNum = 6;
-const int ThrowXNum = 6;
+const int ThrowAllNum = 8;
+const int ThrowXNum = 8;
 const int ThrowYNum = 1;
 
 //プレイヤークラス
@@ -38,50 +39,42 @@ public:
 	//デストラクタ
 	~Player();
 
-	/// <summary>
-	/// 初期化
-	/// </summary>
+	// 初期化
 	void Init();
 
-	/// <summary>
-	/// deltaTimeのセッター
-	/// </summary>
+	//アップデート
+	void Update(float _deltaTime);
+	
+	// deltaTimeのセッター
 	void SetdeltaTime();
 
-	/// <summary>
-	/// deltaTimeのゲッター
-	/// </summary>
-	/// <returns>deltaTime</returns>
+	// deltaTimeのゲッター
+	// <returns>deltaTime
 	float GetdeltaTime() {return deltaTime; }
 
-	/// <summary>
-	/// キャラの座標
-	/// </summary>
+	//キャラの移動
 	void Move();
+
+	// キャラの座標
 	VECTOR& GetPosition() { return mPlayer; }
 
+	// 待機アニメーション設定
+	void IdleAnimation(float _deltaTime);
 
-	/// <summary>
-	/// 待機アニメーション
-	/// </summary>
-	void IdleAnimation();
+	// 走りアニメーション設定
+	void RunAnimation(float _deltaTime);
 
-	/// <summary>
-	/// 待機アニメーション描画
-	/// </summary>
-	void IdleDraw();
-	
-	/// <summary>
-	/// 走りアニメーション関連
-	/// </summary>
-	void RunAnimation();
-	void RunDraw();
+	// 投げアニメーション設定
+	void ThrowAnimation(float _deltaTime);
 
-	/// <summary>
-	/// キャラのアニメーションの
-	/// </summary>
-	void CharaAnimation();
-	
+	// アニメーション制御
+	void AnimationUpdate(float _deltaTime);
+
+	//描画制御
+	void AnimationControl();
+
+	// アニメーション描画
+	void Draw();
 
 private:
 	//右向きか
@@ -93,6 +86,10 @@ private:
 	//デルタタイム関連
 	float nowCount, prevCount;
 	float deltaTime;
+
+	//アニメーション
+	int mHandle;
+	int mAnimation;
 
 	//待機アニメーション関連
 	int mIdle[IdleAllNum];
@@ -109,5 +106,4 @@ private:
 	int mThrowAnimation;
 	float mThrowAnimCoolTime;
 
-	
 };
