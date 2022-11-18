@@ -7,7 +7,8 @@ Player::Player():
 	mPlayer(),
 	mHandle{0},
 	playerVY(),
-	jumpFlag(),
+	jumpFlag(false),
+	onGround(false),
 	jumpButtonCount(),
 	mAnimation(),
 	mIdle{},
@@ -73,24 +74,25 @@ void Player::Move(bool isStand)
 {
 	if (CheckHitKey(KEY_INPUT_RIGHT)){
 		IsRightDir = FALSE;
-		mPlayer.x += 1;
+		mPlayer.x += RunSpeed;
 	}
 	else if (CheckHitKey(KEY_INPUT_LEFT)) {
 		IsRightDir = TRUE;
-		mPlayer.x -= 1;
-	}
-	else if (CheckHitKey(KEY_INPUT_UP)) {
-		mPlayer.y -= 5;
+		mPlayer.x -= RunSpeed;
 	}
 
-
-	jumpFlag = isStand;
-	if (CheckHitKey(KEY_INPUT_J) && jumpFlag)
+	onGround = isStand;
+	
+	if (CheckHitKey(KEY_INPUT_J) && onGround)
 	{
-
-		playerVY = -jumpPower;
+		jumpFlag = true;
+		if (jumpFlag)
+		{
+			playerVY = -jumpPower;
+			jumpFlag = false;
+		}
 	}
-	if (!jumpFlag)
+	if (!jumpFlag&&!onGround)
 	{
 		playerVY += gravity;
 		if (playerVY > maxFallSpeed)
@@ -98,7 +100,7 @@ void Player::Move(bool isStand)
 			playerVY = maxFallSpeed;
 		}
 	}
-	mPlayer.y += playerVY;
+			mPlayer.y += playerVY;
 
 }
 
