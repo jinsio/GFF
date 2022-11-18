@@ -3,10 +3,12 @@
 #include "PlayScene.h"
 #include "Player.h"
 
-
 Player::Player():
 	mPlayer(),
 	mHandle{0},
+	playerVY(),
+	jumpFlag(),
+	jumpButtonCount(),
 	mAnimation(),
 	mIdle{},
 	mIdleAnimation(0),
@@ -43,9 +45,9 @@ void Player::Init()
 	LoadDivGraph("assets/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
 }
 
-void Player::Update(float _deltaTime)
+void Player::Update(float _deltaTime,bool isStand)
 {
-	Move();
+	Move(isStand);
 	AnimationUpdate(_deltaTime);
 }
 
@@ -67,30 +69,37 @@ void Player::AnimationUpdate(float _deltaTime)
 
 
 
-void Player::Move()
+void Player::Move(bool isStand)
 {
-	mPlayer.y += Gravity;
 	if (CheckHitKey(KEY_INPUT_RIGHT)){
 		IsRightDir = FALSE;
-	}
-
-	else if (CheckHitKey(KEY_INPUT_LEFT)) {
-		IsRightDir = TRUE;
-	}
-
-
-	if (CheckHitKey(KEY_INPUT_UP)) {
-		mPlayer.y -= 1;
-	}
-	else if (CheckHitKey(KEY_INPUT_DOWN)) {
-		mPlayer.y += 1;
-	}
-	else if (CheckHitKey(KEY_INPUT_LEFT)) {
-		mPlayer.x -= 1;
-	}
-	else if (CheckHitKey(KEY_INPUT_RIGHT)) {
 		mPlayer.x += 1;
 	}
+	else if (CheckHitKey(KEY_INPUT_LEFT)) {
+		IsRightDir = TRUE;
+		mPlayer.x -= 1;
+	}
+	else if (CheckHitKey(KEY_INPUT_UP)) {
+		mPlayer.y -= 5;
+	}
+
+
+	jumpFlag = isStand;
+	if (CheckHitKey(KEY_INPUT_J) && jumpFlag)
+	{
+
+		playerVY = -jumpPower;
+	}
+	if (!jumpFlag)
+	{
+		playerVY += gravity;
+		if (playerVY > maxFallSpeed)
+		{
+			playerVY = maxFallSpeed;
+		}
+	}
+	mPlayer.y += playerVY;
+
 }
 
 

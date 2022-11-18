@@ -3,7 +3,7 @@
 #include "ResultScene.h"
 #include "Player.h"
 #include "Map.h"
-#include"Collision.h"
+#include "Collision.h"
 
 
 PlayScene::PlayScene()
@@ -21,7 +21,7 @@ PlayScene::~PlayScene()
 
 SceneBase* PlayScene::Update(float _deltaTime)
 {
-	player->Update(_deltaTime);
+	player->Update(_deltaTime,collision->ColBox(player->GetPosition()));
 	
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
@@ -38,6 +38,5 @@ void PlayScene::Draw()
 {
 	map->MapDraw();
 	player->Draw();
-	collision->ColBox(player->GetPosition());
 }
 
