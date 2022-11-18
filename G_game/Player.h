@@ -4,12 +4,16 @@
 #include "DxLib.h"
 #include <vector>
 
+
 //プレイヤーの初期位置
 const int FirstPosX= 100;
 const int FirstPosY = 100;
 
-//重力
-const int Gravity = 1;
+//ジャンプ関連
+const float jumpPower = 15.0f;     // ジャンプ初速度
+const float gravity = 1.0f;    // 重力
+const float maxFallSpeed = 2.0f;   // 最大落下速度
+
 
 //プレイヤーのサイズ
 const int XSize = 64;
@@ -43,7 +47,7 @@ public:
 	void Init();
 
 	//アップデート
-	void Update(float _deltaTime);
+	void Update(float _deltaTime,bool isStand);
 	
 	// deltaTimeのセッター
 	void SetdeltaTime();
@@ -53,7 +57,7 @@ public:
 	float GetdeltaTime() {return deltaTime; }
 
 	//キャラの移動
-	void Move();
+	void Move(bool isStand);
 
 	// キャラの座標
 	VECTOR& GetPosition() { return mPlayer; }
@@ -83,6 +87,11 @@ private:
 	//Player
 	VECTOR mPlayer;
 	
+	float playerVY;
+	bool jumpFlag;
+	int jumpButtonCount;
+
+
 	//デルタタイム関連
 	float nowCount, prevCount;
 	float deltaTime;
