@@ -32,6 +32,11 @@ const int RunAllNum = 8;
 const int RunXNum = 8;
 const int RunYNum = 1;
 
+//走りアニメーション
+const int JumpAllNum = 8;
+const int JumpXNum = 8;
+const int JumpYNum = 1;
+
 //投げるアニメーション
 const int ThrowAllNum = 8;
 const int ThrowXNum = 8;
@@ -74,6 +79,9 @@ public:
 	// 投げアニメーション設定
 	void ThrowAnimation(float _deltaTime);
 
+	//ジャンプアニメーション設定
+	void JumpAnimation(float _deltaTime);
+
 	// アニメーション制御
 	void AnimationUpdate(float _deltaTime);
 
@@ -91,7 +99,6 @@ private:
 	VECTOR mPlayer;
 	
 	float playerVY;
-	bool jumpFlag;
 	bool onGround;
 	int jumpButtonCount;
 
@@ -113,6 +120,12 @@ private:
 	int mRun[RunAllNum];
 	int mRunAnimation;
 	float mRunAnimCoolTime;
+
+	//ジャンプアニメ―ション関連
+	int mJump[JumpAllNum];
+	int mJumpAnimation;
+	float mJumpAnimCoolTime;
+	bool jumpFlag;
 
 	//投げアニメーション関連
 	int mThrow[ThrowAllNum];
