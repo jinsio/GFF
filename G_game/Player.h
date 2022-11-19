@@ -70,6 +70,9 @@ public:
 	// キャラの座標
 	VECTOR& GetPosition() { return mPlayer; }
 
+	//キャラの向き
+	int GetDir() { return IsRightDir; }
+
 	// 待機アニメーション設定
 	void IdleAnimation(float _deltaTime);
 
@@ -81,7 +84,6 @@ public:
 
 	//ジャンプアニメーション設定
 	void JumpAnimation(float _deltaTime, bool isStand);
-	void JumpAnimation(bool isGround);
 
 	// アニメーション制御
 	void AnimationUpdate(float _deltaTime, bool isStand);

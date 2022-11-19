@@ -43,6 +43,9 @@
     <ClCompile Include="main.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>ソースファイル\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monsterInfo.h">
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>ソースファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>ソースファイル\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
