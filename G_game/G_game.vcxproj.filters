@@ -34,9 +34,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>ソースファイル\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>ソースファイル\Map</Filter>
     </ClCompile>
@@ -83,9 +80,6 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>ソースファイル\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>ソースファイル</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>ソースファイル\Map</Filter>

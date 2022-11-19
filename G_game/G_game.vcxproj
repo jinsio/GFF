@@ -148,11 +148,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseMonster.cpp" />
-
     <ClCompile Include="Collision.cpp" />
-
     <ClCompile Include="Bat.cpp" />
-
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MonsterManager.cpp" />
@@ -163,16 +160,12 @@
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="Slime.cpp" />
-    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseMonster.h" />
-
     <ClInclude Include="Collision.h" />
-
     <ClInclude Include="Bat.h" />
-
     <ClInclude Include="Map.h" />
     <ClInclude Include="monsterInfo.h" />
     <ClInclude Include="MonsterManager.h" />
@@ -183,7 +176,6 @@
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="Slime.h" />
-    <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

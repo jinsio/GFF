@@ -17,6 +17,9 @@ Player::Player():
 	mRun{},
 	mRunAnimation(0),
 	mRunAnimCoolTime(0.2f),
+	mJump{},
+	mJumpAnimation(0),
+	mJumpAnimCoolTime(0.2f),
 	mThrow{},
 	mThrowAnimation(),
 	mThrowAnimCoolTime(0.2f),
@@ -44,6 +47,7 @@ void Player::Init()
 	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
 	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
 	LoadDivGraph("assets/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
+	LoadDivGraph("assets/player/Jump.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
 }
 
 void Player::Update(float _deltaTime,bool isStand)
@@ -134,6 +138,18 @@ void Player::RunAnimation(float _deltaTime)
 	}
 }
 
+void Player::JumpAnimation(float _deltaTime)
+{
+	mJumpAnimCoolTime -= _deltaTime;
+	if (mJumpAnimCoolTime <= 0.0f) {
+		mJumpAnimation++;
+		if (mJumpAnimation >= JumpAllNum) {
+			mJumpAnimation = 0;
+		}
+		mJumpAnimCoolTime = 300.0f;
+		mJumpAnimation %= JumpAllNum;
+	}
+}
 
 
 void Player::ThrowAnimation(float _deltaTime)
@@ -159,6 +175,10 @@ void Player::AnimationControl()
 {
 	if (CheckHitKey(KEY_INPUT_RIGHT)|| (CheckHitKey(KEY_INPUT_LEFT))) {
 		mHandle = mRun[mRunAnimation];
+	}
+
+	else if (jumpFlag){
+		mHandle = mJump[mJumpAnimation];
 	}
 
 	else {
