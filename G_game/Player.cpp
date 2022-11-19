@@ -177,13 +177,13 @@ void Player::ThrowAnimation(float _deltaTime)
 
 void Player::AnimationControl(bool isStand)
 {
-	if (CheckHitKey(KEY_INPUT_RIGHT)|| (CheckHitKey(KEY_INPUT_LEFT))) {
-		mHandle = mRun[mRunAnimation];
-	}
-
 	onGround = isStand;
 	if (!onGround){
 		mHandle = mJump[mJumpAnimation];
+	}
+
+	else if (CheckHitKey(KEY_INPUT_RIGHT)&& isStand || (CheckHitKey(KEY_INPUT_LEFT))&& isStand) {
+		mHandle = mRun[mRunAnimation];
 	}
 
 	else {

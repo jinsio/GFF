@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "Collision.h"
-
+#include "Bullet.h"
 
 PlayScene::PlayScene()
     : SceneBase()
@@ -12,6 +12,7 @@ PlayScene::PlayScene()
 	map = new Map;
 	collision = new Collision;
 	player = new Player;
+	bullet = new Bullet;
 	player->Init();
 }
 
@@ -22,7 +23,7 @@ PlayScene::~PlayScene()
 SceneBase* PlayScene::Update(float _deltaTime)
 {
 	player->Update(_deltaTime,collision->ColBox(player->GetPosition()));
-	
+	bullet->Update(player->GetPosition(),player->GetDir());
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -38,5 +39,6 @@ void PlayScene::Draw()
 {
 	map->MapDraw();
 	player->Draw();
+	bullet->Draw();
 }
 

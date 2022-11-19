@@ -6,7 +6,7 @@
 class Map;
 class Collision;
 class Player;
-
+class Bullet;
 
 /* プレイシーン */
 class PlayScene :public SceneBase
@@ -15,7 +15,7 @@ private:
 	Map* map;
 	Collision* collision;
 	Player* player;
-
+	Bullet* bullet;
 public:
 	// コンストラクタ
 	PlayScene();
