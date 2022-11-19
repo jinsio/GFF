@@ -47,13 +47,13 @@ void Player::Init()
 	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
 	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
 	LoadDivGraph("assets/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
-	LoadDivGraph("assets/player/Jump.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
+	LoadDivGraph("assets/player/Jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump);
 }
 
 void Player::Update(float _deltaTime,bool isStand)
 {
 	Move(isStand);
-	AnimationUpdate(_deltaTime);
+	AnimationUpdate(_deltaTime, isStand);
 }
 
 void Player::SetdeltaTime()
@@ -63,12 +63,13 @@ void Player::SetdeltaTime()
 	prevCount = nowCount;
 }
 
-void Player::AnimationUpdate(float _deltaTime)
+void Player::AnimationUpdate(float _deltaTime, bool isStand)
 {
 	IdleAnimation(_deltaTime);
 	RunAnimation(_deltaTime);
 	ThrowAnimation(_deltaTime);
-	AnimationControl();
+	JumpAnimation(_deltaTime, isStand);
+	AnimationControl(isStand);
 }
 
 
@@ -138,19 +139,26 @@ void Player::RunAnimation(float _deltaTime)
 	}
 }
 
-void Player::JumpAnimation(float _deltaTime)
+void Player::JumpAnimation(float _deltaTime, bool isStand)
 {
-	mJumpAnimCoolTime -= _deltaTime;
-	if (mJumpAnimCoolTime <= 0.0f) {
-		mJumpAnimation++;
-		if (mJumpAnimation >= JumpAllNum) {
-			mJumpAnimation = 0;
+	onGround = isStand;
+	if (!onGround)
+	{
+		mJumpAnimCoolTime -= _deltaTime;
+		if (mJumpAnimCoolTime <= 0.0f) {
+			mJumpAnimation++;
+			if (mJumpAnimation >= JumpAllNum) {
+				mJumpAnimation = 0;
+			}
+			mJumpAnimCoolTime = 100.0f;
+			mJumpAnimation %= JumpAllNum;
 		}
-		mJumpAnimCoolTime = 300.0f;
-		mJumpAnimation %= JumpAllNum;
+	}
+	if (onGround)
+	{
+		mJumpAnimation = 0;
 	}
 }
-
 
 void Player::ThrowAnimation(float _deltaTime)
 {
@@ -165,19 +173,16 @@ void Player::ThrowAnimation(float _deltaTime)
 	}
 }
 
-//void Player::ThrowDraw()
-//{
-//	DrawRotaGraph((int)mPlayer.x, (int)mPlayer.y, 1, 0, mThrow[mThrowAnimation], TRUE, IsRightDir);
-//}
 
 
-void Player::AnimationControl()
+void Player::AnimationControl(bool isStand)
 {
 	if (CheckHitKey(KEY_INPUT_RIGHT)|| (CheckHitKey(KEY_INPUT_LEFT))) {
 		mHandle = mRun[mRunAnimation];
 	}
 
-	else if (jumpFlag){
+	onGround = isStand;
+	if (!onGround){
 		mHandle = mJump[mJumpAnimation];
 	}
 
