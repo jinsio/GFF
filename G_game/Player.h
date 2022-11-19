@@ -32,7 +32,7 @@ const int RunAllNum = 8;
 const int RunXNum = 8;
 const int RunYNum = 1;
 
-//走りアニメーション
+//ジャンプアニメーション
 const int JumpAllNum = 8;
 const int JumpXNum = 8;
 const int JumpYNum = 1;
@@ -80,13 +80,14 @@ public:
 	void ThrowAnimation(float _deltaTime);
 
 	//ジャンプアニメーション設定
-	void JumpAnimation(float _deltaTime);
+	void JumpAnimation(float _deltaTime, bool isStand);
+	void JumpAnimation(bool isGround);
 
 	// アニメーション制御
-	void AnimationUpdate(float _deltaTime);
+	void AnimationUpdate(float _deltaTime, bool isStand);
 
 	//描画制御
-	void AnimationControl();
+	void AnimationControl(bool isStand);
 
 	// アニメーション描画
 	void Draw();
