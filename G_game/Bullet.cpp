@@ -6,7 +6,8 @@ Bullet::Bullet()
   mAlive(FALSE),
   mHandle(),
   mRotation(),
-  mMovePower()
+  mMovePower(),
+  mmMovePower()
 {
     mHandle = LoadGraph("assets/player/player.png");
 }
@@ -18,7 +19,7 @@ Bullet::~Bullet()
 void Bullet::Shot(VECTOR PlyPos, bool mDir)
 {
     mPos = PlyPos;
-    mAlive = TRUE;
+    mAlive = TRUE;  
 }
 
 void Bullet::BulletMove(VECTOR PlyPos, bool mDir)
@@ -26,6 +27,7 @@ void Bullet::BulletMove(VECTOR PlyPos, bool mDir)
     if (mDir)
     {
         mPos.x -= 2.0f;
+
     }
     if (!mDir)
     {
@@ -47,4 +49,5 @@ void Bullet::Draw()
     if (mAlive) {
         DrawRotaGraph((int)mPos.x, (int)mPos.y, 0.1f, mRotation, mHandle, mAlive, mDir);
     }
+    mRotation++;
 }

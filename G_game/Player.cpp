@@ -2,6 +2,7 @@
 #include "Dxlib.h"
 #include "PlayScene.h"
 #include "Player.h"
+#include "Bullet.h"
 
 Player::Player():
 	mPlayer(),
@@ -54,6 +55,10 @@ void Player::Update(float _deltaTime,bool isStand)
 {
 	Move(isStand);
 	AnimationUpdate(_deltaTime, isStand);
+	if (CheckHitKey(KEY_INPUT_S))
+	{
+		Bullet* bullet = new Bullet();
+	}
 }
 
 void Player::SetdeltaTime()
