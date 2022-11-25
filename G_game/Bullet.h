@@ -16,6 +16,7 @@ public:
 
 protected:
     VECTOR mPos;
+    VECTOR mmMovePower;
     bool   mDir;
     bool   mAlive;
     int    mHandle;
