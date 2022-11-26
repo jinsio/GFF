@@ -1,6 +1,9 @@
 // インクルード
 #include "PlayScene.h"
 #include "ResultScene.h"
+
+#include "PlayerObjectManager.h"
+
 #include "Player.h"
 #include "Map.h"
 #include "Collision.h"
@@ -11,9 +14,14 @@ PlayScene::PlayScene()
 {
 	map = new Map;
 	collision = new Collision;
+
 	player = new Player;
-	bullet = new Bullet;
+	PlayerObjectManager::Entry(player);
+
+	bullet = nullptr;
+	
 	player->Init();
+	
 }
 
 PlayScene::~PlayScene()
@@ -23,9 +31,15 @@ PlayScene::~PlayScene()
 SceneBase* PlayScene::Update(float _deltaTime)
 {
 	isStand();
-	player->Update(_deltaTime);
-	SetBullet();
-	bullet->Update(_deltaTime);
+	if (CheckHitKey(KEY_INPUT_S))
+	{
+		Bullet* bullet = new Bullet(player);
+		PlayerObjectManager::Entry(bullet);
+	}
+
+	PlayerObjectManager::Update(_deltaTime);
+	//player->Update(_deltaTime);
+	//bullet->Update(_deltaTime);
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -51,7 +65,6 @@ void PlayScene::SetBullet()
 void PlayScene::Draw()
 {
 	map->MapDraw();
-	player->Draw();
-	bullet->Draw();
+	PlayerObjectManager::Draw();
 }
 

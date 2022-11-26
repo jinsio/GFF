@@ -93,7 +93,7 @@ public:
 	//描画制御
 	void AnimationControl();
 	// アニメーション描画
-	void Draw();
+	void Draw()override;
 
 private:
 	float playerVY;

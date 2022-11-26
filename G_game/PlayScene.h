@@ -2,7 +2,7 @@
 
 // インクルード
 #include "SceneBase.h"
-
+#include "PlayerObjectManager.h"
 class Map;
 class Collision;
 class Player;
@@ -12,10 +12,12 @@ class Bullet;
 class PlayScene :public SceneBase
 {
 private:
+	
 	Map* map;
 	Collision* collision;
 	Player* player;
 	Bullet* bullet;
+
 public:
 	// コンストラクタ
 	PlayScene();
