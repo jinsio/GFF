@@ -52,6 +52,9 @@
     <ClCompile Include="PlayerObjectManager.cpp">
       <Filter>ソースファイル\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Scroll.cpp">
+      <Filter>ソースファイル\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monsterInfo.h">
@@ -104,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="PlayerObjectManager.h">
       <Filter>ソースファイル\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Scroll.h">
+      <Filter>ソースファイル\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
