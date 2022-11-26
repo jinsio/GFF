@@ -1,23 +1,22 @@
 #include "PlayerObjectManager.h"
 #include "PlayerObject.h"
 
-namespace My3dApp
-{
-	// GameObjectManager実体へのポインタ定義
-	GameObjectManager* GameObjectManager::mpInstance = nullptr;
+
+	// PlayerObjectManager実体へのポインタ定義
+	PlayerObjectManager* PlayerObjectManager::mpInstance = nullptr;
 
 	//------------------------------------------------------------------------------
 	// @brief ゲームオブジェクトマネージャ　コンストラクタ
 	//------------------------------------------------------------------------------
-	GameObjectManager::GameObjectManager()
+	PlayerObjectManager::PlayerObjectManager()
 		: mObjects()
 	{
-		mpInstance = nullptr;
+		mpInstance = this;
 	}
 	//------------------------------------------------------------------------------
 	// @brief ゲームオブジェクトマネージャ　デストラクタ
 	//------------------------------------------------------------------------------
-	GameObjectManager::~GameObjectManager()
+	PlayerObjectManager::~PlayerObjectManager()
 	{
 		ReleaseAllObj();
 	}
@@ -27,11 +26,11 @@ namespace My3dApp
 	// ゲームオブジェクトマネージャを初期化する。この関数以降、ほかの関数が
 	// 使用できるようになる。そのため他の関数使用前にCreateを呼び出す必要がある。
 	//------------------------------------------------------------------------------
-	void GameObjectManager::Initialize()
+	void PlayerObjectManager::Initialize()
 	{
 		if (!mpInstance)
 		{
-			mpInstance = new GameObjectManager;
+			mpInstance = new PlayerObjectManager;
 		}
 	}
 
@@ -41,7 +40,7 @@ namespace My3dApp
 	// @detail 新規ゲームオブジェクトをマネージャーに追加する。内部で一時保管された後、
 	// Update()内でタグ種類毎に分類され管理される。
 	//------------------------------------------------------------------------------
-	void GameObjectManager::Entry(PlayerObject* newObj)
+	void PlayerObjectManager::Entry(PlayerObject* newObj)
 	{
 		// ペンディングオブジェクトに一時保存
 		mpInstance->mPendingObjects.emplace_back(newObj);
@@ -52,7 +51,7 @@ namespace My3dApp
 	// @param[in] releaseObj 削除したいオブジェクトのポインタ
 	// @detail 削除したいオブジェクトのポインタをマネージャ内で検索し削除する
 	//------------------------------------------------------------------------------
-	void GameObjectManager::Release(PlayerObject* releaseObj)
+	void PlayerObjectManager::Release(PlayerObject* releaseObj)
 	{
 		// ペンディングオブジェクト内から検索
 		auto iter = std::find(mpInstance->mPendingObjects.begin(),
@@ -80,7 +79,7 @@ namespace My3dApp
 	//-------------------------------------------------------------------------------
 	// @brief 全オブジェクト削除.
 	//-------------------------------------------------------------------------------
-	void GameObjectManager::ReleaseAllObj()
+	void PlayerObjectManager::ReleaseAllObj()
 	{
 		// 末尾からペンディングオブジェクトをすべてを削除
 		while (!mpInstance->mPendingObjects.empty())
@@ -104,7 +103,7 @@ namespace My3dApp
 	// 新規Objectをアクティブリストに追加
 	// 死亡Objectをアクティブリストから削除
 	//-------------------------------------------------------------------------------
-	void GameObjectManager::Update(float deltaTime)
+	void PlayerObjectManager::Update(float deltaTime)
 	{
 		// すべてのアクターの更新
 		// 該当タグにあるすべてのオブジェクトを更新
@@ -144,8 +143,9 @@ namespace My3dApp
 	//-------------------------------------------------------------------------------
 	// @brief 全オブジェクトの描画処理.
 	//-------------------------------------------------------------------------------
-	void GameObjectManager::Draw()
+	void PlayerObjectManager::Draw()
 	{
+		
 		for (int i = 0; i < mpInstance->mObjects.size(); ++i)
 		{
 			mpInstance->mObjects[i]->Draw();
@@ -158,7 +158,7 @@ namespace My3dApp
 	// マネージャ自身の解放処理を行う。Endを行わずに終了した場合はメモリリークを起こす。
 	// また、この関数以降はすべてのGameObjectManagerの関数は使用することはできない。
 	//-------------------------------------------------------------------------------
-	void GameObjectManager::Finalize()
+	void PlayerObjectManager::Finalize()
 	{
 		ReleaseAllObj();
 		if (mpInstance)
@@ -168,4 +168,3 @@ namespace My3dApp
 		}
 	}
 
-}// namespace My3dApp

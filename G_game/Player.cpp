@@ -29,7 +29,7 @@ Player::Player():
 	//プレイヤーの初期位置の代入
 	mPos.x = FirstPosX;
 	mPos.y = FirstPosY;
-
+	
 }
 
 Player::~Player()
@@ -46,16 +46,18 @@ void Player::Init()
 	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
 	LoadDivGraph("assets/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
 	LoadDivGraph("assets/player/Jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump);
+	mAlive = true;
+	
 }
 
 void Player::Update(float deltaTime)
 {
 	Move();
 	AnimationUpdate(deltaTime);
-	if (CheckHitKey(KEY_INPUT_S))
-	{
-		Bullet* bullet = new Bullet();
-	}
+	//if (CheckHitKey(KEY_INPUT_S))
+	//{
+	//	Bullet* bullet = new Bullet();
+	//}
 }
 
 
@@ -88,17 +90,21 @@ void Player::Move()
 		mRightDir = TRUE;
 		mPos.x -= RunSpeed;
 	}
-
-	if (CheckHitKey(KEY_INPUT_J) && onGround)
-	{
-		jumpFlag = true;
-		if (jumpFlag)
+	if (onGround) {
+		if (CheckHitKey(KEY_INPUT_J))
 		{
-			playerVY = -jumpPower;
-			jumpFlag = false;
+			jumpFlag = true;
+			if (jumpFlag)
+			{
+				playerVY = -jumpPower;
+				jumpFlag = false;
+			}
+		}
+		else {
+			playerVY = 0;
 		}
 	}
-	if (!jumpFlag && !onGround)
+	else if (!jumpFlag)
 	{
 		playerVY += gravity;
 		if (playerVY > maxFallSpeed)

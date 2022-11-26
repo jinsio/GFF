@@ -1,6 +1,5 @@
 #include "Bullet.h"
-
-Bullet::Bullet()
+Bullet::Bullet(class Player*player)
     :mRotation(),
     mMovePower(),
     mmMovePower()
@@ -8,6 +7,8 @@ Bullet::Bullet()
     if (mHandle = -1) {
         mHandle = LoadGraph("assets/player/player.png");
     }
+    mRightDir = player->GetDir();
+    mPos = player->GetPos();
 }
 
 Bullet::~Bullet()
@@ -18,13 +19,9 @@ void Bullet::Shot()
 {
     mAlive = TRUE;  
 
-    /*Bullet* bulletArray[5] = { nullptr };
-    for (int i = 0; i < 5; i++) {
-        if (bulletArray[i] == nullptr) {
-            bulletArray[i] = new Bullet();
-            break;
-        }
-    }*/
+    /*Bullet* bulletArray;
+    bulletArray= new Bullet();
+    PlayerObjectManager::Entry(bulletArray);*/
 }
 
 void Bullet::BulletMove()

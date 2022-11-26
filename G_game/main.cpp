@@ -8,6 +8,7 @@
 #include "SceneBase.h"
 #include "TitleScene.h"
 #include "PlayScene.h"
+#include "PlayerObjectManager.h"
 #include "Player.h"
 #include <iostream>
 //-----------------------------------------------------------------------------
@@ -28,6 +29,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		return -1;
 	}
 
+	PlayerObjectManager::Initialize();
 	// デルタタイム管理用の変数をセット
 	LONGLONG nowTime;
 	LONGLONG time;
@@ -43,10 +45,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	SceneBase* nowScene = new TitleScene();
 
 	//
-	PlayScene* playScene = new PlayScene();
+	//PlayScene* playScene = new PlayScene();
 
 	//
-	Player* player = new Player();
+	//Player* player = new Player();
 
 	//
 
@@ -89,6 +91,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	// シーンの削除
 	delete nowScene;
 	
+	PlayerObjectManager::Finalize();
+
 	// DXライブラリの後始末
 	DxLib_End();
 

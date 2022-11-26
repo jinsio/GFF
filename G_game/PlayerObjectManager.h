@@ -10,9 +10,7 @@
 #include "PlayerObject.h"
 #include <math.h>
 
-namespace My3dApp
-{
-	class GameObjectManager final
+	class PlayerObjectManager final
 	{
 	public:
 		static void Initialize();                              // ゲームオブジェクトマネージャの初期化処理
@@ -26,11 +24,10 @@ namespace My3dApp
 		static void Finalize();
 
 	private:
-		GameObjectManager();                                   // シングルトン
-		~GameObjectManager();                                  // ゲームオブジェクトマネージャデストラクタ
-		static GameObjectManager* mpInstance;                  // マネージャの実体（アプリ内に唯一存在)
+		PlayerObjectManager();                                   // シングルトン
+		~PlayerObjectManager();                                  // ゲームオブジェクトマネージャデストラクタ
+		static PlayerObjectManager* mpInstance;                  // マネージャの実体（アプリ内に唯一存在)
 		std::vector<PlayerObject*>  mPendingObjects;             // 一時待機オブジェクト
 		std::vector<PlayerObject*>  mObjects;                    // mObjects[タグ種類][オブジェクト個数]; 
 	};
 
-}// namespace My3dApp
