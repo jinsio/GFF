@@ -22,8 +22,10 @@ PlayScene::~PlayScene()
 
 SceneBase* PlayScene::Update(float _deltaTime)
 {
-	player->Update(_deltaTime,collision->ColBox(player->GetPosition()));
-	bullet->Update(player->GetPosition(),player->GetDir());
+	isStand();
+	player->Update(_deltaTime);
+	SetBullet();
+	bullet->Update(_deltaTime);
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -33,6 +35,17 @@ SceneBase* PlayScene::Update(float _deltaTime)
 
 	// シーン遷移条件を満たしていなかったら今のポインタを返す
 	return this;
+}
+
+void PlayScene::isStand()
+{
+	player->SetonGround(collision->ColBox(player->GetPosition()));
+}
+
+void PlayScene::SetBullet()
+{
+	bullet->SetBulletPos(player->GetPos());
+	bullet->SetBulletDir(player->GetDir());
 }
 
 void PlayScene::Draw()

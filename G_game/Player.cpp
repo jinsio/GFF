@@ -5,8 +5,6 @@
 #include "Bullet.h"
 
 Player::Player():
-	mPlayer(),
-	mHandle{0},
 	playerVY(),
 	jumpFlag(false),
 	onGround(false),
@@ -26,12 +24,11 @@ Player::Player():
 	mThrowAnimCoolTime(0.2f),
 	deltaTime(0.0f),
 	nowCount(0.0f),
-	prevCount(0.0f),
-	IsRightDir(TRUE)
+	prevCount(0.0f)
 {
 	//プレイヤーの初期位置の代入
-	mPlayer.x = FirstPosX;
-	mPlayer.y = FirstPosY;
+	mPos.x = FirstPosX;
+	mPos.y = FirstPosY;
 
 }
 
@@ -42,8 +39,8 @@ Player::~Player()
 void Player::Init()
 {
 	//プレイヤーの初期位置の代入
-	mPlayer.x = FirstPosX;
-	mPlayer.y = FirstPosY;
+	mPos.x = FirstPosX;
+	mPos.y = FirstPosY;
 	//プレイヤー画像の読み込み
 	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
 	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
@@ -51,15 +48,16 @@ void Player::Init()
 	LoadDivGraph("assets/player/Jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump);
 }
 
-void Player::Update(float _deltaTime,bool isStand)
+void Player::Update(float deltaTime)
 {
-	Move(isStand);
-	AnimationUpdate(_deltaTime, isStand);
+	Move();
+	AnimationUpdate(deltaTime);
 	if (CheckHitKey(KEY_INPUT_S))
 	{
 		Bullet* bullet = new Bullet();
 	}
 }
+
 
 void Player::SetdeltaTime()
 {	
@@ -68,31 +66,29 @@ void Player::SetdeltaTime()
 	prevCount = nowCount;
 }
 
-void Player::AnimationUpdate(float _deltaTime, bool isStand)
+
+void Player::AnimationUpdate(float deltaTime)
 {
-	IdleAnimation(_deltaTime);
-	RunAnimation(_deltaTime);
-	ThrowAnimation(_deltaTime);
-	JumpAnimation(_deltaTime, isStand);
-	AnimationControl(isStand);
+	IdleAnimation(deltaTime);
+	RunAnimation(deltaTime);
+	ThrowAnimation(deltaTime);
+	JumpAnimation(deltaTime);
+	AnimationControl();
 }
 
 
 
-
-void Player::Move(bool isStand)
+void Player::Move()
 {
-	if (CheckHitKey(KEY_INPUT_RIGHT)){
-		IsRightDir = FALSE;
-		mPlayer.x += RunSpeed;
+	if (CheckHitKey(KEY_INPUT_RIGHT)) {
+		mRightDir = FALSE;
+		mPos.x += RunSpeed;
 	}
 	else if (CheckHitKey(KEY_INPUT_LEFT)) {
-		IsRightDir = TRUE;
-		mPlayer.x -= RunSpeed;
+		mRightDir = TRUE;
+		mPos.x -= RunSpeed;
 	}
 
-	onGround = isStand;
-	
 	if (CheckHitKey(KEY_INPUT_J) && onGround)
 	{
 		jumpFlag = true;
@@ -102,7 +98,7 @@ void Player::Move(bool isStand)
 			jumpFlag = false;
 		}
 	}
-	if (!jumpFlag&&!onGround)
+	if (!jumpFlag && !onGround)
 	{
 		playerVY += gravity;
 		if (playerVY > maxFallSpeed)
@@ -110,9 +106,10 @@ void Player::Move(bool isStand)
 			playerVY = maxFallSpeed;
 		}
 	}
-			mPlayer.y += playerVY;
+	mPos.y += playerVY;
 
 }
+
 
 
 
@@ -144,12 +141,13 @@ void Player::RunAnimation(float _deltaTime)
 	}
 }
 
-void Player::JumpAnimation(float _deltaTime, bool isStand)
+
+
+void Player::JumpAnimation(float deltaTime)
 {
-	onGround = isStand;
 	if (!onGround)
 	{
-		mJumpAnimCoolTime -= _deltaTime;
+		mJumpAnimCoolTime -= deltaTime;
 		if (mJumpAnimCoolTime <= 0.0f) {
 			mJumpAnimation++;
 			if (mJumpAnimation >= JumpAllNum) {
@@ -180,14 +178,14 @@ void Player::ThrowAnimation(float _deltaTime)
 
 
 
-void Player::AnimationControl(bool isStand)
+
+void Player::AnimationControl()
 {
-	onGround = isStand;
-	if (!onGround){
+	if (!onGround) {
 		mHandle = mJump[mJumpAnimation];
 	}
 
-	else if (CheckHitKey(KEY_INPUT_RIGHT)&& isStand || (CheckHitKey(KEY_INPUT_LEFT))&& isStand) {
+	else if (CheckHitKey(KEY_INPUT_RIGHT) && onGround || (CheckHitKey(KEY_INPUT_LEFT)) && onGround) {
 		mHandle = mRun[mRunAnimation];
 	}
 
@@ -198,5 +196,5 @@ void Player::AnimationControl(bool isStand)
 
 void Player::Draw()
 {
-	DrawRotaGraph((int)mPlayer.x, (int)mPlayer.y, 1, 0, mHandle, TRUE, IsRightDir);
+	DrawRotaGraph((int)mPos.x, (int)mPos.y, 1, 0, mHandle, TRUE, mRightDir);
 }

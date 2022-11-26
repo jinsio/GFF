@@ -3,7 +3,7 @@
 // インクルード
 #include "DxLib.h"
 #include <vector>
-
+#include "PlayerObject.h"
 
 //プレイヤーの初期位置
 const int FirstPosX= 100;
@@ -43,7 +43,7 @@ const int ThrowXNum = 8;
 const int ThrowYNum = 1;
 
 //プレイヤークラス
-class Player
+class Player:public PlayerObject
 {
 public:
 	//コンストラクタ
@@ -55,7 +55,7 @@ public:
 	void Init();
 
 	//アップデート
-	void Update(float _deltaTime,bool isStand);
+	void Update(float deltaTime) override;
 	
 	// deltaTimeのセッター
 	void SetdeltaTime();
@@ -64,14 +64,17 @@ public:
 	// <returns>deltaTime
 	float GetdeltaTime() {return deltaTime; }
 
+	//キャラが立っているか
+	void SetonGround(bool isStand) { onGround=isStand; }
+
 	//キャラの移動
-	void Move(bool isStand);
+	void Move();
 
 	// キャラの座標
-	VECTOR& GetPosition() { return mPlayer; }
+	VECTOR& GetPosition() { return mPos; }
 
 	//キャラの向き
-	int GetDir() { return IsRightDir; }
+	int GetDir() { return mRightDir; }
 
 	// 待機アニメーション設定
 	void IdleAnimation(float _deltaTime);
@@ -83,24 +86,16 @@ public:
 	void ThrowAnimation(float _deltaTime);
 
 	//ジャンプアニメーション設定
-	void JumpAnimation(float _deltaTime, bool isStand);
+	void JumpAnimation(float deltaTime);
 
 	// アニメーション制御
-	void AnimationUpdate(float _deltaTime, bool isStand);
-
+	void AnimationUpdate(float deltaTime);
 	//描画制御
-	void AnimationControl(bool isStand);
-
+	void AnimationControl();
 	// アニメーション描画
 	void Draw();
 
 private:
-	//右向きか
-	bool IsRightDir;
-	
-	//Player
-	VECTOR mPlayer;
-	
 	float playerVY;
 	bool onGround;
 	int jumpButtonCount;
@@ -111,7 +106,6 @@ private:
 	float deltaTime;
 
 	//アニメーション
-	int mHandle;
 	int mAnimation;
 
 	//待機アニメーション関連
