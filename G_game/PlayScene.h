@@ -29,6 +29,14 @@ public:
 	SceneBase* Update(float _deltaTime)override;
 
 	/// <summary>
+	/// キャラが地面に立っているかどうか調べる
+	/// </summary>
+	void isStand();
+	/// <summary>
+	/// プレイヤー弾発射準備
+	/// </summary>
+	void SetBullet();
+	/// <summary>
 	/// シーンとキャラの描画
 	/// </summary>
 	void Draw()override;

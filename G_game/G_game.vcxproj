@@ -156,6 +156,7 @@
     <ClCompile Include="MonsterManager.cpp" />
     <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="SceneBase.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="MonsterManager.h" />
     <ClInclude Include="Orc.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerObject.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SceneBase.h" />

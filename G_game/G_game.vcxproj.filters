@@ -32,7 +32,7 @@
       <Filter>ソースファイル\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>ソースファイル\Objects</Filter>
+      <Filter>ソースファイル\Player</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>ソースファイル\Map</Filter>
@@ -44,7 +44,10 @@
       <Filter>ソースファイル</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>ソースファイル\Objects</Filter>
+      <Filter>ソースファイル\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerObject.cpp">
+      <Filter>ソースファイル\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,7 +85,7 @@
       <Filter>ソースファイル\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>ソースファイル\Objects</Filter>
+      <Filter>ソースファイル\Player</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>ソースファイル\Map</Filter>
@@ -91,7 +94,10 @@
       <Filter>ソースファイル\Map</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>ソースファイル\Objects</Filter>
+      <Filter>ソースファイル\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerObject.h">
+      <Filter>ソースファイル\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -104,11 +110,11 @@
     <Filter Include="ソースファイル\Scenes">
       <UniqueIdentifier>{3d364e8b-8cdb-4f01-90b0-1df6bfc2e0d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソースファイル\Objects">
-      <UniqueIdentifier>{093f7e0e-0246-4bdb-b7e0-49c65bd2250e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソースファイル\Map">
       <UniqueIdentifier>{723f6fe4-e00a-43c9-b771-e1e3bba75fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Player">
+      <UniqueIdentifier>{093f7e0e-0246-4bdb-b7e0-49c65bd2250e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

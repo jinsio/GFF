@@ -1,53 +1,57 @@
 #include "Bullet.h"
 
 Bullet::Bullet()
-: mPos(),
-  mDir(),
-  mAlive(FALSE),
-  mHandle(),
-  mRotation(),
-  mMovePower(),
-  mmMovePower()
+    :mRotation(),
+    mMovePower(),
+    mmMovePower()
 {
-    mHandle = LoadGraph("assets/player/player.png");
+    if (mHandle = -1) {
+        mHandle = LoadGraph("assets/player/player.png");
+    }
 }
 
 Bullet::~Bullet()
 {
 }
 
-void Bullet::Shot(VECTOR PlyPos, bool mDir)
+void Bullet::Shot()
 {
-    mPos = PlyPos;
     mAlive = TRUE;  
+
+    /*Bullet* bulletArray[5] = { nullptr };
+    for (int i = 0; i < 5; i++) {
+        if (bulletArray[i] == nullptr) {
+            bulletArray[i] = new Bullet();
+            break;
+        }
+    }*/
 }
 
-void Bullet::BulletMove(VECTOR PlyPos, bool mDir)
+void Bullet::BulletMove()
 {
-    if (mDir)
+    if (mRightDir)
     {
         mPos.x -= 2.0f;
 
     }
-    if (!mDir)
+    if (!mRightDir)
     {
         mPos.x += 2.0f;
     }
 }
 
-void Bullet::Update(VECTOR PlyPos, bool PlyDir)
+void Bullet::Update(float deltaTime)
 {   
     if (CheckHitKey(KEY_INPUT_S)) {
-        mDir = PlyDir;
-        Shot(PlyPos, mDir);
+        Shot();
     }
-        BulletMove(PlyPos, mDir);
+        BulletMove();
 }
 
 void Bullet::Draw()
 {
     if (mAlive) {
-        DrawRotaGraph((int)mPos.x, (int)mPos.y, 0.1f, mRotation, mHandle, mAlive, mDir);
+        DrawRotaGraph((int)mPos.x, (int)mPos.y, 0.1f, mRotation, mHandle, mAlive, mRightDir);
     }
     mRotation++;
 }
