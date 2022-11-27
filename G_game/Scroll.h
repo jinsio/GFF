@@ -6,14 +6,35 @@ const float scrSpeed = 5.0f;
 class Scroll
 {
 public:
+    /// <summary>
+    /// Scrollのコンストラクター
+    /// </summary>
     Scroll();
+
+    /// <summary>
+    /// Scrollのデストラクター
+    /// </summary>
     ~Scroll();
-    void Update();
+
+    /// <summary>
+    /// スクロール処理
+    /// </summary>
+    /// <param name="plyPos">プレイヤーポジション</param>
+    /// <param name="mapPos">マップポジション</param>
+    void MoveScroll(VECTOR& plyPos,VECTOR& mapPos);
+
+
 private:
-    float scrX;
-    float scrY;
-    float scrW;
-    float scrH;
+    float scrRX;
+    float scrRY;
+    float scrLX;
+    float scrLY;
+
+    float scrMaxW;
+    float scrMaxH;
+    float scrMinW;
+    float scrMinH;
+
 
 };
 
