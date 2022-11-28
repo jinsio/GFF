@@ -5,6 +5,7 @@
 #include "PlayerObjectManager.h"
 class Map;
 class Collision;
+class Scroll;
 class Player;
 class Bullet;
 
@@ -15,6 +16,7 @@ private:
 	
 	Map* map;
 	Collision* collision;
+	Scroll* scroll;
 	Player* player;
 	Bullet* bullet;
 

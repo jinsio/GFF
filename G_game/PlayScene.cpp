@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "Collision.h"
+#include"Scroll.h"
 #include "Bullet.h"
 
 PlayScene::PlayScene()
@@ -14,6 +15,7 @@ PlayScene::PlayScene()
 {
 	map = new Map;
 	collision = new Collision;
+	scroll = new Scroll;
 
 	player = new Player;
 	PlayerObjectManager::Entry(player);
@@ -36,8 +38,9 @@ SceneBase* PlayScene::Update(float _deltaTime)
 		Bullet* bullet = new Bullet(player);
 		PlayerObjectManager::Entry(bullet);
 	}
-
+	
 	PlayerObjectManager::Update(_deltaTime);
+	scroll->MoveScroll(player->GetPosition(), map->GetPosition());
 	//player->Update(_deltaTime);
 	//bullet->Update(_deltaTime);
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
