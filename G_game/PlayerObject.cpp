@@ -2,9 +2,9 @@
 
 PlayerObject::PlayerObject()
     :mPos()
-    ,mAlive()
+    ,mAlive(true)
     ,mRightDir()
-    ,mHandle()
+    ,mHandle(-1)
 {
 }
 

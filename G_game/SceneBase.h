@@ -14,7 +14,7 @@ public:
 	// コンストラクタ
 	SceneBase();
 	// デストラクタ
-	~SceneBase();
+	virtual ~SceneBase();
 
 	/// <summary>
 	/// シーンの更新処理

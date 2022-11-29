@@ -39,9 +39,7 @@ void Bullet::BulletMove()
 
 void Bullet::Update(float deltaTime)
 {   
-    if (CheckHitKey(KEY_INPUT_S)) {
-        Shot();
-    }
+        mAlive = TRUE;
         BulletMove();
 }
 
