@@ -30,7 +30,11 @@ public:
     /// <param name="objpos"></param>
     bool ColBox(VECTOR& objpos);
 
-
+    /// <summary>
+    /// 当たり判定座標のセッター
+    /// </summary>
+    /// <param name="scrPos">スクロール座標</param>
+    void SetScrPos(VECTOR& scrPos) { colPos = scrPos; }
 
 private:
     struct sColLayer
@@ -47,8 +51,7 @@ private:
     bool eofFlag;                           //eof（end of file）検出フラグ
     FILE* fp;                               //ファイルポインター
 
-
-    bool isStand;
-    VECTOR pb;
+    bool isStand;                           //地面に立っているかどうか
+    VECTOR colPos;                          //当たり判定座標
 };
 

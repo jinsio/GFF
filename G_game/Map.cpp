@@ -1,7 +1,7 @@
 #include "Map.h"
 
 Map::Map()
-	:mPos()
+	:mapPos()
 {
 	LoadDivGraph("assets/map/full_tilemap.png",  (480 / 32)* (384 / 32), 480 / 32, 384 / 32, 32, 32, chipgraphicHandle);
 	FILE* filePointer;
@@ -61,7 +61,7 @@ void Map::MapDraw()
 	{
 		for (int j = 0; j < CELL_NUM_Y; j++)
 		{
-			DrawExtendGraph(i * CELL_WIDTH + mPos.x, j * CELL_HEIGHT+ mPos.y, (i + 1) * CELL_WIDTH + mPos.x, (j + 1) * CELL_HEIGHT+ mPos.y, sMap[i][j].GraphicHandle, TRUE);
+			DrawExtendGraph(i * CELL_WIDTH + mapPos.x, j * CELL_HEIGHT+ mapPos.y, (i + 1) * CELL_WIDTH + mapPos.x, (j + 1) * CELL_HEIGHT+ mapPos.y, sMap[i][j].GraphicHandle, TRUE);
 		}
 	}
 }
