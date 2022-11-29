@@ -46,8 +46,6 @@ void Player::Init()
 	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
 	LoadDivGraph("assets/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
 	LoadDivGraph("assets/player/Jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump);
-	mAlive = true;
-	
 }
 
 void Player::Update(float deltaTime)

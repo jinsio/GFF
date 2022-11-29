@@ -90,8 +90,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	// シーンの削除
 	delete nowScene;
-	
-	PlayerObjectManager::Finalize();
+	/*PlayerObjectManager::Finalize();*/
 
 	// DXライブラリの後始末
 	DxLib_End();

@@ -47,11 +47,7 @@ private:
     bool eofFlag;                           //eof（end of file）検出フラグ
     FILE* fp;                               //ファイルポインター
 
-    struct collisionBox
-    {
-        VECTOR left;
-        VECTOR right;
-    };
+
     bool isStand;
     VECTOR pb;
 };
