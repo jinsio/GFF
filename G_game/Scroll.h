@@ -21,9 +21,13 @@ public:
     /// </summary>
     /// <param name="plyPos">プレイヤーポジション</param>
     /// <param name="mapPos">マップポジション</param>
-    void MoveScroll(VECTOR& plyPos,VECTOR& mapPos);
+    void MoveScroll(VECTOR& plyPos);
 
-    VECTOR& GetScrPos();
+    /// <summary>
+    /// スクロール座標のゲッター
+    /// </summary>
+    /// <returns>スクロール座標</returns>
+    VECTOR& GetScrPos() { return scrPos; }
 private:
     float scrRX;        //右方向へスクロールする座標
     float scrRY;        //下方向へスクロールする座標
@@ -34,6 +38,8 @@ private:
     float scrMaxH;      //下方向へスクロールする最大座標
     float scrMinW;      //左方向へスクロールする最大座標
     float scrMinH;      //上方向へスクロールする最大座標
+
+    VECTOR scrPos;     //スクロール座標
 
 
 };

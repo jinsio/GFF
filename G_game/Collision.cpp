@@ -77,9 +77,9 @@ bool Collision::ColBox(VECTOR& objPos)
     int objRY = ((int)objPos.y + YSize / 2);
 
     //現在のタイル位置//
-    int tileLX = objLX / BOX_WIDTH;
+    int tileLX = objLX / BOX_WIDTH ;
     int tileLY = objLY / BOX_HEIGHT;
-    int tileRX = objRX / BOX_WIDTH;
+    int tileRX = objRX / BOX_WIDTH ;
     int tileRY = objRY / BOX_HEIGHT;
 
     for (int iy = tileLY; iy < tileRY + 1; iy++)

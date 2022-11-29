@@ -38,7 +38,9 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	}
 	
 	PlayerObjectManager::Update(_deltaTime);
-	scroll->MoveScroll(player->GetPosition(), map->GetPosition());
+	scroll->MoveScroll(player->GetPosition());
+	collision->SetScrPos(scroll->GetScrPos());
+	map->SetScrPos(scroll->GetScrPos());
 	//player->Update(_deltaTime);
 	//bullet->Update(_deltaTime);
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
