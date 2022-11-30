@@ -1,46 +1,64 @@
 #include "Bullet.h"
 Bullet::Bullet(class Player*player)
     :mRotation(),
-    mMovePower(),
-    mmMovePower()
+    mMovePower(10),
+    mAngle(90),
+    mRightMovePower(),
+    mLeftMovePower(),
+    mBulletVX(0),
+    mBulletVY(0),
+    mBulletPower()
 {
     if (mHandle = -1) {
         mHandle = LoadGraph("assets/player/player.png");
     }
     mRightDir = player->GetDir();
     mPos = player->GetPos();
+    BulletAngelSet();
 }
 
 Bullet::~Bullet()
 {
 }
 
-void Bullet::Shot()
+void Bullet::BulletAngelSet()
 {
-    mAlive = TRUE;  
+    const float PI = 3.14;
 
-    /*Bullet* bulletArray;
-    bulletArray= new Bullet();
-    PlayerObjectManager::Entry(bulletArray);*/
+    mBulletVX = mMovePower * cosf(mAngle * PI * 2);
+    mBulletVY = mMovePower * sinf(mAngle * PI * 2);
+
+    mBulletPower.y = mBulletVY;
+    
+    if (mRightDir)
+    {
+        mBulletPower.x = -mBulletVX;
+    }
+    if (!mRightDir)
+    {
+        mBulletPower.x = mBulletVX;
+    }
 }
 
 void Bullet::BulletMove()
 {
     if (mRightDir)
     {
-        mPos.x -= 2.0f;
-
+        mPos=VAdd(mPos,mBulletPower);
     }
     if (!mRightDir)
     {
-        mPos.x += 2.0f;
+        mPos=VAdd(mPos,mBulletPower);
     }
+
+    mBulletPower.y += 0.2 ;
 }
 
 void Bullet::Update(float deltaTime)
 {   
-        mAlive = TRUE;
-        BulletMove();
+        if (mAlive) {
+            BulletMove();
+        }
 }
 
 void Bullet::Draw()

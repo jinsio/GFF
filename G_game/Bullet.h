@@ -15,15 +15,21 @@ public:
  
     void SetBulletPos(VECTOR plyPos) { if(!mAlive)mPos = plyPos; }        ///プレイヤーの中心を弾の初期位置に代入
     void SetBulletDir(bool plyDir) { mRightDir = plyDir; }     ///プレイヤーの向きを弾方向に代入
-
-    void Shot();
+    
+    void BulletAngelSet();
     void BulletMove();
+    
     void Update(float deltaTime)override;
     void Draw()override;
 
 protected:
-    VECTOR mmMovePower;
+    VECTOR mLeftMovePower;
+    VECTOR mRightMovePower;
     int    mRotation;
     float  mMovePower;
+    float  mAngle;
+    VECTOR mBulletPower;
+    float  mBulletVX;
+    float  mBulletVY;
 
 };

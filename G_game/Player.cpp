@@ -52,10 +52,6 @@ void Player::Update(float deltaTime)
 {
 	Move();
 	AnimationUpdate(deltaTime);
-	//if (CheckHitKey(KEY_INPUT_S))
-	//{
-	//	Bullet* bullet = new Bullet();
-	//}
 }
 
 
