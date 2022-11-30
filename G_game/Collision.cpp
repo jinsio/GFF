@@ -71,10 +71,10 @@ Collision::~Collision()
 bool Collision::ColBox(VECTOR& objPos)
 {
     //オブジェクトBOXの頂点座標//
-    int objLX = ((int)objPos.x - XSize / 4);
-    int objLY = ((int)objPos.y - YSize / 4);
-    int objRX = ((int)objPos.x + XSize / 4);
-    int objRY = ((int)objPos.y + YSize / 2);
+    int objLX = ((int)objPos.x - XSize / 4) - colPos.x;
+    int objLY = ((int)objPos.y - YSize / 4) - colPos.y;
+    int objRX = ((int)objPos.x + XSize / 4) - colPos.x;
+    int objRY = ((int)objPos.y + YSize / 3) - colPos.y;
 
     //現在のタイル位置//
     int tileLX = objLX / BOX_WIDTH ;
