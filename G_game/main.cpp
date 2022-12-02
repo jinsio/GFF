@@ -10,6 +10,7 @@
 #include "PlayScene.h"
 #include "PlayerObjectManager.h"
 #include "Player.h"
+#include "Button.h"
 #include <iostream>
 //-----------------------------------------------------------------------------
 // @brief  ƒƒCƒ“ŠÖ”.

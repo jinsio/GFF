@@ -7,7 +7,8 @@ public:
     Button();
     ~Button();
 
-
+    void GetNowButton();
+    int  ButtonStatus();
 
 private:
     bool tmppush;
