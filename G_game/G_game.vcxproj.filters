@@ -55,6 +55,9 @@
     <ClCompile Include="Scroll.cpp">
       <Filter>ソースファイル\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>ソースファイル\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monsterInfo.h">
@@ -110,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="Scroll.h">
       <Filter>ソースファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>ソースファイル\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
