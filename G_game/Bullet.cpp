@@ -1,10 +1,9 @@
 #include "Bullet.h"
+
 Bullet::Bullet(class Player*player)
-    :mRotation(),
+    :PlayerObject(),
+    mRotation(0),
     mMovePower(10),
-    mAngle(90),
-    mRightMovePower(),
-    mLeftMovePower(),
     mBulletVX(0),
     mBulletVY(0),
     mBulletPower()
@@ -14,19 +13,20 @@ Bullet::Bullet(class Player*player)
     }
     mRightDir = player->GetDir();
     mPos = player->GetPos();
-    BulletAngelSet();
+    /*BulletAngleSet();*/
 }
 
 Bullet::~Bullet()
 {
 }
 
-void Bullet::BulletAngelSet()
-{
-    const float PI = 3.14;
 
-    mBulletVX = mMovePower * cosf(mAngle * PI * 2);
-    mBulletVY = mMovePower * sinf(mAngle * PI * 2);
+
+void Bullet::BulletAngleSet(int mAngle)
+{
+
+    mBulletVX = mMovePower * cosf(mAngle/180 * DX_PI);
+    mBulletVY = mMovePower * sinf(mAngle/180 * DX_PI);
 
     mBulletPower.y = mBulletVY;
     

@@ -7,17 +7,20 @@
 #include "Player.h"
 #include "Map.h"
 #include "Collision.h"
-#include"Scroll.h"
+#include "Scroll.h"
 #include "Bullet.h"
+#include "ShotDummy.h"
+#include "Button.h"
 
 PlayScene::PlayScene()
     : SceneBase()
+	, tmpRadian(0)
 {
 	map = new Map;
 	collision = new Collision;
 	scroll = new Scroll;
 	player = new Player;
-	bullet = nullptr;
+	button = new Button;
 	PlayerObjectManager::Initialize();
 	player->Init();
 	PlayerObjectManager::Entry(player);
@@ -25,24 +28,24 @@ PlayScene::PlayScene()
 
 PlayScene::~PlayScene()
 {
-	/*PlayerObjectManager::Release(player);*/
+
 }
 
 SceneBase* PlayScene::Update(float _deltaTime)
 {
 	isStand();
-	if (CheckHitKey(KEY_INPUT_P))
+	ShotFlow();
+	/*if (button->BottunStatus()==3)
 	{
 		PlayerObject* bullet = new Bullet(player);
 		PlayerObjectManager::Entry(bullet);
-	}
+	}*/
 	
 	PlayerObjectManager::Update(_deltaTime);
 	scroll->MoveScroll(player->GetPosition());
 	collision->SetScrPos(scroll->GetScrPos());
 	map->SetScrPos(scroll->GetScrPos());
-	//player->Update(_deltaTime);
-	//bullet->Update(_deltaTime);
+	
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -60,10 +63,32 @@ void PlayScene::isStand()
 	player->SetonGround(collision->ColBox(player->GetPosition()));
 }
 
-void PlayScene::SetBullet()
+void PlayScene::ShotFlow()
 {
-	bullet->SetBulletPos(player->GetPos());
-	bullet->SetBulletDir(player->GetDir());
+	if (button->ButtonStatus() == 1) {
+		
+		
+	}
+
+	if (button->ButtonStatus() == 2) {
+		ShotDummy* dummy = new ShotDummy(player);
+		PlayerObjectManager::Entry(dummy);
+		tmpRadian=dummy->GetRadian();
+		PlayerObjectManager::Release(dummy);
+	}
+
+	if (button->ButtonStatus() == 3){
+		
+		Bullet* bullet = new Bullet(player);
+		bullet->BulletAngleSet(tmpRadian);
+		PlayerObjectManager::Entry(bullet);
+		tmpRadian = 0;
+	}
+	
+	/*if (button->ButtonStatus() == 3)
+	{
+		
+	}*/
 }
 
 void PlayScene::Draw()

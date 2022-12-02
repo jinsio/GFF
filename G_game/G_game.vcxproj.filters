@@ -58,6 +58,7 @@
     <ClCompile Include="Button.cpp">
       <Filter>ソースファイル\Player</Filter>
     </ClCompile>
+    <ClCompile Include="ShotDummy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monsterInfo.h">
@@ -117,6 +118,7 @@
     <ClInclude Include="Button.h">
       <Filter>ソースファイル\Player</Filter>
     </ClInclude>
+    <ClInclude Include="ShotDummy.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">

@@ -21,5 +21,6 @@ protected:
     bool    mAlive;
     bool    mRightDir;
     int     mHandle;
+ 
 };
 

@@ -8,6 +8,7 @@ class Collision;
 class Scroll;
 class Player;
 class Bullet;
+class Button;
 
 /* プレイシーン */
 class PlayScene :public SceneBase
@@ -18,8 +19,9 @@ private:
 	Collision* collision;
 	Scroll* scroll;
 	Player* player;
-	Bullet* bullet;
+	Button* button;
 
+	int tmpRadian;
 public:
 	// コンストラクタ
 	PlayScene();
@@ -37,9 +39,9 @@ public:
 	/// </summary>
 	void isStand();
 	/// <summary>
-	/// プレイヤー弾発射準備
+	/// キャラがバレットを投げるまでの流れ
 	/// </summary>
-	void SetBullet();
+	void ShotFlow();
 	/// <summary>
 	/// シーンとキャラの描画
 	/// </summary>
