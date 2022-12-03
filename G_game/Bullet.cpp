@@ -6,14 +6,12 @@ Bullet::Bullet(class Player*player)
     mMovePower(10),
     mBulletVX(0),
     mBulletVY(0),
-    mBulletPower()
+    mBulletPower{0,0}
 {
     if (mHandle = -1) {
         mHandle = LoadGraph("assets/player/player.png");
     }
-    mRightDir = player->GetDir();
     mPos = player->GetPos();
-    /*BulletAngleSet();*/
 }
 
 Bullet::~Bullet()
@@ -22,14 +20,14 @@ Bullet::~Bullet()
 
 
 
-void Bullet::BulletAngleSet(int mAngle)
+void Bullet::BulletAngleSet(float mAngle)
 {
 
-    mBulletVX = mMovePower * cosf(mAngle/180 * DX_PI);
-    mBulletVY = mMovePower * sinf(mAngle/180 * DX_PI);
+    mBulletVX = mMovePower * cosf(mAngle* DX_PI);
+    mBulletVY = -mMovePower * sinf(mAngle* DX_PI);
 
+    mBulletPower.x = mBulletVX;
     mBulletPower.y = mBulletVY;
-    
     if (mRightDir)
     {
         mBulletPower.x = -mBulletVX;
@@ -50,7 +48,7 @@ void Bullet::BulletMove()
     {
         mPos=VAdd(mPos,mBulletPower);
     }
-
+    mPos = VAdd(mPos, mBulletPower);
     mBulletPower.y += 0.2 ;
 }
 

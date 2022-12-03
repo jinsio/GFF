@@ -13,19 +13,26 @@ public:
     ~ShotDummy();
 
     void SetBulletDummyPos(VECTOR plyPos) { if (!mAlive)mPos = plyPos; }        ///プレイヤーの中心を弾の初期位置に代入
+
+    bool GetBulletDummyDir() { return mRightDir; }
     void SetBulletDummyDir(bool plyDir) { mRightDir = plyDir; }     ///プレイヤーの向きを弾方向に代入
 
-    int GetRadian() { return mAngle; }
-    void AddRadian();
-    void AddAngleChange();
+
+    void SetEntryFlag() { mEntryFlag=true; }
+    bool GetEntryFlag() { return mEntryFlag; }
+
+    float GetRadian() { return mAngle; }
+    void  AddRadian(float _deltaTime);
+    void  AddAngleChange();
 
     void Update(float deltaTime)override;
     void Draw()override;
 
 private:
-    int    mAngle;
-    int    AddAngle;
+    float  mAngle;
+    float  AddAngle;
     int    mHandle;
-    int    mRotation;
+    float    mRotation;
+    bool   mEntryFlag;
 };
 

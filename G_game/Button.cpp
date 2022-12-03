@@ -25,31 +25,31 @@ void Button::GetNowButton()
 int Button::ButtonStatus()
 {
     GetNowButton();
- 
+
+    int ret = 0;
 
     //ボタンが押された瞬間
     if (tmppush == FALSE && nowpush == TRUE)
     {
-        tmppush = nowpush;
-        return 1;
+        ret = 1;
     }
 
     //ボタンが長押しされている状態
     else if (tmppush == TRUE && nowpush == TRUE)
     {
-        tmppush = nowpush;
-        return 2;
+        ret = 2;
     }
 
     //ボタンを離した瞬間
     else if (tmppush == TRUE && nowpush == FALSE)
     {
-        tmppush = nowpush;
-        return 3;
+        ret = 3;
     }
     //ボタンが押されていない
+   
     else {
-        tmppush = nowpush;
-        return 0;
+        ret = 0;
     }
+    tmppush = nowpush;
+    return ret;
 }
