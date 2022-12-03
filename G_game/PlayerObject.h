@@ -6,7 +6,7 @@ class PlayerObject
 {
 public:
     PlayerObject();
-    ~PlayerObject();
+    virtual ~PlayerObject();
 
     VECTOR  GetPos() { return mPos; }
     void    SetPos(VECTOR Pos) { mPos = Pos; }
@@ -16,6 +16,7 @@ public:
 
     virtual void Update(float deltaTime) = 0;
     virtual void Draw();
+
 protected:
     VECTOR  mPos;
     bool    mAlive;

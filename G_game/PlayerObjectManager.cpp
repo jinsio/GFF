@@ -126,18 +126,26 @@
 		for (int i = 0; i < mpInstance->mObjects.size(); ++i)
 		{
 			// 生きていなかったらdeadObjectへ移動
-			if (!mpInstance->mObjects[i]->GetAlive())
+			if (!mpInstance->mObjects[i]->GetAlive()) 
 			{
 				deadObjects.emplace_back(mpInstance->mObjects[i]);
+				mpInstance->mObjects.erase(
+					std::remove_if(std::begin(mpInstance->mObjects), std::end(mpInstance->mObjects), [](PlayerObject* p) {return !p->GetAlive(); }),
+					std::cend(mpInstance->mObjects));
 			}
 		}
 
-		// 死んでいるオブジェクトをdelete
-		for (auto deadObj : deadObjects)
+		//// 死んでいるオブジェクトをdelete
+		//for (auto deadObj : deadObjects)
+		//{
+		//	delete deadObj;
+		//}
+		//deadObjects.clear();
+		while (!deadObjects.empty())
 		{
-			delete deadObj;
+			delete deadObjects.back();
+			deadObjects.pop_back();
 		}
-		deadObjects.clear();
 	}
 
 	//-------------------------------------------------------------------------------

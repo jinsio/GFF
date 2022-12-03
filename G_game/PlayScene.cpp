@@ -13,8 +13,9 @@
 #include "Button.h"
 
 PlayScene::PlayScene()
-    : SceneBase()
-	, tmpRadian(0)
+    : 
+	SceneBase(),
+	dummy()
 {
 	map = new Map;
 	collision = new Collision;
@@ -34,7 +35,7 @@ PlayScene::~PlayScene()
 SceneBase* PlayScene::Update(float _deltaTime)
 {
 	isStand();
-	ShotFlow();
+	ShotFlow(_deltaTime);
 	/*if (button->BottunStatus()==3)
 	{
 		PlayerObject* bullet = new Bullet(player);
@@ -63,32 +64,30 @@ void PlayScene::isStand()
 	player->SetonGround(collision->ColBox(player->GetPosition()));
 }
 
-void PlayScene::ShotFlow()
+void PlayScene::ShotFlow(float _deltaTime)
 {
-	if (button->ButtonStatus() == 1) {
-		
-		
+	int tmp = button->ButtonStatus();
+	if (tmp == 1) {
+			dummy = new ShotDummy(player);
+			PlayerObjectManager::Entry(dummy);
 	}
 
-	if (button->ButtonStatus() == 2) {
-		ShotDummy* dummy = new ShotDummy(player);
-		PlayerObjectManager::Entry(dummy);
-		tmpRadian=dummy->GetRadian();
-		PlayerObjectManager::Release(dummy);
+	else if (tmp == 2) {
+		dummy->AddRadian(_deltaTime);
+		dummy->SetPos(player->GetPos());
 	}
 
-	if (button->ButtonStatus() == 3){
-		
-		Bullet* bullet = new Bullet(player);
-		bullet->BulletAngleSet(tmpRadian);
-		PlayerObjectManager::Entry(bullet);
-		tmpRadian = 0;
-	}
-	
-	/*if (button->ButtonStatus() == 3)
+	else if (tmp == 3)
 	{
-		
-	}*/
+		Bullet* bullet = new Bullet(player);
+		PlayerObjectManager::Entry(bullet);
+		bullet->SetBulletDir(dummy->GetBulletDummyDir());
+		bullet->BulletAngleSet(dummy->GetRadian());
+		dummy->SetAlive(false);
+	}
+	else
+	{
+	}
 }
 
 void PlayScene::Draw()
