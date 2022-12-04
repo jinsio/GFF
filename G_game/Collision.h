@@ -1,6 +1,7 @@
 #pragma once
 #include"DxLib.h"
 
+
 //.....’è”éŒ¾.....//
 const int BOX_WIDTH = 32;                  //“–‚½‚è”»’è‚Ì•
 const int BOX_HEIGHT = 32;                 //“–‚½‚è”»’è‚Ì‚‚³

@@ -21,10 +21,10 @@ Scroll::~Scroll()
 
 void Scroll::MoveScroll(VECTOR& plyPos)
 {
-	if (plyPos.x > scrRX&&scrPos.x>=-scrMaxW)
+	if (plyPos.x > scrRX&&scrPos.x>=-scrMaxW)		//プレイヤーがスクロールする位置まで来たら
 	{
-		plyPos.x = scrRX;
-		scrPos.x -= scrSpeed;
+		plyPos.x = scrRX;							//プレイヤーがの位置は固定
+		scrPos.x -= scrSpeed;						//背景座標をスクロール
 	}
 	if (plyPos.y > scrRY&&scrPos.y>=-scrMaxH)
 	{

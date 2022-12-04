@@ -49,7 +49,7 @@ void Bullet::BulletMove()
         mPos=VAdd(mPos,mBulletPower);
     }
     mPos = VAdd(mPos, mBulletPower);
-    mBulletPower.y += 0.2 ;
+    mBulletPower.y += 0.2f ;
 }
 
 void Bullet::Update(float deltaTime)
