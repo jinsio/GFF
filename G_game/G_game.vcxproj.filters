@@ -59,6 +59,9 @@
       <Filter>ソースファイル\Player</Filter>
     </ClCompile>
     <ClCompile Include="ShotDummy.cpp" />
+    <ClCompile Include="BackGround.cpp">
+      <Filter>ソースファイル\BackGround</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monsterInfo.h">
@@ -119,6 +122,9 @@
       <Filter>ソースファイル\Player</Filter>
     </ClInclude>
     <ClInclude Include="ShotDummy.h" />
+    <ClInclude Include="BackGround.h">
+      <Filter>ソースファイル\BackGround</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
@@ -135,6 +141,9 @@
     </Filter>
     <Filter Include="ソースファイル\Player">
       <UniqueIdentifier>{093f7e0e-0246-4bdb-b7e0-49c65bd2250e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\BackGround">
+      <UniqueIdentifier>{47ffc74b-f501-41a8-96ee-44af9a769e92}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

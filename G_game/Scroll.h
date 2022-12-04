@@ -3,6 +3,7 @@
 
 const float scrSpeed = 5.0f;        //スクロール速度
 
+/*Scrollのクラス*/
 class Scroll
 {
 public:
