@@ -16,6 +16,9 @@ public:
     /** 描画（仮想関数）*/
     void Draw();
 
+    /** 生きているかどうかの取得*/
+    bool GetAlive() { return isAlive; }
+
 protected:
     /** 座標*/
     vec2 pos = { 0 };

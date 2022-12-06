@@ -53,13 +53,13 @@
     <ClCompile Include="Monster\Monster.cpp">
       <Filter>ソースファイル\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\MonsterManager.cpp">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClCompile>
     <ClCompile Include="Monster\Skeleton.cpp">
       <Filter>ソースファイル\Monster</Filter>
     </ClCompile>
     <ClCompile Include="Monster\Slime.cpp">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterManager.cpp">
       <Filter>ソースファイル\Monster</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,13 +116,13 @@
     <ClInclude Include="Monster\monsterInfo.h">
       <Filter>ソースファイル\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Monster\MonsterManager.h">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClInclude>
     <ClInclude Include="Monster\Skeleton.h">
       <Filter>ソースファイル\Monster</Filter>
     </ClInclude>
     <ClInclude Include="Monster\Slime.h">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterManager.h">
       <Filter>ソースファイル\Monster</Filter>
     </ClInclude>
   </ItemGroup>
