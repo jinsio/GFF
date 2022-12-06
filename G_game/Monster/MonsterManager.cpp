@@ -3,7 +3,7 @@
 #include "Slime.h"
 #include "Bat.h"
 #include "Skeleton.h"
-#include "Orc.h"
+#include "Golem.h"
 
 MonsterManager* MonsterManager::instance = nullptr;
 
@@ -86,7 +86,7 @@ void MonsterManager::AddMonster(MonsterType type)
         pool.push_back(new Skeleton());
         break;
     case MonsterManager::MonsterType::golem:
-        pool.push_back(new Orc());
+        pool.push_back(new Golem());
         break;
     default:
         break;
