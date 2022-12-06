@@ -1,26 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="MonsterManager.cpp">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="Orc.cpp">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="Slime.cpp">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="Skeleton.cpp">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClCompile>
     <ClCompile Include="PlayScene.cpp">
       <Filter>ソースファイル\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseMonster.cpp">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="Bat.cpp">
-      <Filter>ソースファイル\Monsters</Filter>
     </ClCompile>
     <ClCompile Include="ResultScene.cpp">
       <Filter>ソースファイル\Scenes</Filter>
@@ -62,31 +44,28 @@
     <ClCompile Include="BackGround.cpp">
       <Filter>ソースファイル\BackGround</Filter>
     </ClCompile>
+    <ClCompile Include="Monster\Bat.cpp">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\Golem.cpp">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\Monster.cpp">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\MonsterManager.cpp">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\Skeleton.cpp">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster\Slime.cpp">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="monsterInfo.h">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterManager.h">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="Orc.h">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="Slime.h">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="Skeleton.h">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClInclude>
     <ClInclude Include="PlayScene.h">
       <Filter>ソースファイル\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseMonster.h">
-      <Filter>ソースファイル\Monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="Bat.h">
-      <Filter>ソースファイル\Monsters</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h">
       <Filter>ソースファイル\Scenes</Filter>
@@ -125,13 +104,31 @@
     <ClInclude Include="BackGround.h">
       <Filter>ソースファイル\BackGround</Filter>
     </ClInclude>
+    <ClInclude Include="Monster\Bat.h">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\Golem.h">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\Monster.h">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\monsterInfo.h">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\MonsterManager.h">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\Skeleton.h">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster\Slime.h">
+      <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
       <UniqueIdentifier>{94b858ba-e9dd-47c1-9ec2-4dc170bf736f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソースファイル\Monsters">
-      <UniqueIdentifier>{8ac6366e-b61f-4f45-a8b4-265fba459582}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソースファイル\Scenes">
       <UniqueIdentifier>{3d364e8b-8cdb-4f01-90b0-1df6bfc2e0d1}</UniqueIdentifier>
@@ -144,6 +141,9 @@
     </Filter>
     <Filter Include="ソースファイル\BackGround">
       <UniqueIdentifier>{47ffc74b-f501-41a8-96ee-44af9a769e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Monster">
+      <UniqueIdentifier>{9955927a-00e5-43e4-aa3e-990a2f77a8a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

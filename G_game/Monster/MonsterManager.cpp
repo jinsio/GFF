@@ -1,5 +1,5 @@
 #include "MonsterManager.h"
-#include "BaseMonster.h"
+#include "Monster.h"
 #include "Slime.h"
 #include "Bat.h"
 #include "Skeleton.h"
@@ -85,7 +85,7 @@ void MonsterManager::AddMonster(MonsterType type)
     case MonsterManager::MonsterType::skeleton:
         pool.push_back(new Skeleton());
         break;
-    case MonsterManager::MonsterType::orc:
+    case MonsterManager::MonsterType::golem:
         pool.push_back(new Orc());
         break;
     default:

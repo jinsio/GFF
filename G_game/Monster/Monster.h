@@ -1,53 +1,59 @@
 #pragma once
 #include "monsterInfo.h"
 
-class BaseMonster
+class Monster
 {
 public:
-    BaseMonster();
-    virtual ~BaseMonster();
+    /** コンストラクタ*/
+    Monster();
 
+    /** 仮想デストラクタ*/
+    virtual ~Monster();
+
+    /** 更新（純粋仮想関数）*/
     virtual void Update(float deltaTime) = 0;
-    virtual void Draw();
+
+    /** 描画（仮想関数）*/
+    void Draw();
 
 protected:
-    //! 位置
+    /** 座標*/
     vec2 pos = { 0 };
 
-    //! 大きさ
+    /** 大きさ*/
     vec2 scale = { 0 };
 
-    //! 大きさ（半分）
+    /** 大きさ（半分）*/
     vec2 halfScale = { 0 };
 
-    //! 速度
+    /** 速度*/
     float speed;
     
-    //! 重力
+    /** 重力*/
     float gravity;
 
-    //! 表示用
+    /** 描画用*/
     int displayImage;
 
-    //! 移動アニメーション画像
+    /** 移動アニメーション*/
     int moveAnim[moveAnimNum] = { -1 };
 
-    //! 攻撃アニメーション画像
+    /** 攻撃アニメーション*/
     int attackAnim[attackAnimNum] = { -1 };
 
-    //! 被弾アニメーション画像
+    /** 被弾アニメーション*/
     int damageAnim[damageAnimNum] = { -1 };
 
-    //! 体力
+    /** 体力*/
     int hp;
 
-    //! 生きているかどうか
+    /** 生きているかどうか*/
     bool isAlive;
 
-    //! 味方かどうか
+    /** 味方かどうか*/
     bool isAlly;
 
-    //! 右向きかどうか
+    /** 右向きかどうか*/
     bool isDirRight;
 
     //! tmp

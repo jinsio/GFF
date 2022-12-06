@@ -148,15 +148,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BackGround.cpp" />
-    <ClCompile Include="BaseMonster.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="Bat.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="MonsterManager.cpp" />
-    <ClCompile Include="Orc.cpp" />
+    <ClCompile Include="Monster\Bat.cpp" />
+    <ClCompile Include="Monster\Golem.cpp" />
+    <ClCompile Include="Monster\Monster.cpp" />
+    <ClCompile Include="Monster\MonsterManager.cpp" />
+    <ClCompile Include="Monster\Skeleton.cpp" />
+    <ClCompile Include="Monster\Slime.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="PlayerObjectManager.cpp" />
@@ -165,20 +167,20 @@
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="Scroll.cpp" />
     <ClCompile Include="ShotDummy.cpp" />
-    <ClCompile Include="Skeleton.cpp" />
-    <ClCompile Include="Slime.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
-    <ClInclude Include="BaseMonster.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Collision.h" />
-    <ClInclude Include="Bat.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="monsterInfo.h" />
-    <ClInclude Include="MonsterManager.h" />
-    <ClInclude Include="Orc.h" />
+    <ClInclude Include="Monster\Bat.h" />
+    <ClInclude Include="Monster\Golem.h" />
+    <ClInclude Include="Monster\Monster.h" />
+    <ClInclude Include="Monster\monsterInfo.h" />
+    <ClInclude Include="Monster\MonsterManager.h" />
+    <ClInclude Include="Monster\Skeleton.h" />
+    <ClInclude Include="Monster\Slime.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerObject.h" />
     <ClInclude Include="PlayerObjectManager.h" />
@@ -187,8 +189,6 @@
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="Scroll.h" />
     <ClInclude Include="ShotDummy.h" />
-    <ClInclude Include="Skeleton.h" />
-    <ClInclude Include="Slime.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Bullet.h" />
   </ItemGroup>

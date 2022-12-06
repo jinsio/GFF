@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-class BaseMonster;
+class Monster;
 
 class MonsterManager final
 {
@@ -12,10 +12,9 @@ public:
         slime = 0,
         bat,
         skeleton,
-        orc,
+        golem,
     };
 
-    virtual ~MonsterManager();
 
     void CreateInstance();
     void DeleteInstance();
@@ -28,12 +27,15 @@ public:
     void RemoveAll();
 
 private:
-    // シングルトン
+    /** コンストラクタ（シングルトン）*/
     MonsterManager();
 
-    //! MonsterManagerの実体
+    /** デストラクタ*/
+    ~MonsterManager();
+
+    /** マネージャのインスタンス*/
     static MonsterManager* instance;
 
-    //! MonsterのPool
-    std::vector<BaseMonster*> monsterPool;
+    /** Monsterのオブジェクトプール*/
+    std::vector<Monster*> monsterPool;
 };
