@@ -1,6 +1,5 @@
 #include "Slime.h"
 #include "monsterInfo.h"
-#include "DxLib.h"
 
 /**
 * スライムのコンストラクタ
