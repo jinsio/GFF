@@ -21,13 +21,13 @@ public:
 
 protected:
     /** 座標*/
-    vec2 pos = { 0 };
+    VECTOR pos = { 0 };
 
     /** 大きさ*/
-    vec2 scale = { 0 };
+    VECTOR scale = { 0 };
 
     /** 大きさ（半分）*/
-    vec2 halfScale = { 0 };
+    VECTOR halfScale = { 0 };
 
     /** 速度*/
     float speed;
@@ -36,7 +36,7 @@ protected:
     float gravity;
 
     /** 描画用*/
-    int displayImage;
+    int handle;
 
     /** 移動アニメーション*/
     int moveAnim[moveAnimNum] = { -1 };
