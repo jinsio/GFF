@@ -4,22 +4,28 @@
 
 #include "PlayerObjectManager.h"
 
-#include "Player.h"
+#include"BackGround.h"
 #include "Map.h"
 #include "Collision.h"
 #include "Scroll.h"
+
+#include "Player.h"
+#include "Button.h"
 #include "Bullet.h"
 #include "ShotDummy.h"
-#include "Button.h"
 
 PlayScene::PlayScene()
     : 
 	SceneBase(),
 	dummy()
 {
+	//---ステージ関連インスタンス---//
+	bg = new BackGround;
 	map = new Map;
 	collision = new Collision;
 	scroll = new Scroll;
+
+	//---プレイヤー関連インスタンス---//
 	player = new Player;
 	button = new Button;
 	PlayerObjectManager::Initialize();
@@ -43,7 +49,10 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	}*/
 	
 	PlayerObjectManager::Update(_deltaTime);
+
+	//---スクロール処理---//
 	scroll->MoveScroll(player->GetPosition());
+	bg->SetScrPos(scroll->GetScrPos());
 	collision->SetScrPos(scroll->GetScrPos());
 	map->SetScrPos(scroll->GetScrPos());
 	
@@ -92,6 +101,7 @@ void PlayScene::ShotFlow(float _deltaTime)
 
 void PlayScene::Draw()
 {
+	bg->Draw();
 	map->MapDraw();
 	PlayerObjectManager::Draw();
 }

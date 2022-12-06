@@ -3,21 +3,25 @@
 // インクルード
 #include "SceneBase.h"
 #include "PlayerObjectManager.h"
+
+class BackGround;
 class Map;
 class Collision;
 class Scroll;
+
 class Player;
-class Bullet;
 class Button;
+class Bullet;
 class ShotDummy;
 /* プレイシーン */
 class PlayScene :public SceneBase
 {
 private:
-	
+	BackGround* bg;
 	Map* map;
 	Collision* collision;
 	Scroll* scroll;
+	
 	Player* player;
 	Button* button;
 	ShotDummy* dummy;
