@@ -30,7 +30,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		return -1;
 	}
 
-	PlayerObjectManager::Initialize();
+	//PlayerObjectManager::Initialize();
 	// デルタタイム管理用の変数をセット
 	LONGLONG nowTime;
 	LONGLONG time;
