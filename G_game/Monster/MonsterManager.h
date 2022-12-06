@@ -1,30 +1,33 @@
 #pragma once
 #include <vector>
 
+using namespace std;
+
 class Monster;
 
 class MonsterManager final
 {
 public:
+    /** インスタンスの生成*/
+    static void CreateInstance();
 
-    enum class MonsterType
-    {
-        slime = 0,
-        bat,
-        skeleton,
-        golem,
-    };
+    /** インスタンスの削除*/
+    static void DeleteInstance();
 
+    /** モンスターをプールに追加*/
+    static void AddMonster(Monster* newObj);
 
-    void CreateInstance();
-    void DeleteInstance();
+    /** モンスターをプールから削除*/
+    static void RemoveMonster(Monster* removeObj);
 
-    void Update(float deltaTime);
-    void Draw();
+    /** プールの中身全削除*/
+    static void RemoveAll();
 
-    void AddMonster(MonsterType type);
-    void RemoveMonster();
-    void RemoveAll();
+    /** 更新*/
+    static void Update(float deltaTime);
+
+    /** 描画*/
+    static void Draw();
 
 private:
     /** コンストラクタ（シングルトン）*/
@@ -33,9 +36,14 @@ private:
     /** デストラクタ*/
     ~MonsterManager();
 
-    /** マネージャのインスタンス*/
+    /** マネージャの実体*/
     static MonsterManager* instance;
 
-    /** Monsterのオブジェクトプール*/
-    std::vector<Monster*> monsterPool;
+    /** 保留プール*/
+    vector<Monster*> pendingPool;
+
+    /** プール*/
+    vector<Monster*> pool;
+
+
 };
