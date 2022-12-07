@@ -3,8 +3,8 @@
 
 const int CELL_WIDTH = 32;
 const int CELL_HEIGHT = 32;
-const int CELL_NUM_X = 120;
-const int CELL_NUM_Y = 34;
+const int CELL_NUM_X = 240;
+const int CELL_NUM_Y = 64;
 class Map
 {
 public:
@@ -18,7 +18,7 @@ protected:
         int GraphicHandle;
     };
     sMapLayer sMap[CELL_NUM_X][CELL_NUM_Y]={0};
-    int chipgraphicHandle[(480/ 32) * (384 / 32)];
+    int chipgraphicHandle[(160/ 32) * (32 / 32)];
     VECTOR mapPos;
     int characterPack;
     int rawNum = 0;															//横方向のタイルナンバー

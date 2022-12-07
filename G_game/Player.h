@@ -7,7 +7,7 @@
 
 //プレイヤーの初期位置
 const int FirstPosX= 100;
-const int FirstPosY = 100;
+const int FirstPosY = 200;
 
 //移動速度
 const float RunSpeed = 4.0f;

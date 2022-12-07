@@ -3,9 +3,9 @@
 Map::Map()
 	:mapPos()
 {
-	LoadDivGraph("assets/map/full_tilemap.png",  (480 / 32)* (384 / 32), 480 / 32, 384 / 32, 32, 32, chipgraphicHandle);
+	LoadDivGraph("assets/mapArufa/mapsozai.png",  (160 / 32)* (32 / 32), 160 / 32,  32, 32, 32, chipgraphicHandle);
 	FILE* filePointer;
-	fopen_s(&filePointer, "assets/map/MaouMap.csv", "r");																//fopen_s関数でmap.csvを読み取り形式で開く
+	fopen_s(&filePointer, "assets/mapArufa/Maoumap_map.csv", "r");																//fopen_s関数でmap.csvを読み取り形式で開く
 	if (filePointer == NULL)																			//filePointerが空の場合は
 	{
 		DebugBreak();																					//デバッグ中止
