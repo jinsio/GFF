@@ -40,7 +40,6 @@
     <ClCompile Include="Button.cpp">
       <Filter>ソースファイル\Player</Filter>
     </ClCompile>
-    <ClCompile Include="ShotDummy.cpp" />
     <ClCompile Include="BackGround.cpp">
       <Filter>ソースファイル\BackGround</Filter>
     </ClCompile>
@@ -61,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="Monster\MonsterManager.cpp">
       <Filter>ソースファイル\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ShotDummy.cpp">
+      <Filter>ソースファイル\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,7 +102,6 @@
     <ClInclude Include="Button.h">
       <Filter>ソースファイル\Player</Filter>
     </ClInclude>
-    <ClInclude Include="ShotDummy.h" />
     <ClInclude Include="BackGround.h">
       <Filter>ソースファイル\BackGround</Filter>
     </ClInclude>
@@ -124,6 +125,9 @@
     </ClInclude>
     <ClInclude Include="Monster\MonsterManager.h">
       <Filter>ソースファイル\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ShotDummy.h">
+      <Filter>ソースファイル\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
