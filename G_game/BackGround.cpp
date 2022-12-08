@@ -30,7 +30,7 @@ void BackGround::Update()
     for (int i = 0; i < LayerNum; i++)
     {
         
-        first.bgX[i] = bgPos.x * (1.5 * i);
+        first.bgX[i] = bgPos.x * (1.5 * i+0.5f);
         first.screenPos[i] = first.bgX[i];
         first.bgY[i] = bgPos.y;
 
@@ -38,7 +38,7 @@ void BackGround::Update()
 
     for (int j = 0; j < LayerNum; j++)
     {
-        second.bgX[j] = bgPos.x * (1.5 * j);
+        second.bgX[j] = bgPos.x * (1.5 * j+0.5f);
         second.screenPos[j] = second.bgX[j];
         second.bgY[j] = bgPos.y;
     }

@@ -26,16 +26,20 @@ public:
     ~Collision();
 
     /// <summary>
-    /// 当たり判定更新処理
+    /// 当たり判定
     /// </summary>
-    /// <param name="objpos"></param>
-    bool ColBox(VECTOR& objpos);
+    bool ColBox(VECTOR& objPos);
 
     /// <summary>
     /// 当たり判定座標のセッター
     /// </summary>
     /// <param name="scrPos">スクロール座標</param>
     void SetScrPos(VECTOR& scrPos) { colPos = scrPos; }
+
+    /// <summary>
+    /// 壁についているかの判定
+    /// </summary>
+    bool IsWall() { return isWall; }
 
 private:
     struct sColLayer
@@ -52,7 +56,7 @@ private:
     bool eofFlag;                           //eof（end of file）検出フラグ
     FILE* fp;                               //ファイルポインター
 
-    bool isStand;                           //地面に立っているかどうか
+    bool isWall;                           //壁についているかどうか
     VECTOR colPos;                          //当たり判定座標
 };
 

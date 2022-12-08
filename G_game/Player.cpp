@@ -5,9 +5,12 @@
 #include "Bullet.h"
 
 Player::Player():
-	playerVY(),
+	playerVY(0),
+	playerVX(0),
 	jumpFlag(false),
 	onGround(false),
+	onWall(false),
+	input(true),
 	jumpButtonCount(),
 	mAnimation(),
 	mIdle{},
@@ -76,26 +79,37 @@ void Player::AnimationUpdate(float deltaTime)
 
 void Player::Move()
 {
-	if (CheckHitKey(KEY_INPUT_RIGHT)) {
-		mRightDir = FALSE;
-		mPos.x += RunSpeed;
-	}
-	else if (CheckHitKey(KEY_INPUT_LEFT)) {
-		mRightDir = TRUE;
-		mPos.x -= RunSpeed;
+	if (input)
+	{
+		if (CheckHitKey(KEY_INPUT_RIGHT)) {
+			mRightDir = FALSE;
+			mPos.x += RunSpeed;
+		}
+		else if (CheckHitKey(KEY_INPUT_LEFT)) {
+			mRightDir = TRUE;
+			mPos.x -= RunSpeed;
+		}
 	}
 	if (onGround) {
 		if (CheckHitKey(KEY_INPUT_J))
 		{
+
 			jumpFlag = true;
 			if (jumpFlag)
 			{
 				playerVY = -jumpPower;
 				jumpFlag = false;
 			}
+			if (onWall)
+			{
+				playerVX = RunSpeed * 2;
+				input = false;
+			}
 		}
 		else {
 			playerVY = 0;
+			playerVX = 0;
+			input = true;
 		}
 	}
 	else if (!jumpFlag)
@@ -107,7 +121,14 @@ void Player::Move()
 		}
 	}
 	mPos.y += playerVY;
-
+	if (mRightDir)
+	{
+		mPos.x += playerVX;
+	}
+	else
+	{
+		mPos.x -= playerVX;
+	}
 }
 
 
