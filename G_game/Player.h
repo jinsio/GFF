@@ -66,6 +66,7 @@ public:
 
 	//キャラが立っているか
 	void SetonGround(bool isStand) { onGround=isStand; }
+	void SetWall(bool isWall) { onWall = isWall; }
 
 	//キャラの移動
 	void Move();
@@ -100,9 +101,12 @@ public:
 
 private:
 	float playerVY;
+	float playerVX;
 	bool onGround;
+	bool onWall;
 	int jumpButtonCount;
 
+	bool input;
 
 	//デルタタイム関連
 	float nowCount, prevCount;

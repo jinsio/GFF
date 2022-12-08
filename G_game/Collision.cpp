@@ -15,7 +15,7 @@ Collision::Collision()
     , num(0)
     , eofFlag(false)
     , fp(NULL)
-    , isStand(false)
+    , isWall(false)
 {
 
 
@@ -98,17 +98,17 @@ bool Collision::ColBox(VECTOR& objPos)
             int by1 = boxLY - objRY;
             int by2 = boxRY - objLY;
 
-            int bx = (abs(bx1) < abs(bx2)) ? bx1 * 1.5f : bx2 * 1.5f;
+            int bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;
             int by = (abs(by1) < abs(by2)) ? by1 : by2;
             if (sCol[jx][iy].BoxHandle == colBoxHandle[1])
             {
                 if (abs(bx) < abs(by))
                 {
                     objPos.x += bx;
+                    isWall = true;
                 }
                 else
                 {
-
                     objPos.y += by;
                     if (by <= 0)
                     {
@@ -121,7 +121,7 @@ bool Collision::ColBox(VECTOR& objPos)
         }
     }
 
-
+    isWall = false;
     return false;
 
 
