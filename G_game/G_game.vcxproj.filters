@@ -58,11 +58,11 @@
     <ClCompile Include="Monster\Slime.cpp">
       <Filter>ソースファイル\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\MonsterManager.cpp">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClCompile>
     <ClCompile Include="ShotDummy.cpp">
       <Filter>ソースファイル\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\MonsterManager.cpp">
+      <Filter>ソースファイル\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -123,11 +123,11 @@
     <ClInclude Include="Monster\Slime.h">
       <Filter>ソースファイル\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Monster\MonsterManager.h">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClInclude>
     <ClInclude Include="ShotDummy.h">
       <Filter>ソースファイル\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\MonsterManager.h">
+      <Filter>ソースファイル\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +148,9 @@
     </Filter>
     <Filter Include="ソースファイル\Monster">
       <UniqueIdentifier>{9955927a-00e5-43e4-aa3e-990a2f77a8a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Manager">
+      <UniqueIdentifier>{fb128ec5-c347-49f9-a3b6-559628910c8b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
