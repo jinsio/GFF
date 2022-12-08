@@ -1,8 +1,11 @@
 #pragma once
 #include<DxLib.h>
+#include<vector>
 
 const int LayerNum = 3;
 const int screenNum = 2;
+
+using namespace std;
 
 /*背景のクラス*/
 class BackGround
@@ -36,13 +39,16 @@ public:
 
 private:
 	struct Bg {
-		int bgHandle = -1;		//背景画像ハンドル
-		float bgX = 0;		//レイヤーごとの背景座標X
-		float bgY = 0;		//レイヤーごとの背景座標Y
+		int bgHandle[LayerNum] = { -1,-1,-1 };		//背景画像ハンドル
+		float bgX[LayerNum] = {};			//レイヤーごとの背景座標X
+		float bgY[LayerNum] = {};			//レイヤーごとの背景座標Y
+		int screenPos[LayerNum] = {};	//スクリーン座標
+
 	};
-	Bg first[LayerNum];
+	Bg first;
+	Bg second;
+
 	float bgScreenX;
 	VECTOR bgPos;				//背景座標
-
 };
 
