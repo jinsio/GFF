@@ -51,6 +51,8 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	PlayerObjectManager::Update(_deltaTime);
 
 	//---ƒXƒNƒ[ƒ‹ˆ—---//
+	scroll->SetScrLR(RunSpeed);
+	scroll->SetScrXY(player->GetVY());
 	scroll->MoveScroll(player->GetPosition());
 	bg->Update();
 	bg->SetScrPos(scroll->GetScrPos());
