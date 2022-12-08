@@ -5,9 +5,9 @@
 BackGround::BackGround()
     :bgScreenX(0)
 {
-    first[0].bgHandle = LoadGraph("assets/BackGround/R2_distantView.png");    //背面レイヤー
-    first[1].bgHandle = LoadGraph("assets/BackGround/R2_middleView.png");     //中央レイヤー
-    first[2].bgHandle = LoadGraph("assets/BackGround/R2_foreGround.png");     //前面レイヤー
+    first.bgHandle[0] = LoadGraph("assets/BackGround/R2_distantView.png");    //背面レイヤー
+    first.bgHandle[1] = LoadGraph("assets/BackGround/R2_middleView.png");     //中央レイヤー
+    first.bgHandle[2] = LoadGraph("assets/BackGround/R2_foreGround.png");     //前面レイヤー
 }
 
 // @brief BackGroundのデストラクタ― //
@@ -16,9 +16,9 @@ BackGround::~BackGround()
 {
     for (int i = 0; i < LayerNum; i++)          //レイヤーの枚数分for文を回す
     {
-        if (first[i].bgHandle != -1)                  //中身が入っていたら
+        if (first.bgHandle[i] != -1)                  //中身が入っていたら
         {
-            DeleteGraph(first[i].bgHandle);           //空にする
+            DeleteGraph(first.bgHandle[i]);           //空にする
         }
     }
 }
@@ -29,12 +29,18 @@ void BackGround::Update()
 {
     for (int i = 0; i < LayerNum; i++)
     {
-        if (first[i].bgX <= -1920)
-        {
-            first[i].bgX = 1920;
-        }
-        first[i].bgX = bgPos.x * (1.5 * i);
-        first[i].bgY = bgPos.y;
+        
+        first.bgX[i] = bgPos.x * (1.5 * i);
+        first.screenPos[i] = first.bgX[i];
+        first.bgY[i] = bgPos.y;
+
+    }
+
+    for (int j = 0; j < LayerNum; j++)
+    {
+        second.bgX[j] = bgPos.x * (1.5 * j);
+        second.screenPos[j] = second.bgX[j];
+        second.bgY[j] = bgPos.y;
     }
 }
 
@@ -45,6 +51,7 @@ void BackGround::Draw()
 
     for (int i = 0; i < LayerNum; i++)
     {  
-        DrawGraph(first[i].bgX, first[i].bgY, first[i].bgHandle, TRUE);
+        DrawGraph(first.screenPos[i] % 1920, first.bgY[i], first.bgHandle[i], TRUE);
+        DrawGraph(second.screenPos[i] % 1920 + 1920, first.bgY[i], first.bgHandle[i], TRUE);
     }
 }

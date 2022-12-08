@@ -13,9 +13,9 @@ const int FirstPosY = 500;
 const float RunSpeed = 4.0f;
 
 //ジャンプ関連
-const float jumpPower = 10.0f;     // ジャンプ初速度
+const float jumpPower = 15.0f;     // ジャンプ初速度
 const float gravity = 0.3f;    // 重力
-const float maxFallSpeed = 8.0f;   // 最大落下速度
+const float maxFallSpeed = 10.0f;   // 最大落下速度
 
 
 //プレイヤーのサイズ
@@ -72,6 +72,9 @@ public:
 
 	// キャラの座標
 	VECTOR& GetPosition() { return mPos; }
+
+	//キャラの重力
+	int GetVY() { return playerVY; }
 
 	//キャラの向き
 	int GetDir() { return mRightDir; }
