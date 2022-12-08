@@ -44,6 +44,4 @@ private:
 
     /** ƒv[ƒ‹*/
     vector<Monster*> pool;
-
-
 };
