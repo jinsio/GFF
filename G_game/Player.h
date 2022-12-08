@@ -6,8 +6,8 @@
 #include "PlayerObject.h"
 
 //プレイヤーの初期位置
-const int FirstPosX= 100;
-const int FirstPosY = 200;
+const int FirstPosX= 500;
+const int FirstPosY = 500;
 
 //移動速度
 const float RunSpeed = 4.0f;

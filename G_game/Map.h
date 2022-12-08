@@ -4,7 +4,7 @@
 const int CELL_WIDTH = 32;
 const int CELL_HEIGHT = 32;
 const int CELL_NUM_X = 240;
-const int CELL_NUM_Y = 64;
+const int CELL_NUM_Y = 68;
 class Map
 {
 public:

@@ -100,7 +100,6 @@ bool Collision::ColBox(VECTOR& objPos)
 
             int bx = (abs(bx1) < abs(bx2)) ? bx1 * 1.5f : bx2 * 1.5f;
             int by = (abs(by1) < abs(by2)) ? by1 : by2;
-
             if (sCol[jx][iy].BoxHandle == colBoxHandle[1])
             {
                 if (abs(bx) < abs(by))

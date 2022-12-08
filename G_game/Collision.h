@@ -6,7 +6,7 @@
 const int BOX_WIDTH = 32;                  //“–‚½‚è”»’è‚Ì•
 const int BOX_HEIGHT = 32;                 //“–‚½‚è”»’è‚Ì‚‚³
 const int BOX_NUM_X = 240;                 //“–‚½‚è”»’è‚Ì‰¡‚Ì”
-const int BOX_NUM_Y = 64;                  //“–‚½‚è”»’è‚Ìc‚Ì”
+const int BOX_NUM_Y = 68;                  //“–‚½‚è”»’è‚Ìc‚Ì”
 
 
 class Collision
