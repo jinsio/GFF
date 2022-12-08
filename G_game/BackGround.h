@@ -35,9 +35,12 @@ public:
 	void SetScrPos(VECTOR& scrPos) { bgPos = scrPos; }
 
 private:
-	int bgHandle[LayerNum];		//背景画像ハンドル
-	float bgX[LayerNum];		//レイヤーごとの背景座標X
-	float bgY[LayerNum];		//レイヤーごとの背景座標Y
+	struct Bg {
+		int bgHandle = -1;		//背景画像ハンドル
+		float bgX = 0;		//レイヤーごとの背景座標X
+		float bgY = 0;		//レイヤーごとの背景座標Y
+	};
+	Bg first[LayerNum];
 	float bgScreenX;
 	VECTOR bgPos;				//背景座標
 

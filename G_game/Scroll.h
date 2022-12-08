@@ -36,7 +36,7 @@ private:
     float scrLY;        //上方向へスクロールする座標
 
     const float scrMaxW = 32*120;            //右方向へスクロールする最大座標
-    const float scrMaxH = 32*43;            //下方向へスクロールする最大座標
+    const float scrMaxH = 32*40;            //下方向へスクロールする最大座標
     const float scrMinW = 0;                //左方向へスクロールする最小座標
     const float scrMinH = 0;                //上方向へスクロールする最小座標
 
