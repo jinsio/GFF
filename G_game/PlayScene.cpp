@@ -52,6 +52,7 @@ SceneBase* PlayScene::Update(float _deltaTime)
 
 	//---ƒXƒNƒ[ƒ‹ˆ—---//
 	scroll->MoveScroll(player->GetPosition());
+	bg->Update();
 	bg->SetScrPos(scroll->GetScrPos());
 	collision->SetScrPos(scroll->GetScrPos());
 	map->SetScrPos(scroll->GetScrPos());

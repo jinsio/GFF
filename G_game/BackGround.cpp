@@ -30,14 +30,6 @@ BackGround::~BackGround()
 
 void BackGround::Update()
 {
-
-    for (int i = 0; i < LayerNum; i++)
-    {
-        if (bgX[i] <= 1920)
-        {
-            bgX[i] += 1920;
-        }
-    }
 }
 
 // @brief BackGround•`‰æˆ— //
@@ -46,9 +38,14 @@ void BackGround::Draw()
 {
 
     for (int i = 0; i < LayerNum; i++)
-    {
-        bgX[i] = bgPos.x * (1.5f * i) ;
+    {  
+        if (bgX[i] <= -1920)
+        {
+            bgX[i] = 1920;
+        }
+        bgX[i] = bgPos.x * (1.5 * i);
         bgY[i] = bgPos.y;
+
         DrawGraph(bgX[i], bgY[i], bgHandle[i], TRUE);
     }
 }
