@@ -130,13 +130,19 @@ bool Collision::ColBox(VECTOR& objPos)
 
 }
 
+
+/// <summary>
+/// 弾とマップの当たり判定
+/// </summary>
+/// <param name="objPos"></param>
+/// <returns></returns>
 bool Collision::ColBox_(VECTOR& objPos)
 {
     //オブジェクトBOXの頂点座標//
-    int objLX = ((int)objPos.x - XSize -32/ 4);
-    int objLY = ((int)objPos.y - YSize -32/ 4);
-    int objRX = ((int)objPos.x + XSize -32/ 4);
-    int objRY = ((int)objPos.y + YSize -32/ 4);
+    int objLX = ((int)objPos.x - XSize -32/ 4) - (int)colPos.x;
+    int objLY = ((int)objPos.y - YSize -32/ 4) - (int)colPos.y;
+    int objRX = ((int)objPos.x + XSize -32/ 4) - (int)colPos.x;
+    int objRY = ((int)objPos.y + YSize -32/ 4) - (int)colPos.y;
 
     //現在のタイル位置//
     int tileLX = objLX / BOX_WIDTH;

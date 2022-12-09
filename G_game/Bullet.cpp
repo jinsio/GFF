@@ -59,6 +59,7 @@ void Bullet::BulletMove()
         mPos = VAdd(mPos, mBulletPower);
         mBulletPower.y += 0.2f;
     }
+
 }
 
 void Bullet::Update(float deltaTime)
@@ -75,3 +76,13 @@ void Bullet::Draw()
     }
     mRotation++;
 }
+
+void Bullet::ScrPos(float scrSpeedLR, float scrSpeedXY)
+{
+    if (GetonGround())
+    {
+        mPos.x += scrSpeedLR;
+        mPos.y += scrSpeedXY;
+    }
+}
+

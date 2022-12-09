@@ -17,7 +17,8 @@
 PlayScene::PlayScene()
     : 
 	SceneBase(),
-	dummy()
+	dummy(),
+	bullet()
 {
 	//---ステージ関連インスタンス---//
 	bg = new BackGround;
@@ -42,11 +43,6 @@ SceneBase* PlayScene::Update(float _deltaTime)
 {
 	isStand();
 	ShotFlow(_deltaTime);
-	/*if (button->BottunStatus()==3)
-	{
-		PlayerObject* bullet = new Bullet(player);
-		PlayerObjectManager::Entry(bullet);
-	}*/
 	
 	PlayerObjectManager::Update(_deltaTime);
 
@@ -54,11 +50,15 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	scroll->SetScrLR(RunSpeed);
 	scroll->SetScrXY(player->GetVY());
 	scroll->MoveScroll(_deltaTime,player->GetPosition());
+
 	bg->Update();;
 	bg->SetScrPos(scroll->GetScrPos());
 	collision->SetScrPos(scroll->GetScrPos());
 	map->SetScrPos(scroll->GetScrPos());
-	
+	if (bullet != nullptr)
+	{
+		bullet->ScrPos(scroll->GetScrSpeedLR(), scroll->GetScrSpeedXY());
+	}
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -95,7 +95,7 @@ void PlayScene::ShotFlow(float _deltaTime)
 
 	else if (tmp == 3)
 	{
-			bullet = new Bullet(player);
+		bullet = new Bullet(player);
 		PlayerObjectManager::Entry(bullet);
 		bullet->SetBulletDir(dummy->GetBulletDummyDir());
 		bullet->BulletAngleSet(dummy->GetRadian());

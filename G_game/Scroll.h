@@ -29,6 +29,9 @@ public:
     /// <returns>スクロール座標</returns>
     VECTOR& GetScrPos() { return scrPos; }
 
+    float GetScrSpeedLR() { return scrSpeedLR; }
+    float GetScrSpeedXY() { return scrSpeedXY; }
+
     void SetScrLR(int plySpeed) { scrSpeedLR = plySpeed;}
     void SetScrXY(int plySpeed) { scrSpeedXY = plySpeed; }
 private:

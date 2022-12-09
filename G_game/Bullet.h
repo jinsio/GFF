@@ -23,6 +23,13 @@ public:
     void Draw()override;
 
     void SetonGround(bool isStand) { onGround = isStand; }
+    bool GetonGround() { return onGround; }
+    /// <summary>
+   /// 当たり判定座標のセッター
+   /// </summary>
+   /// <param name="scrPos">スクロール座標</param>
+    void ScrPos(float scrSpeedLR,float scrSpeedXY);
+
     VECTOR& GetPosition() { return mPos; }
 private:
     int    mRotation;
