@@ -1,10 +1,10 @@
 #pragma once
 #include "DxLib.h"
 
-const int CELL_WIDTH = 32;
-const int CELL_HEIGHT = 32;
-const int CELL_NUM_X = 240;
-const int CELL_NUM_Y = 66;
+const int CELL_WIDTH = 40;
+const int CELL_HEIGHT = 40;
+const int CELL_NUM_X = 160;
+const int CELL_NUM_Y = 54;
 class Map
 {
 public:
@@ -18,7 +18,7 @@ protected:
         int GraphicHandle;
     };
     sMapLayer sMap[CELL_NUM_X][CELL_NUM_Y]={0};
-    int chipgraphicHandle[(160/ 32) * (32 / 32)];
+    int chipgraphicHandle[(200/ 40) * (40 / 40)];
     VECTOR mapPos;
     int characterPack;
     int rawNum = 0;															//横方向のタイルナンバー

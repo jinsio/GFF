@@ -21,7 +21,7 @@ public:
     /// </summary>
     /// <param name="plyPos">プレイヤーポジション</param>
     /// <param name="mapPos">マップポジション</param>
-    void MoveScroll(VECTOR& plyPos);
+    void MoveScroll(float deltaTime,VECTOR& plyPos);
 
     /// <summary>
     /// スクロール座標のゲッター
