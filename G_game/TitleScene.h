@@ -18,6 +18,9 @@ public:
 	/// <returns>現在のシーンのポインタ</returns>
 	SceneBase* Update(float _deltaTime)override;
 
+	void TitleDisplay();
+
+
 	/// <summary>
 	/// シーンの描画
 	/// </summary>

@@ -7,6 +7,7 @@ TitleScene::TitleScene()
 {
 	// タイトル画像の読み込み(仮)
 	mImage = LoadGraph("assets/scene/Title.png");
+
 }
 
 TitleScene::~TitleScene()
@@ -26,8 +27,12 @@ SceneBase* TitleScene::Update(float _deltaTime)
 	return this;
 }
 
+void TitleScene::TitleDisplay()
+{
+}
+
 void TitleScene::Draw()
 {
 	// タイトルの描画
-	DrawGraph(0, 0, mImage, true);
+	DrawRotaGraph( 960, 380, 1.5, 0, mImage,1,0);
 }
