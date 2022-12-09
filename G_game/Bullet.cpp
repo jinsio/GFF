@@ -3,7 +3,7 @@
 Bullet::Bullet(class Player*player)
     :PlayerObject(),
     mRotation(0),
-    mMovePower(10),
+    mMovePower(5),
     mBulletVX(0),
     mBulletVY(0),
     mBulletPower{0,0}
@@ -11,7 +11,8 @@ Bullet::Bullet(class Player*player)
     if (mHandle = -1) {
         mHandle = LoadGraph("assets/player/player.png");
     }
-    mPos = player->GetPos();
+    mPos.x= player->GetPos().x;
+    mPos.y = player->GetPos().y + -10;
 }
 
 Bullet::~Bullet()
@@ -40,16 +41,24 @@ void Bullet::BulletAngleSet(float mAngle)
 
 void Bullet::BulletMove()
 {
-    if (mRightDir)
+    if (onGround)
     {
-        mPos=VAdd(mPos,mBulletPower);
+        mBulletPower.x = 0;
+        mBulletPower.y = 0;
     }
-    if (!mRightDir)
+    else
     {
-        mPos=VAdd(mPos,mBulletPower);
+        if (mRightDir)
+        {
+            mPos = VAdd(mPos, mBulletPower);
+        }
+        if (!mRightDir)
+        {
+            mPos = VAdd(mPos, mBulletPower);
+        }
+        mPos = VAdd(mPos, mBulletPower);
+        mBulletPower.y += 0.2f;
     }
-    mPos = VAdd(mPos, mBulletPower);
-    mBulletPower.y += 0.2f ;
 }
 
 void Bullet::Update(float deltaTime)

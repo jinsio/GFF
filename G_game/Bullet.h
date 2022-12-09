@@ -22,6 +22,8 @@ public:
     void Update(float deltaTime)override;
     void Draw()override;
 
+    void SetonGround(bool isStand) { onGround = isStand; }
+    VECTOR& GetPosition() { return mPos; }
 private:
     int    mRotation;
     float  mMovePower;
@@ -29,4 +31,5 @@ private:
     float  mBulletVX;
     float  mBulletVY;
 
+    bool onGround;
 };

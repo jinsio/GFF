@@ -30,6 +30,12 @@ public:
     /// </summary>
     bool ColBox(VECTOR& objPos);
 
+
+    /// <summary>
+    /// 当たり判定
+    /// </summary>
+    bool ColBox_(VECTOR& objPos);
+
     /// <summary>
     /// 当たり判定座標のセッター
     /// </summary>

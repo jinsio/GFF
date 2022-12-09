@@ -74,6 +74,10 @@ SceneBase* PlayScene::Update(float _deltaTime)
 void PlayScene::isStand()
 {
 	player->SetonGround(collision->ColBox(player->GetPosition()));
+	if (bullet!=nullptr)
+	{
+		bullet->SetonGround(collision->ColBox(bullet->GetPosition()));
+	}
 }
 
 void PlayScene::ShotFlow(float _deltaTime)
@@ -91,15 +95,17 @@ void PlayScene::ShotFlow(float _deltaTime)
 
 	else if (tmp == 3)
 	{
-		Bullet* bullet = new Bullet(player);
+			bullet = new Bullet(player);
 		PlayerObjectManager::Entry(bullet);
 		bullet->SetBulletDir(dummy->GetBulletDummyDir());
 		bullet->BulletAngleSet(dummy->GetRadian());
 		dummy->SetAlive(false);
+
 	}
 	else
 	{
 	}
+	
 }
 
 void PlayScene::Draw()
@@ -107,5 +113,6 @@ void PlayScene::Draw()
 	bg->Draw();
 	map->MapDraw();
 	PlayerObjectManager::Draw();
+	
 }
 
