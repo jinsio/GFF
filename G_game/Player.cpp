@@ -30,7 +30,6 @@ Player::Player():
 	//プレイヤーの初期位置の代入
 	mPos.x = FirstPosX;
 	mPos.y = FirstPosY;
-	
 }
 
 Player::~Player()

@@ -25,6 +25,7 @@ private:
 	Player* player;
 	Button* button;
 	ShotDummy* dummy;
+	Bullet* bullet;
 
 public:
 	// コンストラクタ
