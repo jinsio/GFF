@@ -3,10 +3,10 @@
 
 
 //.....’è”éŒ¾.....//
-const int BOX_WIDTH = 32;                  //“–‚½‚è”»’è‚Ì•
-const int BOX_HEIGHT = 32;                 //“–‚½‚è”»’è‚Ì‚‚³
-const int BOX_NUM_X = 240;                 //“–‚½‚è”»’è‚Ì‰¡‚Ì”
-const int BOX_NUM_Y = 66;                  //“–‚½‚è”»’è‚Ìc‚Ì”
+const int BOX_WIDTH = 40;                  //“–‚½‚è”»’è‚Ì•
+const int BOX_HEIGHT = 40;                 //“–‚½‚è”»’è‚Ì‚‚³
+const int BOX_NUM_X = 160;                 //“–‚½‚è”»’è‚Ì‰¡‚Ì”
+const int BOX_NUM_Y = 54;                  //“–‚½‚è”»’è‚Ìc‚Ì”
 
 
 class Collision

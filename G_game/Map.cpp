@@ -3,7 +3,7 @@
 Map::Map()
 	:mapPos()
 {
-	LoadDivGraph("assets/mapArufa/mapsozai.png",  (160 / 32)* (32 / 32), 160 / 32,  32, 32, 32, chipgraphicHandle);
+	LoadDivGraph("assets/mapArufa/mapsozai.png",  (200 / 40)* (40 / 32), 200 / 40,  40, 40, 40, chipgraphicHandle);
 	FILE* filePointer;
 	fopen_s(&filePointer, "assets/mapArufa/Maoumap_map.csv", "r");																//fopen_sŠÖ”‚Åmap.csv‚ğ“Ç‚İæ‚èŒ`®‚ÅŠJ‚­
 	if (filePointer == NULL)																			//filePointer‚ª‹ó‚Ìê‡‚Í
