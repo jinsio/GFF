@@ -6,14 +6,14 @@
 #include "PlayerObject.h"
 
 //プレイヤーの初期位置
-const int FirstPosX= 500;
-const int FirstPosY = 500;
+const int FirstPosX= 250;
+const int FirstPosY = 900;
 
 //移動速度
-const float RunSpeed = 6.0f;
+const float RunSpeed = 4.0f;
 
 //ジャンプ関連
-const float jumpPower = 10.0f;     // ジャンプ初速度
+const float jumpPower = 12.0f;     // ジャンプ初速度
 const float gravity = 0.3f;    // 重力
 const float maxFallSpeed = 10.0f;   // 最大落下速度
 
@@ -66,7 +66,6 @@ public:
 
 	//キャラが立っているか
 	void SetonGround(bool isStand) { onGround=isStand; }
-	void SetWall(bool isWall) { onWall = isWall; }
 
 	//キャラの移動
 	void Move();
@@ -101,9 +100,7 @@ public:
 
 private:
 	float playerVY;
-	float playerVX;
 	bool onGround;
-	bool onWall;
 	int jumpButtonCount;
 
 	bool input;

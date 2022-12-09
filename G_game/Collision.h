@@ -36,10 +36,6 @@ public:
     /// <param name="scrPos">スクロール座標</param>
     void SetScrPos(VECTOR& scrPos) { colPos = scrPos; }
 
-    /// <summary>
-    /// 壁についているかの判定
-    /// </summary>
-    bool IsWall() { return isWall; }
 
 private:
     struct sColLayer
@@ -56,7 +52,6 @@ private:
     bool eofFlag;                           //eof（end of file）検出フラグ
     FILE* fp;                               //ファイルポインター
 
-    bool isWall;                           //壁についているかどうか
     VECTOR colPos;                          //当たり判定座標
 };
 

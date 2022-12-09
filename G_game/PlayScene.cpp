@@ -74,7 +74,6 @@ SceneBase* PlayScene::Update(float _deltaTime)
 void PlayScene::isStand()
 {
 	player->SetonGround(collision->ColBox(player->GetPosition()));
-	player->SetWall(collision->IsWall());
 }
 
 void PlayScene::ShotFlow(float _deltaTime)

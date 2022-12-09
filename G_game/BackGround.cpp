@@ -52,6 +52,6 @@ void BackGround::Draw()
     for (int i = 0; i < LayerNum; i++)
     {  
         DrawGraph(first.screenPos[i] % 1920, first.bgY[i], first.bgHandle[i], TRUE);
-        DrawGraph(second.screenPos[i] % 1920 + 1920, first.bgY[i], first.bgHandle[i], TRUE);
+        DrawGraph(1920+second.screenPos[i] % 1920, first.bgY[i], first.bgHandle[i], TRUE);
     }
 }

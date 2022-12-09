@@ -6,10 +6,8 @@
 
 Player::Player():
 	playerVY(0),
-	playerVX(0),
 	jumpFlag(false),
 	onGround(false),
-	onWall(false),
 	input(true),
 	jumpButtonCount(),
 	mAnimation(),
@@ -79,8 +77,6 @@ void Player::AnimationUpdate(float deltaTime)
 
 void Player::Move()
 {
-	if (input)
-	{
 		if (CheckHitKey(KEY_INPUT_RIGHT)) {
 			mRightDir = FALSE;
 			mPos.x += RunSpeed;
@@ -89,7 +85,6 @@ void Player::Move()
 			mRightDir = TRUE;
 			mPos.x -= RunSpeed;
 		}
-	}
 	if (onGround) {
 		if (CheckHitKey(KEY_INPUT_J))
 		{
@@ -100,16 +95,9 @@ void Player::Move()
 				playerVY = -jumpPower;
 				jumpFlag = false;
 			}
-			if (onWall)
-			{
-				playerVX = RunSpeed * 2;
-				input = false;
-			}
 		}
 		else {
 			playerVY = 0;
-			playerVX = 0;
-			input = true;
 		}
 	}
 	else if (!jumpFlag)
@@ -121,14 +109,6 @@ void Player::Move()
 		}
 	}
 	mPos.y += playerVY;
-	if (mRightDir)
-	{
-		mPos.x += playerVX;
-	}
-	else
-	{
-		mPos.x -= playerVX;
-	}
 }
 
 
