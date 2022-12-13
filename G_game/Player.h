@@ -74,10 +74,11 @@ public:
 	VECTOR& GetPosition() { return mPos; }
 
 	//キャラの重力
-	int GetVY() { return playerVY; }
+	float GetVY() { return playerVY; }
 
 	//キャラの向き
 	int GetDir() { return mRightDir; }
+
 
 	// 待機アニメーション設定
 	void IdleAnimation(float _deltaTime);
