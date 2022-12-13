@@ -1,12 +1,15 @@
 #include "Bullet.h"
 
+Scroll* scroll;
+
 Bullet::Bullet(class Player*player)
     :PlayerObject(),
     mRotation(0),
     mMovePower(5),
     mBulletVX(0),
     mBulletVY(0),
-    mBulletPower{0,0}
+    mBulletPower{0,0},
+    bulletPos{}
 {
     if (mHandle = -1) {
         mHandle = LoadGraph("assets/player/player.png");
@@ -58,15 +61,16 @@ void Bullet::BulletMove()
         }
         mPos = VAdd(mPos, mBulletPower);
         mBulletPower.y += 0.2f;
+        
     }
-
 }
 
 void Bullet::Update(float deltaTime)
 {   
-        if (mAlive) {
-            BulletMove();
-        }
+    if (mAlive) {
+        BulletMove();
+    }
+        
 }
 
 void Bullet::Draw()
@@ -77,12 +81,11 @@ void Bullet::Draw()
     mRotation++;
 }
 
-void Bullet::ScrPos(float scrSpeedLR, float scrSpeedXY)
+void Bullet::ScrPos(float plyspeed,float deltaTime)
 {
     if (GetonGround())
     {
-        mPos.x += scrSpeedLR;
-        mPos.y += scrSpeedXY;
+        mPos.x -= plyspeed* deltaTime/10;
     }
 }
 

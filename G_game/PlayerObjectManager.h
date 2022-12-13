@@ -18,6 +18,7 @@
 		static void Release(PlayerObject* releaseObj);           // ゲームオブジェクト削除
 		static void ReleaseAllObj();                           // 全オブジェクト削除
 
+
 		static void Update(float deltaTime);                   // 全オブジェクトの更新処理
 		static void Draw();                                    // 描画 
 
