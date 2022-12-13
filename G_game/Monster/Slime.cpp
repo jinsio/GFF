@@ -1,9 +1,6 @@
 #include "Slime.h"
 #include "monsterInfo.h"
 
-/**
-* スライムのコンストラクタ
-*/
 Slime::Slime()
 {
     scale.x = monsterScaleS.x;
@@ -12,19 +9,6 @@ Slime::Slime()
     halfScale.y = scale.y / 2;
 }
 
-
-/**
-* スライムのデストラクタ
-*/
 Slime::~Slime()
-{
-}
-
-/**
-* スライムの更新
-* 
-* @param[in] deltaTime 1フレームの経過時間
-*/
-void Slime::Update(float deltaTime)
 {
 }

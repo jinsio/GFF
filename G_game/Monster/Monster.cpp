@@ -51,6 +51,10 @@ Monster::~Monster()
     }
 }
 
+void Monster::Update(float deltaTime)
+{
+}
+
 /**
 * •`‰æ
 */

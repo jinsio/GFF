@@ -10,8 +10,8 @@ public:
     /** 仮想デストラクタ*/
     virtual ~Monster();
 
-    /** 更新（純粋仮想関数）*/
-    virtual void Update(float deltaTime) = 0;
+    /** 更新*/
+    void Update(float deltaTime);
 
     /** 描画（仮想関数）*/
     void Draw();
@@ -61,4 +61,8 @@ protected:
 
     //! tmp
     int i;
+
+    virtual void Move() = 0;
+
+    virtual void Attack() = 0;
 };
