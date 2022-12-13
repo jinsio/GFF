@@ -18,8 +18,8 @@ Collision::Collision()
 {
 
 
-    LoadDivGraph("assets/mapArufa/collision_check.png", 2, 2, 1, BOX_WIDTH, BOX_HEIGHT, colBoxHandle);//当たり判定チェック用画像
-    fopen_s(&fp, "assets/mapArufa/Maoumap_collisionB1.csv", "r");          //fopen_s関数でcsvファイルを読み取り形式で開く
+    LoadDivGraph("assets/mapArufa/collision_new_check.png", 5, 5, 1, BOX_WIDTH, BOX_HEIGHT, colBoxHandle);//当たり判定チェック用画像
+    fopen_s(&fp, "assets/mapArufa/Maoumap_collision.csv", "r");          //fopen_s関数でcsvファイルを読み取り形式で開く
     if (fp == NULL)                                                            //fpが空の時は
     {
         DebugBreak();                                                         //デバッグ中止
@@ -99,7 +99,7 @@ bool Collision::ColBox(VECTOR& objPos)
 
             int bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;
             int by = (abs(by1) < abs(by2)) ? by1 : by2;
-            if (sCol[jx][iy].BoxHandle == colBoxHandle[1])
+            if (sCol[jx][iy].BoxHandle != colBoxHandle[0])
             {
                 if (abs(bx) < abs(by))
                 {
@@ -121,7 +121,6 @@ bool Collision::ColBox(VECTOR& objPos)
                         }
                     }
                 }
-
             }
         }
     }
