@@ -1,68 +1,80 @@
 #pragma once
+
 #include "monsterInfo.h"
 
+/// <summary>
+/// モンスタークラス
+/// </summary>
 class Monster
 {
 public:
-    /** コンストラクタ*/
+    /// <summary>
+    /// コンストラクタ
+    /// </summary>
     Monster();
 
-    /** 仮想デストラクタ*/
+    /// <summary>
+    /// 仮想デストラクタ
+    /// </summary>
     virtual ~Monster();
 
-    /** 更新*/
-    void Update(float deltaTime);
+    /// <summary>
+    /// モンスターの更新（純粋仮想関数）
+    /// </summary>
+    /// <param name="deltaTime">1フレームの経過時間</param>
+    virtual void Update(float deltaTime) = 0;
 
-    /** 描画（仮想関数）*/
+    /// <summary>
+    /// モンスターの描画
+    /// </summary>
     void Draw();
 
-    /** 生きているかどうかの取得*/
-    bool GetAlive() { return isAlive; }
+    /// <summary>
+    /// 生死状態の取得
+    /// </summary>
+    /// <returns>生きていればtrue 死んでいたらfalse</returns>
+    bool GetAlive() { return alive; }
 
 protected:
-    /** 座標*/
+    // 座標
     VECTOR pos = { 0 };
 
-    /** 大きさ*/
+    // 大きさ
     VECTOR scale = { 0 };
 
-    /** 大きさ（半分）*/
+    // 大きさ（半分）
     VECTOR halfScale = { 0 };
 
-    /** 速度*/
+    // 速度
     float speed;
     
-    /** 重力*/
+    // 重力
     float gravity;
 
-    /** 描画用*/
+    // 描画ハンドル
     int handle;
 
-    /** 移動アニメーション*/
+    // 移動アニメーション
     int moveAnim[moveAnimNum] = { -1 };
 
-    /** 攻撃アニメーション*/
+    // 攻撃アニメーション
     int attackAnim[attackAnimNum] = { -1 };
 
-    /** 被弾アニメーション*/
+    // 被弾アニメーション
     int damageAnim[damageAnimNum] = { -1 };
 
-    /** 体力*/
+    // 体力
     int hp;
 
-    /** 生きているかどうか*/
-    bool isAlive;
+    // 生死状態
+    bool alive;
 
-    /** 味方かどうか*/
-    bool isAlly;
+    // 右を向いているか
+    bool dirRight;
 
-    /** 右向きかどうか*/
-    bool isDirRight;
+    /// <summary>
+    /// 生死状態の確認
+    /// </summary>
+    void CheckAlive();
 
-    //! tmp
-    int i;
-
-    virtual void Move() = 0;
-
-    virtual void Attack() = 0;
 };
