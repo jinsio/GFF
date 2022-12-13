@@ -1,17 +1,22 @@
 #pragma once
+
 #include "Monster.h"
 
+/// <summary>
+/// コウモリクラス
+/// </summary>
 class Bat final : public Monster
 {
 public:
-    /** コンストラクタ*/
+    /// <summary>
+    /// コンストラクタ
+    /// </summary>
     Bat();
 
-    /** デストラクタ*/
+    /// <summary>
+    /// デストラクタ
+    /// </summary>
     ~Bat();
-
-    /** 更新*/
-    void Update(float deltaTime) override;
 
 private:
 };

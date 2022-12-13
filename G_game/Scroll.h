@@ -28,12 +28,16 @@ public:
     /// </summary>
     /// <returns>スクロール座標</returns>
     VECTOR& GetScrPos() { return scrPos; }
+    
+    float GetscrRX() { return scrRX; }
 
     float GetScrSpeedLR() { return scrSpeedLR; }
     float GetScrSpeedXY() { return scrSpeedXY; }
 
-    void SetScrLR(int plySpeed) { scrSpeedLR = plySpeed;}
-    void SetScrXY(int plySpeed) { scrSpeedXY = plySpeed; }
+    void SetScrLR(float plySpeed) { scrSpeedLR = plySpeed;}
+    void SetScrXY(float plySpeed) { scrSpeedXY = plySpeed; }
+
+
 private:
     float scrRX;        //右方向へスクロールする座標
     float scrRY;        //下方向へスクロールする座標
@@ -49,6 +53,9 @@ private:
 
     float scrSpeedLR;        //スクロール速度
     float scrSpeedXY;        //スクロール速度
+
+    VECTOR scrSpeed;
+    class Bullet;
 
 };
 
