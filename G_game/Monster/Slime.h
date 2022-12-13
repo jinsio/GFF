@@ -1,17 +1,22 @@
 #pragma once
+
 #include "Monster.h"
 
+/// <summary>
+/// スライムクラス
+/// </summary>
 class Slime final : public Monster
 {
 public:
-    /** コンストラクタ*/
+    /// <summary>
+    /// コンストラクタ
+    /// </summary>
     Slime();
 
-    /** デストラクタ*/
+    /// <summary>
+    /// デストラクタ
+    /// </summary>
     ~Slime();
-
-    /** 更新*/
-    void Update(float deltaTime) override;
 
 private:
 };
