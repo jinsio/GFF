@@ -10,7 +10,7 @@ const int FirstPosX= 250;
 const int FirstPosY = 900;
 
 //移動速度
-const float RunSpeed = 4.0f;
+const float RunSpeed = 6.0f;
 
 //ジャンプ関連
 const float jumpPower = 12.0f;     // ジャンプ初速度
