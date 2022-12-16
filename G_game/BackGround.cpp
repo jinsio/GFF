@@ -32,7 +32,6 @@ void BackGround::Update()
 
         first.bgX[i] = bgPos.x * (1.5 * i + 0.5f);
         first.screenPos[i] = first.bgX[i];
-        first.bgY[i] = bgPos.y;
 
     }
 
@@ -40,7 +39,6 @@ void BackGround::Update()
     {
         second.bgX[j] = bgPos.x * (1.5 * j + 0.5f);
         second.screenPos[j] = second.bgX[j];
-        second.bgY[j] = bgPos.y;
     }
 }
 
@@ -51,7 +49,7 @@ void BackGround::Draw()
 
     for (int i = 0; i < LayerNum; i++)
     {  
-        DrawGraph(first.screenPos[i] % 1920, first.bgY[i], first.bgHandle[i], TRUE);
-        DrawGraph(1920+second.screenPos[i] % 1920, first.bgY[i], first.bgHandle[i], TRUE);
+        DrawGraph(first.screenPos[i] % 1920, bgPos.y, first.bgHandle[i], TRUE);
+        DrawGraph(1920+second.screenPos[i] % 1920, bgPos.y, first.bgHandle[i], TRUE);
     }
 }
