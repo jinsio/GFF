@@ -30,6 +30,7 @@ public:
     VECTOR& GetScrPos() { return scrPos; }
     
     float GetscrRX() { return scrRX; }
+    float GetscrLX() { return scrLX; }
 
     float GetScrSpeedLR() { return scrSpeedLR; }
     float GetScrSpeedXY() { return scrSpeedXY; }
