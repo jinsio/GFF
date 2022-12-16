@@ -129,6 +129,7 @@
     <ClInclude Include="Manager\MonsterManager.h">
       <Filter>ソースファイル\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerObjectTag.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">

@@ -17,10 +17,6 @@ public:
     bool GetBulletDummyDir() { return mRightDir; }
     void SetBulletDummyDir(bool plyDir) { mRightDir = plyDir; }     ///ƒvƒŒƒCƒ„[‚ÌŒü‚«‚ğ’e•ûŒü‚É‘ã“ü
 
-
-    void SetEntryFlag() { mEntryFlag=true; }
-    bool GetEntryFlag() { return mEntryFlag; }
-
     float GetRadian() { return mAngle; }
     void  AddRadian(float _deltaTime);
     void  AddAngleChange();
@@ -32,7 +28,7 @@ private:
     float  mAngle;
     float  AddAngle;
     int    mHandle;
-    float    mRotation;
-    bool   mEntryFlag;
+    float   mRotation;
+  
 };
 
