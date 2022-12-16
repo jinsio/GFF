@@ -2,7 +2,7 @@
 #include "PlayerObject.h"
 
 
-	// PlayerObjectManager実体へのポインタ定義
+	// GameObjectManager実体へのポインタ定義
 	PlayerObjectManager* PlayerObjectManager::mpInstance = nullptr;
 
 	//------------------------------------------------------------------------------
@@ -11,7 +11,7 @@
 	PlayerObjectManager::PlayerObjectManager()
 		: mObjects()
 	{
-		mpInstance = this;
+		mpInstance = nullptr;
 	}
 	//------------------------------------------------------------------------------
 	// @brief ゲームオブジェクトマネージャ　デストラクタ
@@ -43,7 +43,7 @@
 	void PlayerObjectManager::Entry(PlayerObject* newObj)
 	{
 		// ペンディングオブジェクトに一時保存
-		mpInstance->mPendingObjects.emplace_back(newObj);
+		mpInstance->mPendingObjects.push_back(newObj);
 	}
 
 	//------------------------------------------------------------------------------
@@ -54,8 +54,7 @@
 	void PlayerObjectManager::Release(PlayerObject* releaseObj)
 	{
 		// ペンディングオブジェクト内から検索
-		auto iter = std::find(mpInstance->mPendingObjects.begin(),
-			mpInstance->mPendingObjects.end(), releaseObj);
+		auto iter = std::find(mpInstance->mPendingObjects.begin(), mpInstance->mPendingObjects.end(), releaseObj);
 		if (iter != mpInstance->mPendingObjects.end())
 		{
 			// 見つけたオブジェクトを最後尾に移動してデータを消す
@@ -65,14 +64,16 @@
 			return;
 		}
 
+		// 解放オブジェクトのタグ種類を得る
+		PlayerObjectTag tag = releaseObj->GetTag();
+
 		// アクティブオブジェクト内から削除Objectを検索
-		iter = std::find(mpInstance->mObjects.begin(),
-			mpInstance->mObjects.end(), releaseObj);
-		if (iter != mpInstance->mObjects.end())
+		iter = std::find(mpInstance->mObjects[tag].begin(), mpInstance->mObjects[tag].end(), releaseObj);
+		if (iter != mpInstance->mObjects[tag].end())
 		{
 			// 見つけたオブジェクトを末尾に移動し、削除
-			std::iter_swap(iter, mpInstance->mObjects.end() - 1);
-			delete mpInstance->mObjects.back();
+			std::iter_swap(iter, mpInstance->mObjects[tag].end() - 1);
+			delete mpInstance->mObjects[tag].back();
 		}
 	}
 
@@ -87,77 +88,120 @@
 			delete mpInstance->mPendingObjects.back();
 		}
 
-		// 末尾から削除
-		while (!mpInstance->mObjects.empty())
+		// すべてのアクティブオブジェクトを削除
+		for (auto& tag : ObjectTagAll)
 		{
-			delete mpInstance->mObjects.back();
-			mpInstance->mObjects.pop_back();
+			// 末尾から削除
+			while (!mpInstance->mObjects[tag].empty())
+			{
+				delete mpInstance->mObjects[tag].back();
+				mpInstance->mObjects[tag].pop_back();
+			}
 		}
 	}
 
 	//-------------------------------------------------------------------------------
-	// @brief 全オブジェクトの更新処理.
-	// @param[in] 1フレームの更新時間.
-	// 
-	// @detail 全オブジェクトのUpdateメソッドを呼んだあと、
-	// 新規Objectをアクティブリストに追加
-	// 死亡Objectをアクティブリストから削除
-	//-------------------------------------------------------------------------------
+  // @brief 全オブジェクトの更新処理.
+  // @param[in] 1フレームの更新時間.
+  //
+  // @detail 全オブジェクトのUpdateメソッドを呼んだあと、
+  // 新規Objectをアクティブリストに追加
+  // 死亡Objectをアクティブリストから削除
+  //-------------------------------------------------------------------------------
 	void PlayerObjectManager::Update(float deltaTime)
 	{
 		// すべてのアクターの更新
-		// 該当タグにあるすべてのオブジェクトを更新
-		for (int i = 0; i < mpInstance->mObjects.size(); ++i)
+		for (auto& tag : ObjectTagAll)
 		{
-			mpInstance->mObjects[i]->Update(deltaTime);
+			// 該当タグにあるすべてのオブジェクトを更新
+			for (int i = 0; i < mpInstance->mObjects[tag].size(); ++i)
+			{
+				mpInstance->mObjects[tag][i]->Update(deltaTime);
+			}
 		}
 
 		// ペンディング中のオブジェクトをアクティブリストに追加
 		for (auto pending : mpInstance->mPendingObjects)
 		{
-			mpInstance->mObjects.emplace_back(pending);
+			PlayerObjectTag tag = pending->GetTag();
+			mpInstance->mObjects[tag].emplace_back(pending);
 		}
-
 		mpInstance->mPendingObjects.clear();
 
-		// すべてのアクター中で死んでいるアクターをdeadObjectへ一時保管
+		// 死んでいるObjectをdeadObjectへ一時保管したあと、
+		 // vectorから排除
 		std::vector<PlayerObject*> deadObjects;
-		// 死亡Objectを検索し、deadObjectsへ
-		for (int i = 0; i < mpInstance->mObjects.size(); ++i)
+		for (auto& tag : ObjectTagAll)
 		{
-			// 生きていなかったらdeadObjectへ移動
-			if (!mpInstance->mObjects[i]->GetAlive()) 
+			// deadObjectへ移動
+			for (auto obj : mpInstance->mObjects[tag])
 			{
-				deadObjects.emplace_back(mpInstance->mObjects[i]);
-				mpInstance->mObjects.erase(
-					std::remove_if(std::begin(mpInstance->mObjects), std::end(mpInstance->mObjects), [](PlayerObject* p) {return !p->GetAlive(); }),
-					std::cend(mpInstance->mObjects));
+				if (!obj->GetAlive())
+				{
+					deadObjects.emplace_back(obj);
+				}
 			}
+			// mObjects[tag]から死んでいるオブジェクトのみvectorから除外のみ行う
+			// まだGameObjectのdeleteは行わない
+			// vector中のremove_ifの使い方については下記URL参考
+			// https://programming-place.net/ppp/contents/cpp2/main/remove_element.html#remove_if
+			mpInstance->mObjects[tag].erase(std::remove_if(std::begin(mpInstance->mObjects[tag]), std::end(mpInstance->mObjects[tag]), [](PlayerObject* g) { return !g->GetAlive(); }), std::cend(mpInstance->mObjects[tag]));
 		}
 
-		//// 死んでいるオブジェクトをdelete
-		//for (auto deadObj : deadObjects)
-		//{
-		//	delete deadObj;
-		//}
-		//deadObjects.clear();
+		// 死んでいるGameObjectをここでdelete
 		while (!deadObjects.empty())
 		{
 			delete deadObjects.back();
 			deadObjects.pop_back();
 		}
 	}
-
 	//-------------------------------------------------------------------------------
 	// @brief 全オブジェクトの描画処理.
 	//-------------------------------------------------------------------------------
 	void PlayerObjectManager::Draw()
 	{
-		
-		for (int i = 0; i < mpInstance->mObjects.size(); ++i)
+		for (auto& tag : ObjectTagAll)
 		{
-			mpInstance->mObjects[i]->Draw();
+			for (int i = 0; i < mpInstance->mObjects[tag].size(); ++i)
+			{
+				// 描画可能なオブジェクトのみ描画
+				if (mpInstance->mObjects[tag][i]->GetVisible())
+				{
+					mpInstance->mObjects[tag][i]->Draw();
+				}
+			}
 		}
+	}
+
+	////-------------------------------------------------------------------------------
+	//// @brief 全オブジェクトの当たり判定.
+	////-------------------------------------------------------------------------------
+	//void PlayerObjectManager::Collision()
+	//{
+	//	//////////////////////////////////////
+	//	// 当たり判定組み合わせをここに書く
+	//	//////////////////////////////////////
+	//	// player vs BackGround すべての組み合わせチェック
+	//	for (int playernum = 0; playernum < mpInstance->mObjects[ObjectTag::Player].size(); ++playernum)
+	//	{
+	//		for (int bgnum = 0; bgnum < mpInstance->mObjects[ObjectTag::BackGround].size(); ++bgnum)
+	//		{
+	//			mpInstance->mObjects[ObjectTag::Player][playernum]->
+	//				OnCollisonEnter(mpInstance->mObjects[ObjectTag::BackGround][bgnum]);
+	//		}
+	//	}
+	//}
+	//-------------------------------------------------------------------------------
+	// @brief タグ種類の初めのオブジェクトを返す.
+	// @param[in] tag ObjectTag種類
+	//-------------------------------------------------------------------------------
+	PlayerObject* PlayerObjectManager::GetFirstGameObject(PlayerObjectTag tag)
+	{
+		if (mpInstance->mObjects[tag].size() == 0)
+		{
+			return nullptr;
+		}
+		return mpInstance->mObjects[tag][0];
 	}
 
 	//-------------------------------------------------------------------------------
@@ -175,9 +219,3 @@
 			mpInstance = nullptr;
 		}
 	}
-
-
-	//--------------------------------------------------------------------------------
-	//プレイヤーのポインタを返す関数
-	//--------------------------------------------------------------------------------
-

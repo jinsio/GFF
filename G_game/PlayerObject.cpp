@@ -1,7 +1,9 @@
 #include "PlayerObject.h"
 
-PlayerObject::PlayerObject()
-    :mPos()
+PlayerObject::PlayerObject(PlayerObjectTag tag)
+    :mTag(tag)
+    ,mPos()
+    ,mVisible(true)
     ,mAlive(true)
     ,mRightDir(true)
     ,mHandle(-1)

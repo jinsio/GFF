@@ -5,6 +5,7 @@
 #include "Bullet.h"
 
 Player::Player():
+	PlayerObject(PlayerObjectTag::Player),
 	playerVY(0),
 	jumpFlag(false),
 	onGround(false),
@@ -27,9 +28,7 @@ Player::Player():
 	nowCount(0.0f),
 	prevCount(0.0f)
 {
-	//プレイヤーの初期位置の代入
-	mPos.x = FirstPosX;
-	mPos.y = FirstPosY;
+	
 }
 
 Player::~Player()

@@ -184,6 +184,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerObject.h" />
     <ClInclude Include="PlayerObjectManager.h" />
+    <ClInclude Include="PlayerObjectTag.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SceneBase.h" />

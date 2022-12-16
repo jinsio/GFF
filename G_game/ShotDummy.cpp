@@ -1,10 +1,10 @@
 #include "ShotDummy.h"
 
 ShotDummy::ShotDummy(class Player* player)
-    :mAngle(0)
+    :PlayerObject(PlayerObjectTag::ShotDummy)
+	,mAngle(0)
     ,AddAngle(0.03)
 	,mRotation(0)
-	,mEntryFlag(FALSE)
 {
 	if (mHandle = -1) {
 		mHandle = LoadGraph("assets/player/arrow.png");
