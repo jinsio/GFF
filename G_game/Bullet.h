@@ -30,7 +30,8 @@ public:
    /// 当たり判定座標のセッター
    /// </summary>
    /// <param name="scrPos">スクロール座標</param>
-    void ScrPos(float plyspeed,float deltaTime);
+    void LEFTScrPos(float plyspeed,float deltaTime);
+    void RIGHTScrPos(float plyspeed, float deltaTime);
 
     VECTOR& GetPosition() { return mPos; }
     void AddScrPos(VECTOR scrPos) { mPos = scrPos; }

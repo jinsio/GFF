@@ -56,8 +56,12 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	collision->SetScrPos(scroll->GetScrPos());
 	map->SetScrPos(scroll->GetScrPos());
 
-	if (bullet != nullptr&&player->GetPos().x==scroll->GetscrRX()) {
-		bullet->ScrPos(scroll->GetScrSpeedLR(),_deltaTime);
+	if (bullet != nullptr&&(player->GetPos().x==scroll->GetscrRX())) {
+		bullet->LEFTScrPos(scroll->GetScrSpeedLR(),_deltaTime);
+	}
+
+	if (bullet != nullptr && (player->GetPos().x == scroll->GetscrLX())) {
+		bullet->RIGHTScrPos(scroll->GetScrSpeedLR(), _deltaTime);
 	}
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))

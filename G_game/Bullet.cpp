@@ -81,11 +81,19 @@ void Bullet::Draw()
     mRotation++;
 }
 
-void Bullet::ScrPos(float plyspeed,float deltaTime)
+void Bullet::LEFTScrPos(float plyspeed,float deltaTime)
 {
-    if (GetonGround())
+    if (GetonGround() && (CheckHitKey(KEY_INPUT_RIGHT)))
     {
         mPos.x -= plyspeed* deltaTime/10;
+    }
+}
+
+void Bullet::RIGHTScrPos(float plyspeed, float deltaTime)
+{
+     if (GetonGround() && (CheckHitKey(KEY_INPUT_LEFT)))
+    {
+        mPos.x += plyspeed * deltaTime / 10;
     }
 }
 
