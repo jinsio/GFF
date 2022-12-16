@@ -67,13 +67,13 @@ Collision::~Collision()
 //-------------------------------------------------//
 // @briaf   当たり判定
 //-------------------------------------------------//
-bool Collision::ColBox(VECTOR& objPos)
+bool Collision::ColBox(VECTOR& objPos,int scrX,int scrY)
 {
     //オブジェクトBOXの頂点座標//
-    int objLX = ((int)objPos.x - XSize / 4) - (int)colPos.x;
-    int objLY = ((int)objPos.y - YSize / 4) - (int)colPos.y;
-    int objRX = ((int)objPos.x + XSize / 4) - (int)colPos.x;
-    int objRY = ((int)objPos.y + YSize / 1.5f) - (int)colPos.y;
+    int objLX = ((int)objPos.x - XSize / 4) + scrX;
+    int objLY = ((int)objPos.y - YSize / 4) + scrY;
+    int objRX = ((int)objPos.x + XSize / 4) + scrX;
+    int objRY = ((int)objPos.y + YSize / 1.5f) + scrY;
 
     //現在のタイル位置//
     int tileLX = objLX / BOX_WIDTH ;
@@ -130,63 +130,3 @@ bool Collision::ColBox(VECTOR& objPos)
 }
 
 
-/// <summary>
-/// 弾とマップの当たり判定
-/// </summary>
-/// <param name="objPos"></param>
-/// <returns></returns>
-bool Collision::ColBox_(VECTOR& objPos)
-{
-    //オブジェクトBOXの頂点座標//
-    int objLX = ((int)objPos.x - XSize -32/ 4) - (int)colPos.x;
-    int objLY = ((int)objPos.y - YSize -32/ 4) - (int)colPos.y;
-    int objRX = ((int)objPos.x + XSize -32/ 4) - (int)colPos.x;
-    int objRY = ((int)objPos.y + YSize -32/ 4) - (int)colPos.y;
-
-    //現在のタイル位置//
-    int tileLX = objLX / BOX_WIDTH;
-    int tileLY = objLY / BOX_HEIGHT;
-    int tileRX = objRX / BOX_WIDTH;
-    int tileRY = objRY / BOX_HEIGHT;
-
-    for (int iy = tileLY; iy < tileRY + 1; iy++)
-    {
-        for (int jx = tileLX; jx < tileRX + 1; jx++)
-        {
-            //当たり判定BOXの頂点座標//
-            int boxLX = jx * BOX_WIDTH;
-            int boxLY = iy * BOX_HEIGHT;
-            int boxRX = boxLX + BOX_WIDTH;
-            int boxRY = boxLY + BOX_HEIGHT;
-
-            //押し出し処理//
-            int bx1 = boxLX - objRX;
-            int bx2 = boxRX - objLX;
-            int by1 = boxLY - objRY;
-            int by2 = boxRY - objLY;
-
-            int bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;
-            int by = (abs(by1) < abs(by2)) ? by1 : by2;
-            if (sCol[jx][iy].BoxHandle == colBoxHandle[1])
-            {
-                if (abs(bx) < abs(by))
-                {
-
-                        objPos.x += bx;
-                }
-                else
-                {
-                        objPos.y += by;
-                        if (by <= 0)
-                        {
-                            return true;
-                        }
-                }
-
-            }
-        }
-    }
-    return false;
-
-
-}

@@ -49,7 +49,7 @@ void Player::Init()
 
 void Player::Update(float deltaTime)
 {
-	Move();
+	Move(deltaTime);
 	AnimationUpdate(deltaTime);
 }
 
@@ -73,15 +73,15 @@ void Player::AnimationUpdate(float deltaTime)
 
 
 
-void Player::Move()
+void Player::Move(float deltaTime)
 {
 		if (CheckHitKey(KEY_INPUT_RIGHT)) {
 			mRightDir = FALSE;
-			mPos.x += RunSpeed;
+			mPos.x += RunSpeed*deltaTime;
 		}
 		else if (CheckHitKey(KEY_INPUT_LEFT)) {
 			mRightDir = TRUE;
-			mPos.x -= RunSpeed;
+			mPos.x -= RunSpeed * deltaTime;
 		}
 	if (onGround) {
 		if (CheckHitKey(KEY_INPUT_J))

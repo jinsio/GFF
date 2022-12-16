@@ -46,23 +46,16 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	
 	PlayerObjectManager::Update(_deltaTime);
 
-	//---スクロール処理---//
-	scroll->SetScrLR(RunSpeed);
-	scroll->SetScrXY(player->GetVY());
-	scroll->MoveScroll(_deltaTime,player->GetPosition());
-
+	scroll->Update(_deltaTime, player->GetPosition());
 	bg->Update();;
-	bg->SetScrPos(scroll->GetScrPos());
-	collision->SetScrPos(scroll->GetScrPos());
-	map->SetScrPos(scroll->GetScrPos());
 
-	if (bullet != nullptr&&(player->GetPos().x==scroll->GetscrRX())) {
-		bullet->LEFTScrPos(scroll->GetScrSpeedLR(),_deltaTime);
-	}
+	//if (bullet != nullptr&&(player->GetPos().x==scroll->GetscrRX())) {
+	//	bullet->LEFTScrPos(scroll->GetScrSpeedLR(),_deltaTime);
+	//}
 
-	if (bullet != nullptr && (player->GetPos().x == scroll->GetscrLX())) {
-		bullet->RIGHTScrPos(scroll->GetScrSpeedLR(), _deltaTime);
-	}
+	//if (bullet != nullptr && (player->GetPos().x == scroll->GetscrLX())) {
+	//	bullet->RIGHTScrPos(scroll->GetScrSpeedLR(), _deltaTime);
+	//}
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -77,10 +70,12 @@ SceneBase* PlayScene::Update(float _deltaTime)
 
 void PlayScene::isStand()
 {
-	player->SetonGround(collision->ColBox(player->GetPosition()));
+	player->SetonGround(collision->ColBox(player->GetPosition(),
+		scroll->GetDrawOffSetX(),scroll->GetDrawOffSetY()));
 	if (bullet!=nullptr)
 	{
-		bullet->SetonGround(collision->ColBox(bullet->GetPosition()));
+		bullet->SetonGround(collision->ColBox(bullet->GetPosition(),
+			scroll->GetDrawOffSetX(),scroll->GetDrawOffSetY()));
 	}
 }
 
@@ -114,8 +109,9 @@ void PlayScene::ShotFlow(float _deltaTime)
 
 void PlayScene::Draw()
 {
-	bg->Draw();
-	map->MapDraw();
+	bg->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+	map->MapDraw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+	player->GetScr(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 	PlayerObjectManager::Draw();
 	
 }

@@ -29,26 +29,12 @@ public:
 	/// <summary>
 	/// BackGround描画処理
 	/// </summary>
-	void Draw();
-
-	/// <summary>
-	/// 背景座標のセッター
-	/// </summary>
-	/// <param name="scrPos">スクロール座標</param>
-	void SetScrPos(VECTOR& scrPos) { bgPos = scrPos; }
+	void Draw(int scrX,int scrY);
 
 private:
-	struct Bg {
-		int bgHandle[LayerNum] = { -1,-1,-1 };		//背景画像ハンドル
-		float bgX[LayerNum] = {};			//レイヤーごとの背景座標X
-		float bgY[LayerNum] = {};			//レイヤーごとの背景座標Y
-		int screenPos[LayerNum] = {};	//スクリーン座標
-
-	};
-	Bg first;
-	Bg second;
-
-	float bgScreenX;
+	int bgBack;
+	int bgMid;
+	int bgFront;
 	VECTOR bgPos;				//背景座標
 };
 

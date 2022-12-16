@@ -10,8 +10,7 @@ class Map
 public:
     Map();
     ~Map();
-    void MapDraw();
-    void SetScrPos(VECTOR& scrPos) { mapPos = scrPos; }
+    void MapDraw(int scrX,int scrY);
 protected:
     struct sMapLayer
     {
@@ -19,7 +18,6 @@ protected:
     };
     sMapLayer sMap[CELL_NUM_X][CELL_NUM_Y]={0};
     int chipgraphicHandle[(200/ 40) * (40 / 40)];
-    VECTOR mapPos;
     int characterPack;
     int rawNum = 0;															//横方向のタイルナンバー
     int columnNum = 0;														//縦方向のタイルナンバー

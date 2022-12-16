@@ -21,41 +21,36 @@ public:
     /// </summary>
     /// <param name="plyPos">プレイヤーポジション</param>
     /// <param name="mapPos">マップポジション</param>
-    void MoveScroll(float deltaTime,VECTOR& plyPos);
+    void Update(float deltaTime,VECTOR& plyPos);
 
     /// <summary>
-    /// スクロール座標のゲッター
+    /// スクロールの描画オフセットXを取得
     /// </summary>
-    /// <returns>スクロール座標</returns>
-    VECTOR& GetScrPos() { return scrPos; }
-    
-    float GetscrRX() { return scrRX; }
-    float GetscrLX() { return scrLX; }
+    /// <returns>X方向オフセット</returns>
+    int GetDrawOffSetX();
 
-    float GetScrSpeedLR() { return scrSpeedLR; }
-    float GetScrSpeedXY() { return scrSpeedXY; }
-
-    void SetScrLR(float plySpeed) { scrSpeedLR = plySpeed;}
-    void SetScrXY(float plySpeed) { scrSpeedXY = plySpeed; }
-
+    /// <summary>
+    /// スクロールの描画オフセットYを取得
+    /// </summary>
+    /// <returns>Y方向オフセット</returns>
+    int GetDrawOffSetY();
 
 private:
-    float scrRX;        //右方向へスクロールする座標
-    float scrRY;        //下方向へスクロールする座標
-    float scrLX;        //左方向へスクロールする座標
-    float scrLY;        //上方向へスクロールする座標
+    float scrollX;        //スクロールX
+    float scrollY;        //スクロールY
 
-    const float scrMaxW = 32*180;            //右方向へスクロールする最大座標
-    const float scrMaxH = 32*40;            //下方向へスクロールする最大座標
-    const float scrMinW = 0;                //左方向へスクロールする最小座標
-    const float scrMinH = 0;                //上方向へスクロールする最小座標
+    const float scrMaxW = 1920/40*25;            //右方向へスクロール開始最大座標
+    const float scrMaxH = 1080/40*-10;            //下方向へスクロール開始最大座標
+    const float scrMinW = 1920/40*15;            //左方向へスクロール開始最小座標
+    const float scrMinH = 1080/40*-15;            //上方向へスクロール開始最小座標
 
-    VECTOR scrPos;     //スクロール座標
+    float sclMaxX;                               //X方向スクロール最大値
+    float sclMaxY;                               //Y方向スクロール最大値
+    float sclMinX;                               //X方向スクロール最小値
+    float sclMinY;                               //Y方向スクロール最小値
 
-    float scrSpeedLR;        //スクロール速度
-    float scrSpeedXY;        //スクロール速度
+    float dx, dy;
 
-    VECTOR scrSpeed;
     class Bullet;
 
 };

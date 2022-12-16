@@ -1,7 +1,6 @@
 #include "Map.h"
 
 Map::Map()
-	:mapPos()
 {
 	LoadDivGraph("assets/mapArufa/mapsozai.png",  (200 / 40)* (40 / 32), 200 / 40,  40, 40, 40, chipgraphicHandle);
 	FILE* filePointer;
@@ -55,13 +54,13 @@ Map::~Map()
 {
 }
 
-void Map::MapDraw()
+void Map::MapDraw(int scrX,int scrY)
 {
 	for (int i = 0; i < CELL_NUM_X; i++)
 	{
 		for (int j = 0; j < CELL_NUM_Y; j++)
 		{
-			DrawExtendGraph(i * CELL_WIDTH + mapPos.x, j * CELL_HEIGHT+ mapPos.y, (i + 1) * CELL_WIDTH + mapPos.x, (j + 1) * CELL_HEIGHT+ mapPos.y, sMap[i][j].GraphicHandle, TRUE);
+			DrawExtendGraph(i * CELL_WIDTH -scrX, j * CELL_HEIGHT- scrY, (i + 1) * CELL_WIDTH-scrX, (j + 1) * CELL_HEIGHT-scrY, sMap[i][j].GraphicHandle, TRUE);
 		}
 	}
 }

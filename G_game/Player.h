@@ -7,10 +7,10 @@
 
 //プレイヤーの初期位置
 const int FirstPosX= 250;
-const int FirstPosY = 900;
+const int FirstPosY = 750;
 
 //移動速度
-const float RunSpeed = 6.0f;
+const float RunSpeed = 100.0f;
 
 //ジャンプ関連
 const float jumpPower = 12.0f;     // ジャンプ初速度
@@ -68,10 +68,11 @@ public:
 	void SetonGround(bool isStand) { onGround=isStand; }
 
 	//キャラの移動
-	void Move();
+	void Move(float deltaTime);
 
 	// キャラの座標
 	VECTOR& GetPosition() { return mPos; }
+	void GetScr(int scrX, int scrY) { offSetX = scrX; offSetY = scrY; }
 
 	//キャラの重力
 	float GetVY() { return playerVY; }
@@ -105,6 +106,9 @@ private:
 	int jumpButtonCount;
 
 	bool input;
+
+	int offSetX;
+	int offSetY;
 
 	//デルタタイム関連
 	float nowCount, prevCount;
