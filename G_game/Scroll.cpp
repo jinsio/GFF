@@ -5,12 +5,15 @@
 Bullet* bullet;
 
 Scroll::Scroll()
-	:scrRX(750)
-	,scrRY(450)
-	,scrLX(530)
-	,scrLY(190)
-	,scrPos()
+	:scrollX(0)
+	,scrollY(0)
+	,dx(0)
+	,dy(0)
 {
+	sclMaxX = 40 * 162 - 1920;
+	sclMaxY = 40 * 54 - 1080;
+	sclMinX = -40;
+	sclMinY = -40;
 }
 
 // @brief Scrollデストラクター //
@@ -21,32 +24,57 @@ Scroll::~Scroll()
 
 // @brief Scroll移動処理 //
 
-void Scroll::MoveScroll(float deltaTime,VECTOR& plyPos)
+void Scroll::Update(float deltaTime,VECTOR& plyPos)
 {
-	if (plyPos.x > scrRX && scrPos.x >= -scrMaxW)		//プレイヤーがスクロールする位置まで来たら
+	//---プレイヤー押し戻し処理---//
+	if (plyPos.x + 64 > scrollX + scrMaxW)				//右スクロール
 	{
-		plyPos.x = scrRX;							//プレイヤーの位置は固定
-		scrPos.x -= scrSpeedLR * deltaTime / 10;						//背景座標をスクロール
-		/*if (bullet != nullptr) {
-			bullet->AddScrPos(scrPos.x);
-		}*/
+		dx = plyPos.x - (scrollX + scrMaxW);
 	}
-	if (plyPos.y > scrRY&&scrPos.y>=-scrMaxH)
+	if (plyPos.y + 64 > scrollY + scrMaxH)				//下スクロール
 	{
-		plyPos.y = scrRY;
-		scrPos.y -= scrSpeedXY*deltaTime/10;
+		dy = plyPos.y - (scrollY + scrMaxH);
 	}
-	if (plyPos.x < scrLX && scrPos.x <= scrMinW)
+	if (plyPos.x < scrollX + scrMinW)					//左スクロール
 	{
-		plyPos.x = scrLX;
-		scrPos.x += scrSpeedLR*deltaTime/10;
-	/*	if (bullet != nullptr) {
-			bullet->AddScrPos(scrPos.x);
-		}*/
+		dx = plyPos.x - (scrollY + scrMinW);
 	}
-	if (plyPos.y < scrLY && scrPos.y <= scrMinH)
+	if (plyPos.y < scrollY + scrMinH)					//上スクロール
 	{
-		plyPos.y = scrLY;
-		scrPos.y -= scrSpeedXY * deltaTime / 10;
+		dy = plyPos.y - (scrollY + scrMinH);
 	}
+
+	scrollX += dx;
+	scrollY += dy;
+
+	if (scrollX > sclMaxX)
+	{
+		scrollX = sclMaxX;
+	}
+	else if (scrollX < sclMinX)
+	{
+		scrollX = sclMinX;
+	}
+	if (scrollY > sclMaxY)
+	{
+		scrollY = sclMaxY;
+	}
+	else if (scrollY < sclMinY)
+	{
+		scrollY = sclMinY;
+	}
+}
+
+// @brief スクロールの描画オフセットXを取得 //
+
+int Scroll::GetDrawOffSetX()
+{
+	return static_cast<int>(scrollX);
+}
+
+// @brief スクロールの描画オフセットYを取得 //
+
+int Scroll::GetDrawOffSetY()
+{
+	return static_cast<int>(scrollY);
 }

@@ -28,19 +28,7 @@ public:
     /// <summary>
     /// 当たり判定
     /// </summary>
-    bool ColBox(VECTOR& objPos);
-
-
-    /// <summary>
-    /// 当たり判定
-    /// </summary>
-    bool ColBox_(VECTOR& objPos);
-
-    /// <summary>
-    /// 当たり判定座標のセッター
-    /// </summary>
-    /// <param name="scrPos">スクロール座標</param>
-    void SetScrPos(VECTOR& scrPos) { colPos = scrPos; }
+    bool ColBox(VECTOR& objPos,int scrX,int scrY);
 
 
 private:
@@ -61,6 +49,5 @@ private:
     //透明(スケルトン)ブロックフラグ
     bool VisionFlag = false;
 
-    VECTOR colPos;                          //当たり判定座標
 };
 
