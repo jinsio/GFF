@@ -4,6 +4,8 @@
 
 BackGround::BackGround()
     :bgPos()
+    ,drawBgX(0)
+    ,drawBgY(0)
 {
     bgBack = LoadGraph("assets/BackGround/R2_distantView.png");    //背面レイヤー
     bgMid = LoadGraph("assets/BackGround/R2_middleView.png");     //中央レイヤー
@@ -19,23 +21,23 @@ BackGround::~BackGround()
     DeleteGraph(bgFront);
 }
 
-// @brief BackGround更新処理 //
-
-void BackGround::Update()
-{
-
-}
-
 // @brief BackGround描画処理 //
 
 void BackGround::Draw(int scrX,int scrY)
 {
+    //---スクロール座標反映---//
+    drawBgX = bgPos.x - scrX;
+    drawBgY = bgPos.y - scrY;
 
-    for (int i = 0; i < LayerNum; i++)
-    {  
-        DrawGraph(bgPos.x-scrX % 1920, bgPos.y-scrY, bgBack, TRUE);
-        DrawGraph(bgPos.x - (scrX*2) % 1920, bgPos.y - scrY, bgMid, TRUE);
-        DrawGraph(bgPos.x - (scrX*3) % 1920, bgPos.y - scrY, bgFront, TRUE);
-        //DrawGraph(1920+second.screenPos[i]+second.bgX[i] % 1920, bgPos.y, first.bgHandle[i], TRUE);
-    }
+    //---背面レイヤー描画---//
+    DrawGraph(drawBgX % ScreenW, drawBgY, bgBack, TRUE);
+    DrawGraph(drawBgX % ScreenW + ScreenW, drawBgY, bgBack, TRUE);
+    
+    //---中央レイヤー描画---//
+    DrawGraph(drawBgX * 2 % ScreenW, drawBgY, bgMid, TRUE);
+    DrawGraph(drawBgX * 2 % ScreenW + ScreenW, drawBgY, bgMid, TRUE);
+    
+    //---前面レイヤー描画---//
+    DrawGraph(drawBgX * 3 % ScreenW, drawBgY, bgFront, TRUE);
+    DrawGraph(drawBgX * 3 % ScreenW + ScreenW, drawBgY, bgFront, TRUE);
 }

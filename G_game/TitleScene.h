@@ -4,7 +4,7 @@
 #include "SceneBase.h"
 
 const int MaxFadein = 255;			//不透明度最大値
-const int DrawBgSpeed = 5;			//背景スクロール速度
+const float DrawBgSpeed = 100.0f;			//背景スクロール速度
 const int FadeSpeed=5;				//点滅速度
 
 class BackGround;

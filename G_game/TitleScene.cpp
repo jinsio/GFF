@@ -10,6 +10,8 @@ TitleScene::TitleScene()
 	// タイトル画像の読み込み(仮)
 	mImage = LoadGraph("assets/scene/Title.png");
 	titleBg = new BackGround;
+
+	titleBgPos.y = -1300;
 }
 
 TitleScene::~TitleScene()
@@ -24,8 +26,10 @@ SceneBase* TitleScene::Update(float _deltaTime)
 	}
 	else
 	{
-		titleBgPos.x -= DrawBgSpeed*_deltaTime/10;						//スクロール座標設定
-		titleBgPos.y=-1300;
+		//---スクロール座標設定---//
+		titleBgPos.x += DrawBgSpeed*_deltaTime;
+		titleBgPos.y=1300;
+
 		// シーン遷移条件(エンターを押すと遷移（仮）)
 		if (CheckHitKey(KEY_INPUT_RETURN))
 		{
@@ -48,7 +52,7 @@ void TitleScene::TitleDisplay()
 
 void TitleScene::Draw()
 {
-										//背景スクロール描画
+	titleBg->Draw(titleBgPos.x, titleBgPos.y);					//背景スクロール描画
 	// タイトルの描画
 	SetDrawBlendMode(DX_BLENDGRAPHTYPE_ALPHA, fadein);			//フェードイン
 	DrawRotaGraph( 960, 400, 1.5, 0, mImage,1,0);				//画像描画

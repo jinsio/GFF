@@ -47,7 +47,6 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	PlayerObjectManager::Update(_deltaTime);
 
 	scroll->Update(_deltaTime, player->GetPosition());
-	bg->Update();;
 
 	//if (bullet != nullptr&&(player->GetPos().x==scroll->GetscrRX())) {
 	//	bullet->LEFTScrPos(scroll->GetScrSpeedLR(),_deltaTime);
@@ -70,12 +69,10 @@ SceneBase* PlayScene::Update(float _deltaTime)
 
 void PlayScene::isStand()
 {
-	player->SetonGround(collision->ColBox(player->GetPosition(),
-		scroll->GetDrawOffSetX(),scroll->GetDrawOffSetY()));
+	player->SetonGround(collision->ColBox(player->GetPosition()));
 	if (bullet!=nullptr)
 	{
-		bullet->SetonGround(collision->ColBox(bullet->GetPosition(),
-			scroll->GetDrawOffSetX(),scroll->GetDrawOffSetY()));
+		bullet->SetonGround(collision->ColBox(bullet->GetPosition()));
 	}
 }
 
@@ -111,6 +108,7 @@ void PlayScene::Draw()
 {
 	bg->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 	map->MapDraw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+
 	player->GetScr(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 	PlayerObjectManager::Draw();
 	

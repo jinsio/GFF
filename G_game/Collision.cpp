@@ -67,13 +67,13 @@ Collision::~Collision()
 //-------------------------------------------------//
 // @briaf   当たり判定
 //-------------------------------------------------//
-bool Collision::ColBox(VECTOR& objPos,int scrX,int scrY)
+bool Collision::ColBox(VECTOR& objPos)
 {
     //オブジェクトBOXの頂点座標//
-    int objLX = ((int)objPos.x - XSize / 4) + scrX;
-    int objLY = ((int)objPos.y - YSize / 4) + scrY;
-    int objRX = ((int)objPos.x + XSize / 4) + scrX;
-    int objRY = ((int)objPos.y + YSize / 1.5f) + scrY;
+    int objLX = ((int)objPos.x - XSize / 4);
+    int objLY = ((int)objPos.y - YSize / 4);
+    int objRX = ((int)objPos.x + XSize / 4);
+    int objRY = ((int)objPos.y + YSize / 1.5f);
 
     //現在のタイル位置//
     int tileLX = objLX / BOX_WIDTH ;

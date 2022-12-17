@@ -11,9 +11,9 @@ Scroll::Scroll()
 	,dy(0)
 {
 	sclMaxX = 40 * 162 - 1920;
-	sclMaxY = 40 * 54 - 1080;
-	sclMinX = -40;
-	sclMinY = -40;
+	sclMaxY = 40 * 58 - 1080;
+	sclMinX = 0;
+	sclMinY = 0;
 }
 
 // @brief Scrollデストラクター //
@@ -26,40 +26,43 @@ Scroll::~Scroll()
 
 void Scroll::Update(float deltaTime,VECTOR& plyPos)
 {
+	dx = dy = 0;
+
 	//---プレイヤー押し戻し処理---//
-	if (plyPos.x + 64 > scrollX + scrMaxW)				//右スクロール
+	if (plyPos.x +64  > scrollX + scrMaxW)				//右にスクロールする座標を超えたら
 	{
-		dx = plyPos.x - (scrollX + scrMaxW);
+		dx = plyPos.x+64 - (scrollX + scrMaxW);			//左に押し戻す
 	}
 	if (plyPos.y + 64 > scrollY + scrMaxH)				//下スクロール
 	{
-		dy = plyPos.y - (scrollY + scrMaxH);
+		dy = plyPos.y+64 - (scrollY + scrMaxH);
 	}
-	if (plyPos.x < scrollX + scrMinW)					//左スクロール
+	if (plyPos.x-64 < scrollX + scrMinW)					//左スクロール
 	{
-		dx = plyPos.x - (scrollY + scrMinW);
+		dx = plyPos.x-64 - (scrollX + scrMinW);
 	}
-	if (plyPos.y < scrollY + scrMinH)					//上スクロール
+	if (plyPos.y-64 < scrollY + scrMinH)					//上スクロール
 	{
-		dy = plyPos.y - (scrollY + scrMinH);
+		dy = plyPos.y-64 - (scrollY + scrMinH);
 	}
 
-	scrollX += dx;
-	scrollY += dy;
+	scrollX += dx;										//押し戻しX
+	scrollY += dy;										//押し戻しY
 
-	if (scrollX > sclMaxX)
+	//---スクロール座標最大値処理---//
+	if (scrollX > sclMaxX)								//右スクロール座標最大値まできたら
 	{
-		scrollX = sclMaxX;
+		scrollX = sclMaxX;								//スクロール停止
 	}
-	else if (scrollX < sclMinX)
+	else if (scrollX < sclMinX)							//左スクロール
 	{
 		scrollX = sclMinX;
 	}
-	if (scrollY > sclMaxY)
+	if (scrollY > sclMaxY)								//下スクロール
 	{
 		scrollY = sclMaxY;
 	}
-	else if (scrollY < sclMinY)
+	else if (scrollY < sclMinY)							//上スクロール
 	{
 		scrollY = sclMinY;
 	}
