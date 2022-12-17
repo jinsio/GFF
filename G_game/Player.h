@@ -6,11 +6,11 @@
 #include "PlayerObject.h"
 
 //プレイヤーの初期位置
-const int FirstPosX= 250;
-const int FirstPosY = 750;
+const int FirstPosX= 400;
+const int FirstPosY = 200;
 
 //移動速度
-const float RunSpeed = 100.0f;
+const float RunSpeed = 250.0f;
 
 //ジャンプ関連
 const float jumpPower = 12.0f;     // ジャンプ初速度

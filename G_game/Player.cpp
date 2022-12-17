@@ -195,5 +195,5 @@ void Player::AnimationControl()
 
 void Player::Draw()
 {
-	DrawRotaGraph((int)mPos.x, (int)mPos.y, 2, 0, mHandle, TRUE, mRightDir);
+	DrawRotaGraph((int)mPos.x-offSetX, (int)mPos.y-offSetY, 2, 0, mHandle, TRUE, mRightDir);
 }

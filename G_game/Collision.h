@@ -28,7 +28,7 @@ public:
     /// <summary>
     /// “–‚½‚è”»’è
     /// </summary>
-    bool ColBox(VECTOR& objPos,int scrX,int scrY);
+    bool ColBox(VECTOR& objPos);
 
 
 private:

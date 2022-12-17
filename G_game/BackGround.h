@@ -2,8 +2,8 @@
 #include<DxLib.h>
 #include<vector>
 
-const int LayerNum = 3;
-const int screenNum = 2;
+const int ScreenW = 1920;
+const int ScreenH = 1080;
 
 using namespace std;
 
@@ -22,19 +22,16 @@ public:
 	~BackGround();
 
 	/// <summary>
-	/// BackGound更新処理
-	/// </summary>
-	void Update();
-
-	/// <summary>
 	/// BackGround描画処理
 	/// </summary>
 	void Draw(int scrX,int scrY);
 
 private:
-	int bgBack;
-	int bgMid;
-	int bgFront;
+	int bgBack;					//背面レイヤー
+	int bgMid;					//中央レイヤー
+	int bgFront;				//前面レイヤー
+	int drawBgX;				//描画座標X
+	int drawBgY;				//描画座標Y
 	VECTOR bgPos;				//背景座標
 };
 
