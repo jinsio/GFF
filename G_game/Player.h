@@ -56,9 +56,6 @@ public:
 
 	//アップデート
 	void Update(float deltaTime) override;
-	
-	// deltaTimeのセッター
-	void SetdeltaTime();
 
 	// deltaTimeのゲッター
 	// <returns>deltaTime
@@ -107,6 +104,7 @@ private:
 
 	bool input;
 
+	//スクロール差分
 	int offSetX;
 	int offSetY;
 

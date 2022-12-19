@@ -21,14 +21,17 @@ public:
     void  AddRadian(float _deltaTime);
     void  AddAngleChange();
 
+    void GetScr(int scrX, int scrY) { offSetX = scrX; offSetY = scrY; } //ƒXƒNƒ[ƒ‹—Ê‚ğ‚Á‚Ä‚­‚é
+
     void Update(float deltaTime)override;
     void Draw()override;
 
 private:
-    float  mAngle;
-    float  AddAngle;
-    int    mHandle;
+    float   mAngle;
+    float   AddAngle;
+    int     mHandle;
     float   mRotation;
-  
+    int     offSetX;
+    int     offSetY;
 };
 

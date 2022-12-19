@@ -3,7 +3,7 @@
 ShotDummy::ShotDummy(class Player* player)
     :PlayerObject(PlayerObjectTag::ShotDummy)
 	,mAngle(0)
-    ,AddAngle(0.03)
+    ,AddAngle(0.3)
 	,mRotation(0)
 {
 	if (mHandle = -1) {
@@ -29,7 +29,7 @@ void ShotDummy::AddRadian(float _deltaTime)
 			mAngle = 0.49;
 			AddAngleChange();
 		}
-		mAngle += AddAngle/_deltaTime;
+		mAngle += AddAngle*_deltaTime;
 }
 
 void ShotDummy::AddAngleChange()
@@ -45,11 +45,11 @@ void ShotDummy::Update(float deltaTime)
 void ShotDummy::Draw()
 {
 	if (mAlive&& mRightDir) {
-		DrawRotaGraph((int)mPos.x, (int)mPos.y, 1, mAngle*DX_PI, mHandle, mAlive, mRightDir);
+		DrawRotaGraph((int)mPos.x- offSetX, (int)mPos.y - offSetY, 1, mAngle*DX_PI, mHandle, mAlive, mRightDir);
 	}
 	else if (mAlive && !mRightDir)
 	{
-		DrawRotaGraph((int)mPos.x, (int)mPos.y, 1, -mAngle * DX_PI, mHandle, mAlive, mRightDir);
+		DrawRotaGraph((int)mPos.x- offSetX , (int)mPos.y - offSetY, 1, -mAngle * DX_PI, mHandle, mAlive, mRightDir);
 	}
 	unsigned int Color;
 

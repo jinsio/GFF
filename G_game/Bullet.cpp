@@ -1,5 +1,5 @@
 #include "Bullet.h"
-
+#include "PlayScene.h"
 Scroll* scroll;
 
 Bullet::Bullet(class Player*player)
@@ -9,7 +9,9 @@ Bullet::Bullet(class Player*player)
     mBulletVX(0),
     mBulletVY(0),
     mBulletPower{0,0},
-    bulletPos{}
+    bulletPos{},
+    offSetX(0),
+    offSetY(0)
 {
     if (mHandle = -1) {
         mHandle = LoadGraph("assets/player/player.png");
@@ -76,24 +78,24 @@ void Bullet::Update(float deltaTime)
 void Bullet::Draw()
 {
     if (mAlive) {
-        DrawRotaGraph((int)mPos.x, (int)mPos.y, 0.1f, mRotation, mHandle, mAlive, mRightDir);
+        DrawRotaGraph((int)mPos.x- offSetX, (int)mPos.y - offSetY, 0.1f, mRotation, mHandle, mAlive, mRightDir);
     }
     mRotation++;
 }
 
-void Bullet::LEFTScrPos(float plyspeed,float deltaTime)
-{
-    if (GetonGround() && (CheckHitKey(KEY_INPUT_RIGHT)))
-    {
-        mPos.x -= plyspeed* deltaTime/10;
-    }
-}
+//void Bullet::LEFTScrPos(float plyspeed,float deltaTime)
+//{
+//    if (GetonGround() && (CheckHitKey(KEY_INPUT_RIGHT)))
+//    {
+//        mPos.x -= plyspeed* deltaTime/10;
+//    }
+//}
 
-void Bullet::RIGHTScrPos(float plyspeed, float deltaTime)
-{
-     if (GetonGround() && (CheckHitKey(KEY_INPUT_LEFT)))
-    {
-        mPos.x += plyspeed * deltaTime / 10;
-    }
-}
+//void Bullet::RIGHTScrPos(float plyspeed, float deltaTime)
+//{
+//     if (GetonGround() && (CheckHitKey(KEY_INPUT_LEFT)))
+//    {
+//        mPos.x += plyspeed * deltaTime / 10;
+//    }
+//}
 

@@ -26,7 +26,9 @@ Player::Player():
 	mThrowAnimCoolTime(0.2f),
 	deltaTime(0.0f),
 	nowCount(0.0f),
-	prevCount(0.0f)
+	prevCount(0.0f),
+	offSetX(0),
+	offSetY(0)
 {
 	
 }
@@ -54,12 +56,12 @@ void Player::Update(float deltaTime)
 }
 
 
-void Player::SetdeltaTime()
-{	
-	nowCount = (float)GetNowCount();
-	deltaTime = (nowCount - prevCount) / 1000.0f;
-	prevCount = nowCount;
-}
+//void Player::SetdeltaTime()
+//{	
+//	nowCount = (float)GetNowCount();
+//	deltaTime = (nowCount - prevCount) / 1000.0f;
+//	prevCount = nowCount;
+//}
 
 
 void Player::AnimationUpdate(float deltaTime)
@@ -121,7 +123,7 @@ void Player::IdleAnimation(float _deltaTime)
 		if (mIdleAnimation >= IdleAllNum) {
 			mIdleAnimation = 0;
 		}
-		mIdleAnimCoolTime = 1000.0f;
+		mIdleAnimCoolTime = 0.5f;
 		mIdleAnimation %= IdleAllNum;
 	}	
 }
@@ -135,7 +137,7 @@ void Player::RunAnimation(float _deltaTime)
 		if (mRunAnimation >= RunAllNum) {
 			mRunAnimation = 0;
 		}
-		mRunAnimCoolTime = 300.0f;
+		mRunAnimCoolTime = 0.2f;
 		mRunAnimation %= RunAllNum;
 	}
 }
@@ -152,7 +154,7 @@ void Player::JumpAnimation(float deltaTime)
 			if (mJumpAnimation >= JumpAllNum) {
 				mJumpAnimation = 0;
 			}
-			mJumpAnimCoolTime = 100.0f;
+			mJumpAnimCoolTime = 0.2f;
 			mJumpAnimation %= JumpAllNum;
 		}
 	}
