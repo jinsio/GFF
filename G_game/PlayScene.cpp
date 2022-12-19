@@ -48,13 +48,6 @@ SceneBase* PlayScene::Update(float _deltaTime)
 
 	scroll->Update(_deltaTime, player->GetPosition());
 
-	//if (bullet != nullptr&&(player->GetPos().x==scroll->GetscrRX())) {
-	//	bullet->LEFTScrPos(scroll->GetScrSpeedLR(),_deltaTime);
-	//}
-
-	//if (bullet != nullptr && (player->GetPos().x == scroll->GetscrLX())) {
-	//	bullet->RIGHTScrPos(scroll->GetScrSpeedLR(), _deltaTime);
-	//}
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
@@ -110,6 +103,12 @@ void PlayScene::Draw()
 	map->MapDraw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 
 	player->GetScr(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+	if (dummy != nullptr) {
+		dummy->GetScr(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+	}
+	if (bullet != nullptr) {
+		bullet->GetScr(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+	}
 	PlayerObjectManager::Draw();
 	
 }
