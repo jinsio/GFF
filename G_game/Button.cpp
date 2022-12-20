@@ -1,8 +1,10 @@
 #include "Button.h"
 
 Button::Button()
-    :tmppush(FALSE)
-    ,nowpush(FALSE)
+    :tmppushP(FALSE)
+    ,nowpushP(FALSE)
+    ,tmppushI(FALSE)
+    ,nowpushI(FALSE)
 {
 }
 
@@ -10,38 +12,38 @@ Button::~Button()
 {
 }
 
-void Button::GetNowButton()
+void Button::GetNowButtonP()
 {
     if (CheckHitKey(KEY_INPUT_P))
     {
-        nowpush = TRUE;
+        nowpushP = TRUE;
     }
     else
     {
-        nowpush = FALSE;
+        nowpushP = FALSE;
     }
 }
 
-int Button::ButtonStatus()
+int Button::ButtonStatusP()
 {
-    GetNowButton();
+    GetNowButtonP();
 
     int ret = 0;
 
     //ボタンが押された瞬間
-    if (tmppush == FALSE && nowpush == TRUE)
+    if (tmppushP == FALSE && nowpushP == TRUE)
     {
         ret = 1;
     }
 
     //ボタンが長押しされている状態
-    else if (tmppush == TRUE && nowpush == TRUE)
+    else if (tmppushP == TRUE && nowpushP == TRUE)
     {
         ret = 2;
     }
 
     //ボタンを離した瞬間
-    else if (tmppush == TRUE && nowpush == FALSE)
+    else if (tmppushP == TRUE && nowpushP == FALSE)
     {
         ret = 3;
     }
@@ -50,6 +52,50 @@ int Button::ButtonStatus()
     else {
         ret = 0;
     }
-    tmppush = nowpush;
+    tmppushP = nowpushP;
     return ret;
+}
+
+void Button::GetNowButtonI()
+{
+    if (CheckHitKey(KEY_INPUT_I))
+    {
+        nowpushI = TRUE;
+    }
+    else
+    {
+        nowpushI = FALSE;
+    }
+}
+
+int Button::ButtonStatusI()
+{
+    GetNowButtonI();
+
+    int tmp = 0;
+
+    //ボタンが押された瞬間
+    if (tmppushI == FALSE && nowpushI == TRUE)
+    {
+        tmp = 1;
+    }
+
+    //ボタンが長押しされている状態
+    else if (tmppushI == TRUE && nowpushI == TRUE)
+    {
+        tmp = 2;
+    }
+
+    //ボタンを離した瞬間
+    else if (tmppushI == TRUE && nowpushI == FALSE)
+    {
+        tmp = 3;
+    }
+    //ボタンが押されていない
+
+    else {
+        tmp = 0;
+    }
+    tmppushI = nowpushI;
+    return tmp;
 }

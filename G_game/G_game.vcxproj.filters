@@ -64,6 +64,9 @@
     <ClCompile Include="Manager\MonsterManager.cpp">
       <Filter>ソースファイル\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="BulletNumber.cpp">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -130,6 +133,9 @@
       <Filter>ソースファイル\Manager</Filter>
     </ClInclude>
     <ClInclude Include="PlayerObjectTag.h" />
+    <ClInclude Include="BulletNumber.h">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">

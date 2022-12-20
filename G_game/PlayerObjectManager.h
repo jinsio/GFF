@@ -21,7 +21,7 @@
 
 
 		static void Update(float deltaTime);                   // 全オブジェクトの更新処理
-		static void Draw();                                    // 描画 
+		static void Draw(int offSetX,int offSetY);                                    // 描画 
 
 		static PlayerObject* GetFirstGameObject(PlayerObjectTag tag);;	//// オブジェクトタグ種の最初のGameObjectを返す
 

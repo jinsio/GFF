@@ -69,7 +69,6 @@ public:
 
 	// キャラの座標
 	VECTOR& GetPosition() { return mPos; }
-	void GetScr(int scrX, int scrY) { offSetX = scrX; offSetY = scrY; }
 
 	//キャラの重力
 	float GetVY() { return playerVY; }
@@ -95,7 +94,7 @@ public:
 	//描画制御
 	void AnimationControl();
 	// アニメーション描画
-	void Draw()override;
+	void Draw(int offSetX, int offSetY)override;
 
 private:
 	float playerVY;
@@ -103,10 +102,6 @@ private:
 	int jumpButtonCount;
 
 	bool input;
-
-	//スクロール差分
-	int offSetX;
-	int offSetY;
 
 	//デルタタイム関連
 	float nowCount, prevCount;

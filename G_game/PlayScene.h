@@ -12,6 +12,7 @@ class Scroll;
 class Player;
 class Button;
 class Bullet;
+class BulletNumber;
 class ShotDummy;
 /* プレイシーン */
 class PlayScene :public SceneBase
@@ -26,6 +27,7 @@ private:
 	Button* button;
 	ShotDummy* dummy;
 	Bullet* bullet;
+	BulletNumber* bulletnumber;
 
 public:
 	// コンストラクタ

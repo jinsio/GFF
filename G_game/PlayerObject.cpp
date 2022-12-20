@@ -14,7 +14,9 @@ PlayerObject::~PlayerObject()
 {
 }
 
-void PlayerObject::Draw()
+
+void PlayerObject::Draw(int offSetX,int offSetY)
 {
+
 }
 

@@ -17,21 +17,17 @@ public:
     bool GetBulletDummyDir() { return mRightDir; }
     void SetBulletDummyDir(bool plyDir) { mRightDir = plyDir; }     ///プレイヤーの向きを弾方向に代入
 
-    float GetRadian() { return mAngle; }
+    double GetRadian() { return mAngle; }
     void  AddRadian(float _deltaTime);
     void  AddAngleChange();
 
-    void GetScr(int scrX, int scrY) { offSetX = scrX; offSetY = scrY; } //スクロール量を持ってくる
-
     void Update(float deltaTime)override;
-    void Draw()override;
+    void Draw(int offSetX, int offSetY)override;
 
 private:
-    float   mAngle;
-    float   AddAngle;
+    double   mAngle;
+    double   AddAngle;
     int     mHandle;
     float   mRotation;
-    int     offSetX;
-    int     offSetY;
 };
 
