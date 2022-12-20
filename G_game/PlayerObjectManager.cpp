@@ -155,10 +155,12 @@
 			deadObjects.pop_back();
 		}
 	}
+
+	
 	//-------------------------------------------------------------------------------
 	// @brief 全オブジェクトの描画処理.
 	//-------------------------------------------------------------------------------
-	void PlayerObjectManager::Draw()
+	void PlayerObjectManager::Draw(int offSetX,int offSetY)
 	{
 		for (auto& tag : ObjectTagAll)
 		{
@@ -167,7 +169,7 @@
 				// 描画可能なオブジェクトのみ描画
 				if (mpInstance->mObjects[tag][i]->GetVisible())
 				{
-					mpInstance->mObjects[tag][i]->Draw();
+					mpInstance->mObjects[tag][i]->Draw(offSetX,offSetY);
 				}
 			}
 		}

@@ -42,7 +42,7 @@ void ShotDummy::Update(float deltaTime)
 
 }
 
-void ShotDummy::Draw()
+void ShotDummy::Draw(int offSetX, int offSetY)
 {
 	if (mAlive&& mRightDir) {
 		DrawRotaGraph((int)mPos.x- offSetX, (int)mPos.y - offSetY, 1, mAngle*DX_PI, mHandle, mAlive, mRightDir);
@@ -51,9 +51,9 @@ void ShotDummy::Draw()
 	{
 		DrawRotaGraph((int)mPos.x- offSetX , (int)mPos.y - offSetY, 1, -mAngle * DX_PI, mHandle, mAlive, mRightDir);
 	}
-	unsigned int Color;
+	/*unsigned int Color;
 
 	Color = GetColor(255, 255, 255);
-	DrawFormatString(0, 0, Color, "ïœêî i ÇÃílÇÕ %f Ç≈Ç∑", mAngle);
+	DrawFormatString(0, 0, Color, "ïœêî i ÇÃílÇÕ %f Ç≈Ç∑", mAngle);*/
 }
 

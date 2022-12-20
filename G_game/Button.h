@@ -7,11 +7,15 @@ public:
     Button();
     ~Button();
 
-    void GetNowButton();
-    int  ButtonStatus();
+    void GetNowButtonP();
+    int  ButtonStatusP();
 
+    void GetNowButtonI();
+    int  ButtonStatusI();
 private:
-    bool tmppush;
-    bool nowpush;
+    bool tmppushP;
+    bool nowpushP;
+    bool tmppushI;
+    bool nowpushI;
 };
 

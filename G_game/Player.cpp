@@ -26,9 +26,7 @@ Player::Player():
 	mThrowAnimCoolTime(0.2f),
 	deltaTime(0.0f),
 	nowCount(0.0f),
-	prevCount(0.0f),
-	offSetX(0),
-	offSetY(0)
+	prevCount(0.0f)
 {
 	
 }
@@ -195,7 +193,7 @@ void Player::AnimationControl()
 	}
 }
 
-void Player::Draw()
+void Player::Draw(int offSetX, int offSetY)
 {
 	DrawRotaGraph((int)mPos.x-offSetX, (int)mPos.y-offSetY, 2, 0, mHandle, TRUE, mRightDir);
 }

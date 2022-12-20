@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Button.h"
 #include "Bullet.h"
+#include "BulletNumber.h"
 #include "ShotDummy.h"
 
 PlayScene::PlayScene()
@@ -29,6 +30,8 @@ PlayScene::PlayScene()
 	//---プレイヤー関連インスタンス---//
 	player = new Player;
 	button = new Button;
+	bulletnumber = new BulletNumber;
+
 	PlayerObjectManager::Initialize();
 	player->Init();
 	PlayerObjectManager::Entry(player);
@@ -45,7 +48,6 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	ShotFlow(_deltaTime);
 	
 	PlayerObjectManager::Update(_deltaTime);
-
 	scroll->Update(_deltaTime, player->GetPosition());
 
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
@@ -71,30 +73,36 @@ void PlayScene::isStand()
 
 void PlayScene::ShotFlow(float _deltaTime)
 {
-	int tmp = button->ButtonStatus();
-	if (tmp == 1) {
-			dummy = new ShotDummy(player);
-			PlayerObjectManager::Entry(dummy);
-	}
-
-	else if (tmp == 2) {
-		dummy->AddRadian(_deltaTime);
-		dummy->SetPos(player->GetPos());
-	}
-
-	else if (tmp == 3)
-	{
-		bullet = new Bullet(player);
-		PlayerObjectManager::Entry(bullet);
-		bullet->SetBulletDir(dummy->GetBulletDummyDir());
-		bullet->BulletAngleSet(dummy->GetRadian());
-		dummy->SetAlive(false);
-
-	}
-	else
-	{
+	if (button->ButtonStatusI()==3) {
+		bulletnumber->AddBulletNumber();
 	}
 	
+	if (bulletnumber->GetBulletNumber() > 0) 
+	{
+		int tmp = button->ButtonStatusP();
+		if (tmp == 1) {
+			dummy = new ShotDummy(player);
+			PlayerObjectManager::Entry(dummy);
+		}
+
+		else if (tmp == 2) {
+			dummy->AddRadian(_deltaTime);
+			dummy->SetPos(player->GetPos());
+		}
+
+		else if (tmp == 3)
+		{
+			bullet = new Bullet(player);
+			PlayerObjectManager::Entry(bullet);
+			bullet->SetBulletDir(dummy->GetBulletDummyDir());
+			bullet->BulletAngleSet(dummy->GetRadian());
+			bulletnumber->SubBulletNumber();
+			dummy->SetAlive(false);
+		}
+		else
+		{
+		}
+	}
 }
 
 void PlayScene::Draw()
@@ -102,14 +110,11 @@ void PlayScene::Draw()
 	bg->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 	map->MapDraw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 
-	player->GetScr(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
-	if (dummy != nullptr) {
-		dummy->GetScr(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
-	}
-	if (bullet != nullptr) {
-		bullet->GetScr(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
-	}
-	PlayerObjectManager::Draw();
+	PlayerObjectManager::Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+	unsigned int Color;
+
+	Color = GetColor(255, 255, 255);
+	DrawFormatString(0, 0, Color, "残弾 i の値は %d です", bulletnumber->GetBulletNumber());
 	
 }
 

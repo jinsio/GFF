@@ -10,8 +10,7 @@ Bullet::Bullet(class Player*player)
     mBulletVY(0),
     mBulletPower{0,0},
     bulletPos{},
-    offSetX(0),
-    offSetY(0)
+    mBulletNumber(0)
 {
     if (mHandle = -1) {
         mHandle = LoadGraph("assets/player/player.png");
@@ -26,14 +25,14 @@ Bullet::~Bullet()
 
 
 
-void Bullet::BulletAngleSet(float mAngle)
+void Bullet::BulletAngleSet(double mAngle)
 {
 
     mBulletVX = mMovePower * cosf(mAngle* DX_PI);
     mBulletVY = -mMovePower * sinf(mAngle* DX_PI);
 
-    mBulletPower.x = mBulletVX;
-    mBulletPower.y = mBulletVY;
+    mBulletPower.x = (float)mBulletVX ;
+    mBulletPower.y = (float)mBulletVY ;
     if (mRightDir)
     {
         mBulletPower.x = -mBulletVX;
@@ -63,39 +62,25 @@ void Bullet::BulletMove()
         }
         mPos = VAdd(mPos, mBulletPower);
         mBulletPower.y += 0.2f;
-        
     }
 }
+
 
 void Bullet::Update(float deltaTime)
-{   
-    if (mAlive) {
+{
         BulletMove();
-    }
-        
 }
 
-void Bullet::Draw()
+void Bullet::Draw(int offSetX,int offSetY)
 {
-    if (mAlive) {
-        DrawRotaGraph((int)mPos.x- offSetX, (int)mPos.y - offSetY, 0.1f, mRotation, mHandle, mAlive, mRightDir);
-    }
+    DrawRotaGraph((int)mPos.x - offSetX, (int)mPos.y - offSetY, 0.1f, mRotation, mHandle, mAlive, mRightDir);
     mRotation++;
 }
 
-//void Bullet::LEFTScrPos(float plyspeed,float deltaTime)
-//{
-//    if (GetonGround() && (CheckHitKey(KEY_INPUT_RIGHT)))
-//    {
-//        mPos.x -= plyspeed* deltaTime/10;
-//    }
-//}
-
-//void Bullet::RIGHTScrPos(float plyspeed, float deltaTime)
-//{
-//     if (GetonGround() && (CheckHitKey(KEY_INPUT_LEFT)))
-//    {
-//        mPos.x += plyspeed * deltaTime / 10;
-//    }
-//}
-
+void Bullet::BulletNumberAdd(int ButtonStatus)
+{
+    if (ButtonStatus==3)
+    {
+        mBulletNumber++;
+    }
+}

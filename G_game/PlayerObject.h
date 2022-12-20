@@ -21,7 +21,7 @@ public:
     PlayerObjectTag     GetTag()const { return mTag; }                           // ゲームオブジェクトの種類取得
 
     virtual void Update(float deltaTime) = 0;
-    virtual void Draw();
+    virtual void Draw(int offSetX,int offSetY);
 
 protected:
     PlayerObjectTag   mTag;
