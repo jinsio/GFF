@@ -11,3 +11,19 @@ const int attackAnimNum = 4;
 
 // 被弾アニメーション数
 const int damageAnimNum = 2;
+
+// 状態の列挙
+enum State
+{
+    IDLE = 0,  // 待機
+    TRACK,     // 追跡
+    ATTACK,    // 攻撃
+    DEAD,      // 死亡
+};
+
+enum AtkState
+{
+    START = 0,  // 攻撃開始
+    NOW,        // 最中
+    FINISH,     // 攻撃終了
+};
