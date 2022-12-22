@@ -3,7 +3,7 @@
 Scroll* scroll;
 
 Bullet::Bullet(class Player*player)
-    :PlayerObject(PlayerObjectTag::Bullet),
+    :GameObject(GameObjectTag::Bullet),
     mRotation(0),
     mMovePower(5),
     mBulletVX(0),

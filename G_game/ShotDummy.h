@@ -3,10 +3,10 @@
 #include <vector>
 #include <math.h>
 #include"Player.h"
-#include"PlayerObject.h"
-#include"PlayerObjectManager.h"
+#include"GameObject.h"
+#include"GameObjectManager.h"
 class ShotDummy :
-    public PlayerObject
+    public GameObject
 {
 public:
     ShotDummy(class Player* player);

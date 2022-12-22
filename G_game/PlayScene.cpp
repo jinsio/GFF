@@ -2,9 +2,9 @@
 #include "PlayScene.h"
 #include "ResultScene.h"
 
-#include "PlayerObjectManager.h"
+#include "GameObjectManager.h"
 
-#include"BackGround.h"
+#include "BackGround.h"
 #include "Map.h"
 #include "Collision.h"
 #include "Scroll.h"
@@ -34,9 +34,9 @@ PlayScene::PlayScene()
 	button = new Button;
 	bulletnumber = new BulletNumber;
 
-	PlayerObjectManager::Initialize();
+	GameObjectManager::Initialize();
 	player->Init();
-	PlayerObjectManager::Entry(player);
+	GameObjectManager::Entry(player);
 }
 
 PlayScene::~PlayScene()
@@ -49,13 +49,13 @@ SceneBase* PlayScene::Update(float _deltaTime)
 	isStand();
 	ShotFlow(_deltaTime);
 	
-	PlayerObjectManager::Update(_deltaTime);
+	GameObjectManager::Update(_deltaTime);
 	scroll->Update(_deltaTime, player->GetPosition());
 
 	// シーン遷移条件(スペースキーを押すと遷移（仮）)
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
-		PlayerObjectManager::Finalize();
+		GameObjectManager::Finalize();
 		// 条件を満たしていたらリザルトシーンを生成してそのポインタを返す
 		return new ResultScene();
 	}
@@ -86,7 +86,7 @@ void PlayScene::ShotFlow(float _deltaTime)
 		int tmp = button->ButtonStatusP();
 		if (tmp == 1) {
 			dummy = new ShotDummy(player);
-			PlayerObjectManager::Entry(dummy);
+			GameObjectManager::Entry(dummy);
 		}
 
 		else if (tmp == 2) {
@@ -97,7 +97,7 @@ void PlayScene::ShotFlow(float _deltaTime)
 		else if (tmp == 3)
 		{
 			bullet = new Bullet(player);
-			PlayerObjectManager::Entry(bullet);
+			GameObjectManager::Entry(bullet);
 			bullet->SetBulletDir(dummy->GetBulletDummyDir());
 			bullet->BulletAngleSet(dummy->GetRadian());
 			bulletnumber->SubBulletNumber();
@@ -115,7 +115,7 @@ void PlayScene::Draw()
 	map->MapDraw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 	block->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 
-	PlayerObjectManager::Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+	GameObjectManager::Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 	unsigned int Color;
 
 	Color = GetColor(255, 255, 255);

@@ -5,7 +5,7 @@
 #include "Bullet.h"
 
 Player::Player():
-	PlayerObject(PlayerObjectTag::Player),
+	GameObject(GameObjectTag::Player),
 	playerVY(0),
 	jumpFlag(false),
 	onGround(false),

@@ -1,6 +1,6 @@
 #include "GameObject.h"
 GameObject::GameObject(GameObjectTag tag)
-    :mTag(tag)
+    : mTag(tag)
     , mPos()
     , mVisible(true)
     , mAlive(true)

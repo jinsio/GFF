@@ -4,12 +4,12 @@
 #include <vector>
 #include <math.h>
 #include "Player.h"
-#include"PlayerObject.h"
-#include"PlayerObjectManager.h"
+#include "GameObject.h"
+#include "GameObjectManager.h"
 #include "Scroll.h"
 
 
-class Bullet :public PlayerObject {
+class Bullet :public GameObject {
 
 public:
     Bullet(class Player*player);
