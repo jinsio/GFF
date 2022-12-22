@@ -70,6 +70,7 @@
     <ClCompile Include="SkeltonBlock.cpp">
       <Filter>ソースファイル\Map</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -142,6 +143,8 @@
     <ClInclude Include="SkeltonBlock.h">
       <Filter>ソースファイル\Map</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectTag.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
