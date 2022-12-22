@@ -3,7 +3,7 @@
 // インクルード
 #include "DxLib.h"
 #include <vector>
-#include "PlayerObject.h"
+#include "GameObject.h"
 
 //プレイヤーの初期位置
 const int FirstPosX= 400;
@@ -43,7 +43,7 @@ const int ThrowXNum = 8;
 const int ThrowYNum = 1;
 
 //プレイヤークラス
-class Player:public PlayerObject
+class Player:public GameObject
 {
 public:
 	//コンストラクタ

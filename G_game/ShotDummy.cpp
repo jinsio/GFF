@@ -1,7 +1,7 @@
 #include "ShotDummy.h"
 
 ShotDummy::ShotDummy(class Player* player)
-    :PlayerObject(PlayerObjectTag::ShotDummy)
+    :GameObject(GameObjectTag::ShotDummy)
 	,mAngle(0)
     ,AddAngle(0.3)
 	,mRotation(0)

@@ -153,6 +153,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager\MonsterManager.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -162,8 +163,6 @@
     <ClCompile Include="Monster\Skeleton.cpp" />
     <ClCompile Include="Monster\Slime.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerObject.cpp" />
-    <ClCompile Include="PlayerObjectManager.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="SceneBase.cpp" />
@@ -178,6 +177,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="Manager\MonsterManager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Monster\Bat.h" />
@@ -187,9 +187,6 @@
     <ClInclude Include="Monster\Skeleton.h" />
     <ClInclude Include="Monster\Slime.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerObject.h" />
-    <ClInclude Include="PlayerObjectManager.h" />
-    <ClInclude Include="PlayerObjectTag.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SceneBase.h" />

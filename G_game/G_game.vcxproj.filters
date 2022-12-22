@@ -28,12 +28,6 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>ソースファイル\Player</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerObject.cpp">
-      <Filter>ソースファイル\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerObjectManager.cpp">
-      <Filter>ソースファイル\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Scroll.cpp">
       <Filter>ソースファイル\Map</Filter>
     </ClCompile>
@@ -71,6 +65,7 @@
       <Filter>ソースファイル\Map</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -95,12 +90,6 @@
       <Filter>ソースファイル\Map</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>ソースファイル\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerObject.h">
-      <Filter>ソースファイル\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerObjectManager.h">
       <Filter>ソースファイル\Player</Filter>
     </ClInclude>
     <ClInclude Include="Scroll.h">
@@ -136,7 +125,6 @@
     <ClInclude Include="Manager\MonsterManager.h">
       <Filter>ソースファイル\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerObjectTag.h" />
     <ClInclude Include="BulletNumber.h">
       <Filter>ソースファイル\Scenes</Filter>
     </ClInclude>
@@ -145,6 +133,7 @@
     </ClInclude>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectTag.h" />
+    <ClInclude Include="GameObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
