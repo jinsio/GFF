@@ -168,6 +168,7 @@
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="Scroll.cpp" />
     <ClCompile Include="ShotDummy.cpp" />
+    <ClCompile Include="SkeltonBlock.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +193,7 @@
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="Scroll.h" />
     <ClInclude Include="ShotDummy.h" />
+    <ClInclude Include="SkeltonBlock.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Bullet.h" />
   </ItemGroup>

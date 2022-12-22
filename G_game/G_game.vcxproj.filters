@@ -67,6 +67,9 @@
     <ClCompile Include="BulletNumber.cpp">
       <Filter>ソースファイル\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="SkeltonBlock.cpp">
+      <Filter>ソースファイル\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -135,6 +138,9 @@
     <ClInclude Include="PlayerObjectTag.h" />
     <ClInclude Include="BulletNumber.h">
       <Filter>ソースファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeltonBlock.h">
+      <Filter>ソースファイル\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

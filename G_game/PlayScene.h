@@ -8,6 +8,7 @@ class BackGround;
 class Map;
 class Collision;
 class Scroll;
+class SkeltonBlock;
 
 class Player;
 class Button;
@@ -22,6 +23,7 @@ private:
 	Map* map;
 	Collision* collision;
 	Scroll* scroll;
+	SkeltonBlock* block;
 	
 	Player* player;
 	Button* button;
