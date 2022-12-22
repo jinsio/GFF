@@ -36,6 +36,12 @@ public:
     /// <returns>生きていればtrue 死んでいたらfalse</returns>
     bool GetAlive() { return alive; }
 
+    /// <summary>
+    /// 生死状態の書き込み
+    /// </summary>
+    /// <param name="set">セットしたい状態</param>
+    void SetAlive(bool set) { alive = set; }
+
 protected:
     // 座標
     VECTOR pos = { 0 };
@@ -64,6 +70,12 @@ protected:
     // 被弾アニメーション
     int damageAnim[damageAnimNum] = { -1 };
 
+    // 自身の状態
+    int state;
+
+    // 攻撃の状態
+    int atkState;
+
     // 体力
     int hp;
 
@@ -77,5 +89,15 @@ protected:
     /// 生死状態の確認
     /// </summary>
     void CheckAlive();
+
+    /// <summary>
+    /// 追跡処理
+    /// </summary>
+    virtual void Track(float deltaTime) {};
+
+    /// <summary>
+    /// 攻撃処理
+    /// </summary>
+    virtual void  Attack(float deltaTime) {};
 
 };

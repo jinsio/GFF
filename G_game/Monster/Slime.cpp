@@ -1,7 +1,11 @@
 #include "Slime.h"
 
+
 Slime::Slime()
 {
+    pos = VGet(1920 / 2, 1080 / 2, 0);
+    speed = 200.0f;
+    handle = LoadGraph("assets/enemy/slime.png");
 }
 
 Slime::~Slime()
@@ -13,32 +17,54 @@ void Slime::Update(float deltaTime)
     // 生死状態の確認をする
     CheckAlive();
 
-    // プレイヤーの座標を持ってくる
-    // class Player* player = Getter();
-    float tmp = 0.0f;
-    bool find = IsFind(tmp);
-
-    // プレイヤーを見つけていたら
-    if (find)
+    // 死んでいなければ
+    if (state != DEAD)
     {
-        // 近づく
+        // プレイヤーの座標を持ってくる
+        // GameObject* player = GetFirstGameObject(Player);
+
+        // bool find=IsFind();
+        bool find = false;
+
+        // プレイヤーを見つけていたら
+        if (find)
+        {
+            // 追跡状態なら
+            if (state == TRACK)
+            {
+                Track(deltaTime);
+            }
+            // 攻撃状態なら
+            else if (state == ATTACK)
+            {
+                Attack(deltaTime);
+            }
+        }
+    }
+}
+
+void Slime::Track(float deltaTime)
+{
+    // プレイヤーのX座標から自身のX座標を引いた値を正規化して速度とデルタタイムをかける
+}
+
+void Slime::Attack(float deltaTime)
+{
+    // 攻撃の初動
+    if (atkState == START)
+    {
 
     }
-    // プレイヤーを見つけていなければ
-    else
+    // 攻撃の最中
+    else if (atkState == NOW)
     {
-        // 左右に動く的な
 
-        if (dirRight)
-        {
-            // x方向のべクトルをプラスに
-        }
-        else
-        {
-            // x方向のベクトルをマイナスに
-        }
     }
+    // 攻撃の終わり
+    else if (atkState == FINISH)
+    {
 
+    }
 }
 
 bool Slime::IsFind(float playerPosX)

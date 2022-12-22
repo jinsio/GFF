@@ -5,6 +5,7 @@ Monster::Monster()
     : speed(0)
     , gravity(0)
     , handle(-1)
+    , state(IDLE)
     , hp(0)
     , alive(true)
     , dirRight(true)
@@ -53,6 +54,6 @@ void Monster::CheckAlive()
 {
     if (hp < 0)
     {
-        alive = false;
+        state = DEAD;
     }
 }
