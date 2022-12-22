@@ -14,6 +14,7 @@
 #include "Bullet.h"
 #include "BulletNumber.h"
 #include "ShotDummy.h"
+#include "SkeltonBlock.h"
 
 PlayScene::PlayScene()
     : 
@@ -26,6 +27,7 @@ PlayScene::PlayScene()
 	map = new Map;
 	collision = new Collision;
 	scroll = new Scroll;
+	block = new SkeltonBlock;
 
 	//---プレイヤー関連インスタンス---//
 	player = new Player;
@@ -65,9 +67,11 @@ SceneBase* PlayScene::Update(float _deltaTime)
 void PlayScene::isStand()
 {
 	player->SetonGround(collision->ColBox(player->GetPosition()));
+	block->CheckPlayerHit(player);
 	if (bullet!=nullptr)
 	{
 		bullet->SetonGround(collision->ColBox(bullet->GetPosition()));
+		block->CheckBulletHit(bullet);
 	}
 }
 
@@ -109,6 +113,7 @@ void PlayScene::Draw()
 {
 	bg->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 	map->MapDraw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
+	block->Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 
 	PlayerObjectManager::Draw(scroll->GetDrawOffSetX(), scroll->GetDrawOffSetY());
 	unsigned int Color;
