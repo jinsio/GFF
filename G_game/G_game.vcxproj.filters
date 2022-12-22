@@ -13,9 +13,6 @@
     <ClCompile Include="SceneBase.cpp">
       <Filter>ソースファイル\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>ソースファイル\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>ソースファイル\Map</Filter>
     </ClCompile>
@@ -25,14 +22,8 @@
     <ClCompile Include="main.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>ソースファイル\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Scroll.cpp">
       <Filter>ソースファイル\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>ソースファイル\Player</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>ソースファイル\BackGround</Filter>
@@ -52,9 +43,6 @@
     <ClCompile Include="Monster\Slime.cpp">
       <Filter>ソースファイル\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="ShotDummy.cpp">
-      <Filter>ソースファイル\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Manager\MonsterManager.cpp">
       <Filter>ソースファイル\Manager</Filter>
     </ClCompile>
@@ -64,8 +52,24 @@
     <ClCompile Include="SkeltonBlock.cpp">
       <Filter>ソースファイル\Map</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="Player.cpp">
+      <Filter>ソースファイル\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>ソースファイル\GameObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>ソースファイル\GameObject\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="ShotDummy.cpp">
+      <Filter>ソースファイル\GameObject\ShotDummy</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>ソースファイル\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>ソースファイル\GameObject\GameObjectManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -80,23 +84,14 @@
     <ClInclude Include="ResultScene.h">
       <Filter>ソースファイル\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>ソースファイル\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>ソースファイル\Map</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>ソースファイル\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>ソースファイル\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Scroll.h">
       <Filter>ソースファイル\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>ソースファイル\Player</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>ソースファイル\BackGround</Filter>
@@ -119,9 +114,6 @@
     <ClInclude Include="Monster\Slime.h">
       <Filter>ソースファイル\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="ShotDummy.h">
-      <Filter>ソースファイル\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Manager\MonsterManager.h">
       <Filter>ソースファイル\Manager</Filter>
     </ClInclude>
@@ -131,9 +123,27 @@
     <ClInclude Include="SkeltonBlock.h">
       <Filter>ソースファイル\Map</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GameObjectTag.h" />
-    <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="Player.h">
+      <Filter>ソースファイル\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>ソースファイル\GameObject\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>ソースファイル\GameObject\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="ShotDummy.h">
+      <Filter>ソースファイル\GameObject\ShotDummy</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>ソースファイル\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectTag.h">
+      <Filter>ソースファイル\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>ソースファイル\GameObject\GameObjectManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
@@ -145,9 +155,6 @@
     <Filter Include="ソースファイル\Map">
       <UniqueIdentifier>{723f6fe4-e00a-43c9-b771-e1e3bba75fd0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソースファイル\Player">
-      <UniqueIdentifier>{093f7e0e-0246-4bdb-b7e0-49c65bd2250e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソースファイル\BackGround">
       <UniqueIdentifier>{47ffc74b-f501-41a8-96ee-44af9a769e92}</UniqueIdentifier>
     </Filter>
@@ -156,6 +163,24 @@
     </Filter>
     <Filter Include="ソースファイル\Manager">
       <UniqueIdentifier>{fb128ec5-c347-49f9-a3b6-559628910c8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\GameObject">
+      <UniqueIdentifier>{093f7e0e-0246-4bdb-b7e0-49c65bd2250e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\GameObject\Player">
+      <UniqueIdentifier>{54d5386f-208d-43f9-a2b7-c0d642fc4712}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\GameObject\Bullet">
+      <UniqueIdentifier>{98b63a99-30f4-4d2a-a8e9-cd05975a6a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\GameObject\Button">
+      <UniqueIdentifier>{98927a81-a8fd-4d6c-ae46-b31cfeb18bbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\GameObject\ShotDummy">
+      <UniqueIdentifier>{d596f5b7-790e-47f8-a5a5-124df959c654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\GameObject\GameObjectManager">
+      <UniqueIdentifier>{d4a6aeec-4e1b-4058-8d33-17f5d88cfbf2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
