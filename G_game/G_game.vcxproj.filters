@@ -144,6 +144,9 @@
     <ClInclude Include="GameObjectManager.h">
       <Filter>ソースファイル\GameObject\GameObjectManager</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionType.h">
+      <Filter>ソースファイル\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">

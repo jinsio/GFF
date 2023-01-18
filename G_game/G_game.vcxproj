@@ -176,6 +176,7 @@
     <ClInclude Include="BulletNumber.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="CollisionType.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="Manager\MonsterManager.h" />
