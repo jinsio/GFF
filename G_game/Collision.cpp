@@ -1,5 +1,4 @@
 #include "Collision.h"
-#include "Player.h"
 #include <math.h>
 
 
@@ -8,7 +7,6 @@
 // @briaf   コンストラクター
 //-------------------------------------------------//
 Collision::Collision()
-//.....変数初期化.....//
     :Marker(0)
     , rawNum(0)
     , columnNum(0)
@@ -57,6 +55,20 @@ Collision::Collision()
     fclose(fp);                                                       //ファイルを閉じる
 }
 
+Block::Block(const VECTOR& size, const VECTOR& pos)
+    :mSize(size)
+    , localPos(pos)
+    , worldPos(pos)
+{
+}
+
+Model::Model(const VECTOR& size, const VECTOR& pos)
+    :mSize(size)
+    , localPos(pos)
+    , worldPos(pos)
+{
+}
+
 //-------------------------------------------------//
 // @briaf   デストラクター
 //-------------------------------------------------//
@@ -67,13 +79,13 @@ Collision::~Collision()
 //-------------------------------------------------//
 // @briaf   当たり判定
 //-------------------------------------------------//
-bool Collision::ColBox(VECTOR& objPos)
+bool ColBox(const Model& model,const Block& block)
 {
     //オブジェクトBOXの頂点座標//
-    int objLX = ((int)objPos.x - XSize / 4);
-    int objLY = ((int)objPos.y - YSize / 4);
-    int objRX = ((int)objPos.x + XSize / 4);
-    int objRY = ((int)objPos.y + YSize / 1.5f);
+    int objLX = (model.worldPos.x - model.mSize.x / 4);
+    int objLY = (model.worldPos.y - model.mSize.y / 4);
+    int objRX = (model.worldPos.x + model.mSize.x / 4);
+    int objRY = (model.worldPos.y + model.mSize.y / 1.5f);
 
     //現在のタイル位置//
     int tileLX = objLX / BOX_WIDTH ;

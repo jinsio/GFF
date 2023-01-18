@@ -5,13 +5,12 @@
 TitleScene::TitleScene()
 	: SceneBase()
 	,fadein(0)
-	,titleBgPos()
+	,titleBgPos{0,-1300,0}
 {
 	// ƒ^ƒCƒgƒ‹‰æ‘œ‚Ì“Ç‚İ‚İ(‰¼)
 	mImage = LoadGraph("assets/scene/Title.png");
 	titleBg = new BackGround;
 
-	titleBgPos.y = -1300;
 }
 
 TitleScene::~TitleScene()
