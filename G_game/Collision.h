@@ -23,7 +23,16 @@ public:
     /// </summary>
     ~Collision();
 
+    /// <summary>
+    /// 当たり判定
+    /// </summary>
+    bool ColBox(const struct Model& model, const struct Block& block);
 
+    bool ColHitPair(const struct Block& block, int i, int j, int colTyoe);
+    bool ColHitPair(const struct Model& model, const struct Model& model2);
+    bool ColHitPair(const Block& block, const Block& block2, int i, int j);
+
+    VECTOR CalcPushBack(int i, int j, int colType);
 private:
     struct sColLayer
     {
@@ -39,6 +48,9 @@ private:
     bool eofFlag;                                       //eof（end of file）検出フラグ
     FILE* fp;                                           //ファイルポインター
 
+    int bx, by;
+    bool isGround;
+    VECTOR pushBack;
     //透明(スケルトン)ブロックフラグ
     bool VisionFlag = false;
 
@@ -52,12 +64,12 @@ struct Block
     /// <summary>
     /// コンストラクター
     /// </summary>
-    Block(const VECTOR& size, const VECTOR& pos);
+    Block(const VECTOR& pos);
 
     /// <summary>
     /// Block移動処理
     /// </summary>
-    void Move();
+    void Move(VECTOR& pos);
 
     VECTOR mSize;
     VECTOR localPos;
@@ -72,14 +84,9 @@ struct Model
 {
 
     Model(const VECTOR& size, const VECTOR& pos);
-    void Move();
+    void Move(VECTOR& pos);
 
     VECTOR mSize;
     VECTOR localPos;
     VECTOR worldPos;
 };
-
-/// <summary>
-/// 当たり判定
-/// </summary>
-bool ColBox(const Model& model, const Block& block);
