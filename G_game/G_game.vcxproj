@@ -157,6 +157,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager\MonsterManager.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Math\Math.cpp" />
     <ClCompile Include="Monster\Bat.cpp" />
     <ClCompile Include="Monster\Golem.cpp" />
     <ClCompile Include="Monster\Monster.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="Manager\MonsterManager.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Math\Math.h" />
     <ClInclude Include="Monster\Bat.h" />
     <ClInclude Include="Monster\Golem.h" />
     <ClInclude Include="Monster\Monster.h" />

@@ -1,5 +1,5 @@
 #include "Collision.h"
-#include <math.h>
+#include "Math/Math.h"
 
 
 
@@ -55,11 +55,16 @@ Collision::Collision()
     fclose(fp);                                                       //ファイルを閉じる
 }
 
-Block::Block(const VECTOR& size, const VECTOR& pos)
-    :mSize(size)
+Block::Block(const VECTOR& pos)
+    :mSize{ BOX_WIDTH,BOX_HEIGHT,0 }
     , localPos(pos)
     , worldPos(pos)
 {
+}
+
+void Block::Move(VECTOR& pos)
+{
+    worldPos = localPos + pos;
 }
 
 Model::Model(const VECTOR& size, const VECTOR& pos)
@@ -67,6 +72,11 @@ Model::Model(const VECTOR& size, const VECTOR& pos)
     , localPos(pos)
     , worldPos(pos)
 {
+}
+
+void Model::Move(VECTOR& pos)
+{
+    worldPos = localPos + pos;
 }
 
 //-------------------------------------------------//
@@ -79,7 +89,7 @@ Collision::~Collision()
 //-------------------------------------------------//
 // @briaf   当たり判定
 //-------------------------------------------------//
-bool ColBox(const Model& model,const Block& block)
+bool Collision::ColBox(const Model& model, const Block& block)
 {
     //オブジェクトBOXの頂点座標//
     int objLX = (model.worldPos.x - model.mSize.x / 4);
@@ -88,57 +98,80 @@ bool ColBox(const Model& model,const Block& block)
     int objRY = (model.worldPos.y + model.mSize.y / 1.5f);
 
     //現在のタイル位置//
-    int tileLX = objLX / BOX_WIDTH ;
-    int tileLY = objLY / BOX_HEIGHT;
-    int tileRX = objRX / BOX_WIDTH ;
-    int tileRY = objRY / BOX_HEIGHT;
+    int tileLX = objLX / block.mSize.x;
+    int tileLY = objLY / block.mSize.y;
+    int tileRX = objRX / block.mSize.x;
+    int tileRY = objRY / block.mSize.y;
 
     for (int iy = tileLY; iy < tileRY + 1; iy++)
     {
         for (int jx = tileLX; jx < tileRX + 1; jx++)
         {
             //当たり判定BOXの頂点座標//
-            int boxLX = jx * BOX_WIDTH;
-            int boxLY = iy * BOX_HEIGHT;
-            int boxRX = boxLX + BOX_WIDTH;
-            int boxRY = boxLY + BOX_HEIGHT;
+            int boxLX = jx * block.mSize.x;
+            int boxLY = iy * block.mSize.y;
+            int boxRX = boxLX + block.mSize.x;
+            int boxRY = boxLY + block.mSize.y;
 
             //押し出し処理//
             int bx1 = boxLX - objRX;
             int bx2 = boxRX - objLX;
             int by1 = boxLY - objRY;
             int by2 = boxRY - objLY;
+            bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;
+            by = (abs(by1) < abs(by2)) ? by1 : by2;
 
-            int bx = (abs(bx1) < abs(bx2)) ? bx1 : bx2;
-            int by = (abs(by1) < abs(by2)) ? by1 : by2;
-            if (sCol[jx][iy].BoxHandle != colBoxHandle[0])
-            {
-                if (abs(bx) < abs(by))
-                {
-                    if (sCol[jx - 1][iy].BoxHandle == colBoxHandle[0] ||
-                        sCol[jx + 1][iy].BoxHandle == colBoxHandle[0])
-                    {
-                        objPos.x += bx;
-                    }
-                }
-                else
-                {
-                    if (sCol[jx][iy - 1].BoxHandle == colBoxHandle[0]||
-                        sCol[jx][iy + 1].BoxHandle == colBoxHandle[0])
-                    {
-                        objPos.y += by;
-                        if (by <= 0)
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
+        }
+    }
+    return isGround;
+}
+
+bool Collision::ColHitPair(const Block& block, int i, int j, int colType)
+{
+    if (sCol[j][i].BoxHandle != block.boxHandle[colType])
+    {
+        return true;
+    }
+    return false;
+}
+
+bool Collision::ColHitPair(const Model& model, const Model& model2)
+{
+    if (model.worldPos.x<model2.worldPos.x + model2.mSize.x &&
+        model.worldPos.x + model.mSize.x>model2.worldPos.x)
+    {
+        if (model.worldPos.y<model2.worldPos.y+model2.mSize.y&&
+            model.worldPos.y+model.mSize.y>model2.worldPos.y)
+        {
+            return true;
         }
     }
     return false;
-
-
 }
 
 
+VECTOR Collision::CalcPushBack(int i,int j,int colType)
+{
+    if (abs(bx) < abs(by))
+    {
+        if (sCol[j - 1][i].BoxHandle == colBoxHandle[colType] ||
+            sCol[j + 1][i].BoxHandle == colBoxHandle[colType])
+        {
+            pushBack.x = bx;
+        }
+    }
+    else
+    {
+        if (sCol[j][i - 1].BoxHandle == colBoxHandle[colType] ||
+            sCol[j][i + 1].BoxHandle == colBoxHandle[colType])
+        {
+            pushBack.y += by;
+            if (by <= 0)
+            {
+                isGround= true;
+            }
+        }
+    }
+    isGround = false;
+    return pushBack;
+}

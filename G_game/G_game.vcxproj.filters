@@ -70,6 +70,9 @@
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>ソースファイル\GameObject\GameObjectManager</Filter>
     </ClCompile>
+    <ClCompile Include="Math\Math.cpp">
+      <Filter>ソースファイル\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -147,6 +150,9 @@
     <ClInclude Include="CollisionType.h">
       <Filter>ソースファイル\Map</Filter>
     </ClInclude>
+    <ClInclude Include="Math\Math.h">
+      <Filter>ソースファイル\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
@@ -184,6 +190,9 @@
     </Filter>
     <Filter Include="ソースファイル\GameObject\GameObjectManager">
       <UniqueIdentifier>{d4a6aeec-4e1b-4058-8d33-17f5d88cfbf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Math">
+      <UniqueIdentifier>{92eb80e3-1eef-47a5-98d8-2a08a601f5ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
