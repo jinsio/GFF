@@ -19,7 +19,7 @@ const float maxFallSpeed = 10.0f;   // 最大落下速度
 
 
 //プレイヤーのサイズ
-const int XSize = 64;
+const int XSize = 48;
 const int YSize = 64;
 
 //待機アニメーション
@@ -75,7 +75,6 @@ public:
 
 	//キャラの向き
 	int GetDir() { return mRightDir; }
-
 
 	// 待機アニメーション設定
 	void IdleAnimation(float _deltaTime);

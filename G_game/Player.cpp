@@ -28,7 +28,6 @@ Player::Player():
 	nowCount(0.0f),
 	prevCount(0.0f)
 {
-	
 }
 
 Player::~Player()
@@ -60,7 +59,6 @@ void Player::Update(float deltaTime)
 //	deltaTime = (nowCount - prevCount) / 1000.0f;
 //	prevCount = nowCount;
 //}
-
 
 void Player::AnimationUpdate(float deltaTime)
 {

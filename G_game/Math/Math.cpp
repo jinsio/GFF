@@ -11,3 +11,12 @@ VECTOR operator+(const VECTOR& lhs, const VECTOR& rhs)
 	ret.z = lhs.z + rhs.z;
 	return ret;
 }
+
+//-------------------------------------------------------------------------------
+// @brief += VECTOR‚Ì‰‰ŽZŽq
+//-------------------------------------------------------------------------------
+VECTOR operator+=(VECTOR& lhs, const VECTOR& rhs)
+{
+	lhs = lhs + rhs;
+	return lhs;
+}

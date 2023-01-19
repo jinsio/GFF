@@ -166,33 +166,12 @@ void GameObjectManager::Draw(int offSetX, int offSetY)
 	{
 		for (int i = 0; i < mpInstance->mObjects[tag].size(); ++i)
 		{
-			// 描画可能なオブジェクトのみ描画
-			if (mpInstance->mObjects[tag][i]->GetVisible())
-			{
 				mpInstance->mObjects[tag][i]->Draw(offSetX, offSetY);
-			}
 		}
 	}
 }
 
-////-------------------------------------------------------------------------------
-//// @brief 全オブジェクトの当たり判定.
-////-------------------------------------------------------------------------------
-//void PlayerObjectManager::Collision()
-//{
-//	//////////////////////////////////////
-//	// 当たり判定組み合わせをここに書く
-//	//////////////////////////////////////
-//	// player vs BackGround すべての組み合わせチェック
-//	for (int playernum = 0; playernum < mpInstance->mObjects[ObjectTag::Player].size(); ++playernum)
-//	{
-//		for (int bgnum = 0; bgnum < mpInstance->mObjects[ObjectTag::BackGround].size(); ++bgnum)
-//		{
-//			mpInstance->mObjects[ObjectTag::Player][playernum]->
-//				OnCollisonEnter(mpInstance->mObjects[ObjectTag::BackGround][bgnum]);
-//		}
-//	}
-//}
+
 //-------------------------------------------------------------------------------
 // @brief タグ種類の初めのオブジェクトを返す.
 // @param[in] tag ObjectTag種類
