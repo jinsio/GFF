@@ -1,18 +1,17 @@
-#include "Slime.h"
+#include "Golem.h"
 
-
-Slime::Slime()
+Golem::Golem()
 {
-    pos = VGet(1920 / 2, 1080 / 2, 0);
+    mPos = VGet(1920 / 2, 1080 / 2, 0);
     speed = 200.0f;
-    handle = LoadGraph("assets/enemy/slime.png");
+    mHandle = LoadGraph("assets/enemy/golem.png");
 }
 
-Slime::~Slime()
+Golem::~Golem()
 {
 }
 
-void Slime::Update(float deltaTime)
+void Golem::Update(float deltaTime)
 {
     // 生死状態の確認をする
     CheckAlive();
@@ -43,12 +42,12 @@ void Slime::Update(float deltaTime)
     }
 }
 
-void Slime::Track(float deltaTime)
+void Golem::Track(float deltaTime)
 {
     // プレイヤーのX座標から自身のX座標を引いた値を正規化して速度とデルタタイムをかける
 }
 
-void Slime::Attack(float deltaTime)
+void Golem::Attack(float deltaTime)
 {
     // 攻撃の初動
     if (atkState == START)
@@ -67,13 +66,13 @@ void Slime::Attack(float deltaTime)
     }
 }
 
-bool Slime::IsFind(float playerPosX)
+bool Golem::IsFind(float playerPosX)
 {
     // 右を向いている場合
-    if (dirRight)
+    if (mRightDir)
     {
         // 座標の差分が4マス（160px）より小さければ
-        if (pos.x - playerPosX > -findRange)
+        if (mPos.x - playerPosX > -findRange)
         {
             // 見つけていると返す
             return true;
@@ -83,13 +82,13 @@ bool Slime::IsFind(float playerPosX)
     else
     {
         // 座標の差分が4マス（160px）より小さければ
-        if (pos.x - playerPosX < findRange)
+        if (mPos.x - playerPosX < findRange)
         {
             // 見つけていると返す
             return true;
         }
     }
-    
+
     // 見つけていないと返す
     return false;
 }

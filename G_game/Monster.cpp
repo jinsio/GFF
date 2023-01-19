@@ -1,23 +1,21 @@
 #include "Monster.h"
 #include "DxLib.h"
+#include "GameObjectTag.h"
 
 Monster::Monster()
-    : speed(0)
-    , gravity(0)
-    , handle(-1)
+    : GameObject(GameObjectTag::Enemy)
+    , speed(0)
     , state(IDLE)
     , hp(0)
-    , alive(true)
-    , dirRight(true)
 {
 }
 
 Monster::~Monster()
 {
-    if (handle != -1)
+    if (mHandle != -1)
     {
-        DeleteGraph(handle);
-        handle = -1;
+        DeleteGraph(mHandle);
+        mHandle = -1;
     }
     for (auto handle : moveAnim)
     {
@@ -43,11 +41,6 @@ Monster::~Monster()
             handle = -1;
         }
     }
-}
-
-void Monster::Draw()
-{
-    DrawRotaGraph((int)pos.x, (int)pos.y, 1.0f, 0, handle, TRUE, dirRight);
 }
 
 void Monster::CheckAlive()

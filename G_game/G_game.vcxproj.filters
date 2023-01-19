@@ -28,24 +28,6 @@
     <ClCompile Include="BackGround.cpp">
       <Filter>ソースファイル\BackGround</Filter>
     </ClCompile>
-    <ClCompile Include="Monster\Bat.cpp">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster\Golem.cpp">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster\Monster.cpp">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster\Skeleton.cpp">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster\Slime.cpp">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager\MonsterManager.cpp">
-      <Filter>ソースファイル\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="BulletNumber.cpp">
       <Filter>ソースファイル\Scenes</Filter>
     </ClCompile>
@@ -73,6 +55,21 @@
     <ClCompile Include="Math\Math.cpp">
       <Filter>ソースファイル\Math</Filter>
     </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Golem.cpp">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterManager.cpp">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -98,27 +95,6 @@
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>ソースファイル\BackGround</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster\Bat.h">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster\Golem.h">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster\Monster.h">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster\monsterInfo.h">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster\Skeleton.h">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster\Slime.h">
-      <Filter>ソースファイル\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager\MonsterManager.h">
-      <Filter>ソースファイル\Manager</Filter>
     </ClInclude>
     <ClInclude Include="BulletNumber.h">
       <Filter>ソースファイル\Scenes</Filter>
@@ -153,6 +129,24 @@
     <ClInclude Include="Math\Math.h">
       <Filter>ソースファイル\Math</Filter>
     </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Golem.h">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="monsterInfo.h">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterManager.h">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.h">
+      <Filter>ソースファイル\GameObject\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
@@ -166,12 +160,6 @@
     </Filter>
     <Filter Include="ソースファイル\BackGround">
       <UniqueIdentifier>{47ffc74b-f501-41a8-96ee-44af9a769e92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソースファイル\Monster">
-      <UniqueIdentifier>{9955927a-00e5-43e4-aa3e-990a2f77a8a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソースファイル\Manager">
-      <UniqueIdentifier>{fb128ec5-c347-49f9-a3b6-559628910c8b}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソースファイル\GameObject">
       <UniqueIdentifier>{093f7e0e-0246-4bdb-b7e0-49c65bd2250e}</UniqueIdentifier>
@@ -193,6 +181,9 @@
     </Filter>
     <Filter Include="ソースファイル\Math">
       <UniqueIdentifier>{92eb80e3-1eef-47a5-98d8-2a08a601f5ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\GameObject\Monster">
+      <UniqueIdentifier>{56e6b4cc-3c7b-4a0d-9737-bdeb1d0a206d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

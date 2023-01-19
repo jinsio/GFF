@@ -148,21 +148,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletNumber.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="Golem.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Manager\MonsterManager.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Math\Math.cpp" />
-    <ClCompile Include="Monster\Bat.cpp" />
-    <ClCompile Include="Monster\Golem.cpp" />
-    <ClCompile Include="Monster\Monster.cpp" />
-    <ClCompile Include="Monster\Skeleton.cpp" />
-    <ClCompile Include="Monster\Slime.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="ResultScene.cpp" />
@@ -170,25 +168,24 @@
     <ClCompile Include="Scroll.cpp" />
     <ClCompile Include="ShotDummy.cpp" />
     <ClCompile Include="SkeltonBlock.cpp" />
+    <ClCompile Include="Slime.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Bat.h" />
     <ClInclude Include="BulletNumber.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionType.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
-    <ClInclude Include="Manager\MonsterManager.h" />
+    <ClInclude Include="Golem.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Math\Math.h" />
-    <ClInclude Include="Monster\Bat.h" />
-    <ClInclude Include="Monster\Golem.h" />
-    <ClInclude Include="Monster\Monster.h" />
-    <ClInclude Include="Monster\monsterInfo.h" />
-    <ClInclude Include="Monster\Skeleton.h" />
-    <ClInclude Include="Monster\Slime.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="monsterInfo.h" />
+    <ClInclude Include="MonsterManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="ResultScene.h" />
@@ -196,6 +193,7 @@
     <ClInclude Include="Scroll.h" />
     <ClInclude Include="ShotDummy.h" />
     <ClInclude Include="SkeltonBlock.h" />
+    <ClInclude Include="Slime.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="GameObjectTag.h" />

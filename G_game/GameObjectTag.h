@@ -1,14 +1,14 @@
 #pragma once
 #include <vector>
 
-
 // ゲーム内アクター・当たり判定の種類別タグ
 // 必要なものはBeginとEndの間に254個まで定義できる
 enum class GameObjectTag : unsigned char
 {
-	Player,
-	Bullet,
-	ShotDummy,
+    Player,
+    Bullet,
+    ShotDummy,
+    Enemy,
 };
 
 //------------------------------------------------------------------------------------
@@ -18,7 +18,8 @@ enum class GameObjectTag : unsigned char
 //------------------------------------------------------------------------------------
 constexpr static GameObjectTag ObjectTagAll[] =
 {
-	GameObjectTag::Player,
-	GameObjectTag::Bullet,
-	GameObjectTag::ShotDummy
+    GameObjectTag::Player,
+    GameObjectTag::Bullet,
+    GameObjectTag::ShotDummy,
+    GameObjectTag::Enemy,
 };
