@@ -6,15 +6,11 @@
 class GameObject
 {
 public:
-public:
     GameObject(GameObjectTag tag);
     virtual ~GameObject();
 
     VECTOR  GetPos() { return mPos; }
     void    SetPos(VECTOR Pos) { mPos = Pos; }
-
-    bool          GetVisible() const { return mVisible; }                  // ‰Â‹ó‘Ô‚Ìæ“¾ 
-    void          SetVisible(bool visible) { mVisible = visible; }         // ‰Â‹ó‘Ô‚ÌƒZƒbƒg
 
     bool    GetAlive() { return mAlive; }
     void    SetAlive(bool SetAlive) { mAlive = SetAlive; }
@@ -24,11 +20,11 @@ public:
     virtual void Update(float deltaTime) = 0;
     virtual void Draw(int offSetX, int offSetY);
 
+
 protected:
     GameObjectTag   mTag;
     VECTOR  mPos;
     bool    mAlive;
-    bool    mVisible;                                    // ‰Â‹ó‘Ô
     bool    mRightDir;
     int     mHandle;
 

@@ -9,6 +9,7 @@ enum class GameObjectTag : unsigned char
     Bullet,
     ShotDummy,
     Enemy,
+    Map,
 };
 
 //------------------------------------------------------------------------------------
@@ -22,4 +23,5 @@ constexpr static GameObjectTag ObjectTagAll[] =
     GameObjectTag::Bullet,
     GameObjectTag::ShotDummy,
     GameObjectTag::Enemy,
+    GameObjectTag::Map,
 };

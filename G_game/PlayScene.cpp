@@ -66,11 +66,11 @@ SceneBase* PlayScene::Update(float _deltaTime)
 
 void PlayScene::isStand()
 {
-	player->SetonGround(collision->ColBox(player->GetPosition()));
+	player->SetonGround(true);
 	block->CheckPlayerHit(player);
 	if (bullet!=nullptr)
 	{
-		bullet->SetonGround(collision->ColBox(bullet->GetPosition()));
+		bullet->SetonGround(true);
 		block->CheckBulletHit(bullet);
 	}
 }
