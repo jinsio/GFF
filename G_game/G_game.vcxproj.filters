@@ -28,9 +28,6 @@
     <ClCompile Include="BackGround.cpp">
       <Filter>ソースファイル\BackGround</Filter>
     </ClCompile>
-    <ClCompile Include="BulletNumber.cpp">
-      <Filter>ソースファイル\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="SkeltonBlock.cpp">
       <Filter>ソースファイル\Map</Filter>
     </ClCompile>
@@ -70,6 +67,9 @@
     <ClCompile Include="Slime.cpp">
       <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClCompile>
+    <ClCompile Include="BulletNumber.cpp">
+      <Filter>ソースファイル\GameObject\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -95,9 +95,6 @@
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>ソースファイル\BackGround</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletNumber.h">
-      <Filter>ソースファイル\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="SkeltonBlock.h">
       <Filter>ソースファイル\Map</Filter>
@@ -146,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="Slime.h">
       <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletNumber.h">
+      <Filter>ソースファイル\GameObject\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

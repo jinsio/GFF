@@ -10,7 +10,7 @@ ShotDummy::ShotDummy(class Player* player)
 		mHandle = LoadGraph("assets/player/arrow.png");
 	}
 	mRightDir = player->GetDir();
-	mPos = player->GetPos();
+	mPos= player->GetPos();
 }
 
 ShotDummy::~ShotDummy()
@@ -45,11 +45,11 @@ void ShotDummy::Update(float deltaTime)
 void ShotDummy::Draw(int offSetX, int offSetY)
 {
 	if (mAlive&& mRightDir) {
-		DrawRotaGraph((int)mPos.x- offSetX, (int)mPos.y - offSetY, 1, mAngle*DX_PI, mHandle, mAlive, mRightDir);
+		DrawRotaGraph(((int)mPos.x - 100)- offSetX, ((int)mPos.y - 100) - offSetY, 1, mAngle*DX_PI, mHandle, mAlive, mRightDir);
 	}
 	else if (mAlive && !mRightDir)
 	{
-		DrawRotaGraph((int)mPos.x- offSetX , (int)mPos.y - offSetY, 1, -mAngle * DX_PI, mHandle, mAlive, mRightDir);
+		DrawRotaGraph(((int)mPos.x + 100) - offSetX , ((int)mPos.y -100) - offSetY, 1, -mAngle * DX_PI, mHandle, mAlive, mRightDir);
 	}
 	/*unsigned int Color;
 

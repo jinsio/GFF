@@ -11,7 +11,6 @@ class Scroll;
 class SkeltonBlock;
 
 class Player;
-class Button;
 class Bullet;
 class BulletNumber;
 class ShotDummy;
@@ -26,7 +25,6 @@ private:
 	SkeltonBlock* block;
 	
 	Player* player;
-	Button* button;
 	ShotDummy* dummy;
 	Bullet* bullet;
 	BulletNumber* bulletnumber;

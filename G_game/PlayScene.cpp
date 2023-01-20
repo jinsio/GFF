@@ -1,3 +1,4 @@
+
 // インクルード
 #include "PlayScene.h"
 #include "ResultScene.h"
@@ -32,7 +33,6 @@ PlayScene::PlayScene()
 
 	//---プレイヤー関連インスタンス---//
 	player = new Player;
-	/*button = new Button;*/
 	bulletnumber = new BulletNumber;
 
 	GameObjectManager::Initialize();
@@ -102,6 +102,7 @@ void PlayScene::ShotFlow(float _deltaTime)
 			bullet->SetBulletDir(dummy->GetBulletDummyDir());
 			bullet->BulletAngleSet(dummy->GetRadian());
 			bulletnumber->SubBulletNumber();
+			player->SetThrowAnimationFlag(TRUE);
 			dummy->SetAlive(false);
 		}
 		else

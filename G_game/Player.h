@@ -92,6 +92,7 @@ public:
 
 	// 投げアニメーション設定
 	void ThrowAnimation(float _deltaTime);
+	void SetThrowAnimationFlag(bool Status) { mThrowAnimaitionFlag =Status; }
 
 	//ジャンプアニメーション設定
 	void JumpAnimation(float deltaTime);
@@ -138,5 +139,6 @@ private:
 	int mThrow[ThrowAllNum];
 	int mThrowAnimation;
 	float mThrowAnimCoolTime;
+	bool mThrowAnimaitionFlag;
 
 };
