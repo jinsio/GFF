@@ -40,8 +40,8 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>ソースファイル\GameObject\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>ソースファイル\GameObject\Button</Filter>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>ソースファイル\GameObject\KeyManeger</Filter>
     </ClCompile>
     <ClCompile Include="ShotDummy.cpp">
       <Filter>ソースファイル\GameObject\ShotDummy</Filter>
@@ -56,19 +56,19 @@
       <Filter>ソースファイル\Math</Filter>
     </ClCompile>
     <ClCompile Include="Bat.cpp">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClCompile>
     <ClCompile Include="Golem.cpp">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClCompile>
     <ClCompile Include="MonsterManager.cpp">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClCompile>
     <ClCompile Include="Slime.cpp">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -108,8 +108,8 @@
     <ClInclude Include="Bullet.h">
       <Filter>ソースファイル\GameObject\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>ソースファイル\GameObject\Button</Filter>
+    <ClInclude Include="KeyManager.h">
+      <Filter>ソースファイル\GameObject\KeyManeger</Filter>
     </ClInclude>
     <ClInclude Include="ShotDummy.h">
       <Filter>ソースファイル\GameObject\ShotDummy</Filter>
@@ -130,22 +130,22 @@
       <Filter>ソースファイル\Math</Filter>
     </ClInclude>
     <ClInclude Include="Bat.h">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClInclude>
     <ClInclude Include="Golem.h">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClInclude>
     <ClInclude Include="monsterInfo.h">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClInclude>
     <ClInclude Include="MonsterManager.h">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClInclude>
     <ClInclude Include="Slime.h">
-      <Filter>ソースファイル\GameObject\Monster</Filter>
+      <Filter>ソースファイル\GameObject\GameObjectManager\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +170,6 @@
     <Filter Include="ソースファイル\GameObject\Bullet">
       <UniqueIdentifier>{98b63a99-30f4-4d2a-a8e9-cd05975a6a91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソースファイル\GameObject\Button">
-      <UniqueIdentifier>{98927a81-a8fd-4d6c-ae46-b31cfeb18bbb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソースファイル\GameObject\ShotDummy">
       <UniqueIdentifier>{d596f5b7-790e-47f8-a5a5-124df959c654}</UniqueIdentifier>
     </Filter>
@@ -182,8 +179,11 @@
     <Filter Include="ソースファイル\Math">
       <UniqueIdentifier>{92eb80e3-1eef-47a5-98d8-2a08a601f5ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソースファイル\GameObject\Monster">
+    <Filter Include="ソースファイル\GameObject\GameObjectManager\Monster">
       <UniqueIdentifier>{56e6b4cc-3c7b-4a0d-9737-bdeb1d0a206d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\GameObject\KeyManeger">
+      <UniqueIdentifier>{98927a81-a8fd-4d6c-ae46-b31cfeb18bbb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

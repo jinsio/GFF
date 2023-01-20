@@ -1,5 +1,5 @@
 #include "MonsterManager.h"
-#include "../Monster/Monster.h"
+#include "Monster.h"
 
 /** マネージャの実体へのポインタ定義*/
 MonsterManager* MonsterManager::instance = nullptr;
@@ -152,6 +152,6 @@ void MonsterManager::Draw()
 {
     for (auto pool : instance->pool)
     {
-        pool->Draw();
+        //pool->Draw();
     }
 }
