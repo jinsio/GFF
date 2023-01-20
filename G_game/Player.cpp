@@ -24,6 +24,7 @@ Player::Player():
 	mThrow{},
 	mThrowAnimation(),
 	mThrowAnimCoolTime(0.2f),
+	mThrowAnimaitionFlag(FALSE),
 	deltaTime(0.0f),
 	nowCount(0.0f),
 	prevCount(0.0f)
@@ -85,7 +86,6 @@ void Player::Move(float deltaTime)
 	if (onGround) {
 		if (CheckHitKey(KEY_INPUT_J))
 		{
-
 			jumpFlag = true;
 			if (jumpFlag)
 			{
@@ -164,14 +164,21 @@ void Player::JumpAnimation(float deltaTime)
 void Player::ThrowAnimation(float _deltaTime)
 {
 	mThrowAnimCoolTime -= _deltaTime;
-	if (mThrowAnimCoolTime <= 0.0f) {
+	if (mThrowAnimCoolTime <= 0.0f) 
+	{
 		mThrowAnimation++;
-		if (mThrowAnimation >= ThrowAllNum) {
-			mThrowAnimation = 0;
-		}
 		mThrowAnimCoolTime = 0.3f;
 		mThrowAnimation %= ThrowAllNum;
+
+		if (mThrowAnimation == ThrowAllNum-1)
+		{
+		mThrowAnimaitionFlag = FALSE;
+		mThrowAnimation == 0;
+		}
 	}
+	
+	//投げアニメーションが終わったらフラグを降ろす
+	
 }
 
 
@@ -179,7 +186,12 @@ void Player::ThrowAnimation(float _deltaTime)
 
 void Player::AnimationControl()
 {
-	if (!onGround) {
+	//投げアニメーションフラグがTRUEなら
+	if (mThrowAnimaitionFlag) {
+		mHandle = mThrow[mThrowAnimation];
+	}
+
+	else if (!onGround&&!mThrowAnimaitionFlag) {
 		mHandle = mJump[mJumpAnimation];
 	}
 
