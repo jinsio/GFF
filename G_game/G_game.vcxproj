@@ -151,7 +151,7 @@
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletNumber.cpp" />
-    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
@@ -175,7 +175,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bat.h" />
     <ClInclude Include="BulletNumber.h" />
-    <ClInclude Include="Button.h" />
+    <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionType.h" />
     <ClInclude Include="GameObject.h" />

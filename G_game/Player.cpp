@@ -39,11 +39,12 @@ void Player::Init()
 	//プレイヤーの初期位置の代入
 	mPos.x = FirstPosX;
 	mPos.y = FirstPosY;
-	//プレイヤー画像の読み込み
-	LoadDivGraph("assets/player/idle.png", IdleAllNum, IdleXNum, IdleYNum, XSize, YSize, mIdle);
-	LoadDivGraph("assets/player/player_anim.png", RunAllNum, RunXNum, RunYNum, XSize, YSize, mRun);
-	LoadDivGraph("assets/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, XSize, YSize, mThrow);
-	LoadDivGraph("assets/player/Jump.png", JumpAllNum, JumpXNum, JumpYNum, XSize, YSize, mJump);
+	////プレイヤー画像の読み込み
+	LoadDivGraph("assets/player/Idle.png", IdleAllNum, IdleXNum, IdleYNum, IdleXSize, IdleYSize, mIdle);
+	LoadDivGraph("assets/player/Run.png", RunAllNum, RunXNum, RunYNum, RunXSize, RunYSize, mRun);
+	LoadDivGraph("assets/player/Throw.png", ThrowAllNum, ThrowXNum, ThrowYNum, ThrowXSize, ThrowYSize, mThrow);
+	LoadDivGraph("assets/player/Jump.png", JumpAllNum, JumpXNum, JumpYNum, JumpXSize, JumpYSize, mJump);
+	
 }
 
 void Player::Update(float deltaTime)

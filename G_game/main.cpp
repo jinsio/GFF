@@ -10,7 +10,8 @@
 #include "PlayScene.h"
 #include "PlayerObjectManager.h"
 #include "Player.h"
-#include "Button.h"
+#include "KeyManager.h"
+//#include "Button.h"
 #include <iostream>
 //-----------------------------------------------------------------------------
 // @brief  メイン関数.
@@ -29,6 +30,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		// エラーが起きたら直ちに終了
 		return -1;
 	}
+	//キーボードマネージャーのイニシャライズ
+	KeyManager::Initialize();
 
 	//PlayerObjectManager::Initialize();
 	// デルタタイム管理用の変数をセット

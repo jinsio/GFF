@@ -10,7 +10,8 @@
 #include "Scroll.h"
 
 #include "Player.h"
-#include "Button.h"
+//#include "Button.h"
+#include "KeyManager.h"
 #include "Bullet.h"
 #include "BulletNumber.h"
 #include "ShotDummy.h"
@@ -31,7 +32,7 @@ PlayScene::PlayScene()
 
 	//---プレイヤー関連インスタンス---//
 	player = new Player;
-	button = new Button;
+	/*button = new Button;*/
 	bulletnumber = new BulletNumber;
 
 	GameObjectManager::Initialize();
@@ -66,24 +67,24 @@ SceneBase* PlayScene::Update(float _deltaTime)
 
 void PlayScene::isStand()
 {
-	player->SetonGround(true);
+	player->SetonGround(collision->ColBox(player->GetPosition()));
 	block->CheckPlayerHit(player);
 	if (bullet!=nullptr)
 	{
-		bullet->SetonGround(true);
+		bullet->SetonGround(collision->ColBox(bullet->GetPosition()));
 		block->CheckBulletHit(bullet);
 	}
 }
 
 void PlayScene::ShotFlow(float _deltaTime)
 {
-	if (button->ButtonStatusI()==3) {
+	if (KeyManager::KeyStatusI()==3) {
 		bulletnumber->AddBulletNumber();
 	}
 	
 	if (bulletnumber->GetBulletNumber() > 0) 
 	{
-		int tmp = button->ButtonStatusP();
+		int tmp = KeyManager::KeyStatusP();
 		if (tmp == 1) {
 			dummy = new ShotDummy(player);
 			GameObjectManager::Entry(dummy);
